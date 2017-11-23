@@ -1,0 +1,10 @@
+# Log file
+*.log
+
+# Package Files #
+*.zip
+*.tar.gz
+*.rar
+
+# Database Files #
+*.db
