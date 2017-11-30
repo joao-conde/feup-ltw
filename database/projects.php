@@ -1,5 +1,6 @@
 <?php
 
+    include_once("database/connection.php");
 
     function getUserCreatorProject($id) {
 
