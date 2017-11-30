@@ -28,5 +28,18 @@
 
         $stmt->execute();
     }
+
+    function getUser($username, $password) {
+
+        global $dbh;
+
+        $stmt = $dbh->prepare('SELECT username FROM User WHERE username = :user AND password = :pass');
+        $stmt->bindParam(':user', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':pass', $password, PDO::PARAM_STR);
+        $stmt->execute();
+        $currentUser = $stmt->fetch();
+        return $currentUser;
+    
+    }
     
 ?>
