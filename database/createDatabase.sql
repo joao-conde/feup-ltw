@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS User_Project;
 DROP TABLE IF EXISTS Project;
@@ -5,32 +7,31 @@ DROP TABLE IF EXISTS TodoList;
 DROP TABLE IF EXISTS Task;
 DROP TABLE IF EXISTS Dependency;
 
-PRAGMA foreign_keys = ON;
 
-
-CREATE TABLE User(  
-    id INTEGER PRIMARY KEY,
-    username TEXT UNIQUE,
+CREATE TABLE User(
+    username TEXT PRIMARY KEY,
     encryptedPassword TEXT,
     fullName TEXT,
-    shortDescription TEXT,
-    imagePath TEXT
+    shortDescription TEXT
 );
 
 CREATE TABLE User_Project(
-    idUser INTEGER REFERENCES User,
+    username INTEGER REFERENCES User,
     idProject INTEGER REFERENCES Project,
     userRole TEXT,
     PRIMARY KEY(idUser, idProject)
 );
 
 CREATE TABLE Project(
-    id INTEGER PRIMARY KEY,
-    userCreatorID INTEGER REFERENCES User
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    projTitle TEXT,
+    projDescription TEXT,
+    usernameCreator INTEGER REFERENCES User,
+    UNIQUE(projTitle, userCreatorID)
 );
 
 CREATE TABLE TodoList(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     projectID INTEGER REFERENCES Project,
     tdlTitle TEXT,
     tdlDescription TEXT,
@@ -38,8 +39,9 @@ CREATE TABLE TodoList(
 );
 
 CREATE TABLE Task(
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     userResponsableID INTEGER REFERENCES User,
+    todoListID INTEGER REFERENCES TodoList,
     taskTitle TEXT,
     taskDescription TEXT,
     taskDateDue DATE
