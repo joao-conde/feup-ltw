@@ -1,12 +1,16 @@
-header{
-    background-color: rgb(64, 155, 216);
+header h1{
+    text-align: center;
+}
+
+body{
+    background-image: url('background.png');
 }
 
 #menu ul li{
-    padding: 1em;
+    text-align: center;
     list-style-type: none;
 }
 
 footer{
-    background-color: rgb(64, 155, 216);
+    
 }   
