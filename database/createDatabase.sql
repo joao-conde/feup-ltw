@@ -19,7 +19,7 @@ CREATE TABLE User_Project(
     username INTEGER REFERENCES User,
     idProject INTEGER REFERENCES Project,
     userRole TEXT,
-    PRIMARY KEY(idUser, idProject)
+    PRIMARY KEY(username, idProject)
 );
 
 CREATE TABLE Project(
@@ -27,7 +27,7 @@ CREATE TABLE Project(
     projTitle TEXT,
     projDescription TEXT,
     usernameCreator INTEGER REFERENCES User,
-    UNIQUE(projTitle, userCreatorID)
+    UNIQUE(projTitle, usernameCreator)
 );
 
 CREATE TABLE TodoList(

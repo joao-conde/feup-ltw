@@ -18,7 +18,7 @@
 
         global $dbh;
         
-        $insertQuery = 'INSERT INTO User (username, encryptedPassword, fullName, shortDescription) VALUES (:username, :encryptedPassword, :fullName, :shortDescription)';
+        $insertQuery = 'INSERT INTO User(username, encryptedPassword, fullName, shortDescription) VALUES (:username, :encryptedPassword, :fullName, :shortDescription)';
 
         $stmt = $dbh->prepare($insertQuery);
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
