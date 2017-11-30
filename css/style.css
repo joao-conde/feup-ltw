@@ -1,0 +1,12 @@
+header{
+    background-color: rgb(64, 155, 216);
+}
+
+#menu ul li{
+    padding: 1em;
+    list-style-type: none;
+}
+
+footer{
+    background-color: rgb(64, 155, 216);
+}   
