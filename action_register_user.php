@@ -8,7 +8,8 @@
 
     $username = strtolower($_POST['username']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT, $options);
-    $fullname = strtolower($_POST['fullname']);
+    $fullnamelc = strtolower($_POST['fullname']);
+    $fullname = ucwords($fullnamelc);
     $shortDescription = $_POST['shortDescription'];
     
     print_r($username);
