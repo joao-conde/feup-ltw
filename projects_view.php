@@ -16,15 +16,15 @@
             </div>
             <img src="images/feuplogo.jpeg"/>
             <div id="profile">
-                <h3><a href="#">Name Surname</a></h3>
+                <h3><a href="#">PROJECT Name Surname</a></h3>
                 <h4><a href="#">LOGOUT</a></h4>
             </div>
         </header>
-
+        
         <nav id="menu">
                 <ul>
-                    <li><a href="#">My Tasks</a></li>
-                    <li><a href="projects_view.php">My Projects</a></li> 
+                    <li><a href="main.php">My Tasks</a></li>
+                    <li><a href="#">My Projects</a></li> 
                     <li><a href="collaborators_view.php">My Collaborators</a></li> 
                     <li><a href="#">URGENT</a></li>
                     <li><a href="#">Settings</a></li>  
@@ -34,33 +34,33 @@
         <section id="main_area">
             <table>
                 <tr>
-                    <th>Task</th>
-                    <th>Completion</th>
-                    <th>Deadline</th>
                     <th>Project</th>
+                    <th>Completion (tasks done)</th>
+                    <th>Deadline</th>
+                    <th>Owner</th>
                 </tr>
                 <tr>
-                    <td><a href="#">Task1</a></td>
-                    <td>50%</td>
-                    <td>23/12/2017</td>
+                    <td><a href="#">P1</a></td>
+                    <td>20%</td>
+                    <td>13/12/2017</td>
                     <td><a href="#">LTW</a></td>
                 </tr>
                 <tr>
-                    <td><a href="#">Task2</a></td>
-                    <td>10%</td>
-                    <td>1/1/2018</td>
+                    <td><a href="#">P2</a></td>
+                    <td>80%</td>
+                    <td>15/12/2017</td>
                     <td><a href="#">RCOM</a></td>
                 </tr>
                 <tr>
-                    <td><a href="#">Task3</td>
-                    <td>70%</td>
-                    <td>5/2/2018</td>
+                    <td><a href="#">P3</td>
+                    <td>5%</td>
+                    <td>26/12/2017</td>
                     <td><a href="#">LAIG</a></td>
                 </tr>
                 <tr>
-                    <td><a href="#">Task4</a></td>
-                    <td>10%</td>
-                    <td>23/3/2018</td>
+                    <td><a href="#">P4</a></td>
+                    <td>0%</td>
+                    <td>23/12/2017</td>
                     <td><a href="#">PLOG</a></td>
                 </tr>
             </table>
