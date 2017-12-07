@@ -1,12 +1,45 @@
-<?php 
-session_start();
-if(empty($_SESSION['username'])) { ?>
-<h1> Login </h1>
-<form action="action_login.php" method="post">
+<?php include_once('templates/common/header.php'); 
 
-    <label> Username <input type="text" name="username"/></label>
-    <label> Password <input type="password" name="password"/></label>
-    <input type="submit" value="login"/>
+    if(isset($_GET['username']))
+        $username = htmlentities($_GET['username']);
+    else
+        $username = '';
 
-</form>
-<?php } ?>
+    if(isset($_SESSION['errorMessageLogin'])) {
+        $message = $_SESSION['errorMessageLogin'];
+    }
+    else if(isset($_SESSION['registerMessage'])) {
+        $message = $_SESSION['registerMessage'];
+    }
+
+    else if(isset($_SESSION['updateMessage'])) {
+        $message = $_SESSION['updateMessage'];
+    }
+
+    else 
+        $message = '';
+
+?>
+<section id="main_area">
+    <h1> Welcome to Task Manager</h1>
+    <h2> Login </h2>
+    <p class="messages"> 
+            <?php 
+                echo $message;
+                resetSessionVariables();
+            ?>
+    </p>
+    <form action="action_login.php" method="post">
+
+        <label for="username"> Username </label>
+        <input type="text" id="username" name="username" value=<?php echo('"'.$username.'"'); ?>/>
+        <label for="password"> Password </label>
+        <input type="password" id="password" name="password"/>
+        <input type="submit" value="login"/>
+
+    </form>
+    <footer>
+        <p>Do not have account? Register <a href="register.php"> Here</a>!</p>
+    </footer>
+</section>
+<?php include_once('templates/common/footer.php'); ?>

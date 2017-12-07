@@ -1,22 +1,33 @@
 <?php
-    session_start();
-
-    print_r($_SESSION);
+    include_once('database/user.php');
+    include_once('utils/utils_user.php');
 
     $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password = $_POST['password'];
 
-    $user = getUser($username,$password);
+    $_SESSION['username'] = $username;
+    $user = getUser($username);
 
-    print_r($user);
-
-    if(!empty($user)) {
-        $_SESSION['username'] = $username;
-        $_SESSION['name'] = $user['fullname'];
-
+    if(empty($user)) {
+        setNoUserSession();
+        header('Location: '.$_SERVER['HTTP_REFERER']);
     }
 
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    else {
 
+        if(verifyPassword($user,$password)) {
+            setUserSession($user);
+            header('Location: '.'index.php');
+        
+        }
+
+        else {
+
+            setWrongPassword();
+            header('Location: '.$_SERVER['HTTP_REFERER']);
+
+        }
+
+    }
 
 ?>

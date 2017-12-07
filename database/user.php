@@ -27,19 +27,41 @@
         $stmt->bindParam(':shortDescription',$shortDescription, PDO::PARAM_STR);
 
         $stmt->execute();
+
+        return $stmt->errorCode();
     }
 
-    function getUser($username, $password) {
+    function updateUser($username,$fullname,$shortDescription,$old) {
 
         global $dbh;
 
-        $stmt = $dbh->prepare('SELECT username FROM User WHERE username = :user AND password = :pass');
+        $updateQuery = 'UPDATE User 
+                        SET username = :username, fullname = :fullname, shortDescription = :shortDescription  
+                        WHERE username = :old';
+    
+        $stmt = $dbh->prepare($updateQuery);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':fullname', $fullname, PDO::PARAM_STR);
+        $stmt->bindParam(':shortDescription',$shortDescription, PDO::PARAM_STR);
+        $stmt->bindParam(':old', $old, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->errorCode();
+
+    }
+
+    function getUser($username) {
+
+        global $dbh;
+
+        $stmt = $dbh->prepare('SELECT * FROM User WHERE username = :user');
         $stmt->bindParam(':user', $username, PDO::PARAM_STR);
-        $stmt->bindParam(':pass', $password, PDO::PARAM_STR);
         $stmt->execute();
         $currentUser = $stmt->fetch();
         return $currentUser;
     
     }
+
+
     
 ?>

@@ -7,6 +7,7 @@ let submitButton = document.querySelector(registerSelector);
 let usernameSelector = 'form#registrationForm input[name=username]';
 let pwdSelector = 'form#registrationForm input[name=password]';
 let rpwdSelector = 'form#registrationForm input#repeatPassword';
+let oldPasswordSelector = 'form#registrationForm input#oldpwd';
 let fullNameSelector = 'form#registrationForm input[name=fullname]';
 let profileSelector = 'form#registrationForm input[name=profileImage]';
 let imageSelector = 'form#registrationForm img#profilePicture';
@@ -14,17 +15,19 @@ let imageSelector = 'form#registrationForm img#profilePicture';
 let usernameTextField = document.querySelector(usernameSelector);
 let pwdTextField = document.querySelector(pwdSelector);
 let rpwdTextField = document.querySelector(rpwdSelector);
+let oldPwdTextField = document.querySelector(oldPasswordSelector);
 let fullNameTextField = document.querySelector(fullNameSelector);
 let picture = document.querySelector(imageSelector);
-
-let profilePictureField = document.querySelector(profileSelector);
-profilePictureField.addEventListener('change',validateProfilePicture);
-
-let textFields = [usernameTextField,pwdTextField,rpwdTextField,fullNameTextField];
 
 pwdTextField.addEventListener('keypress', preventSpaces);
 rpwdTextField.addEventListener('keypress', preventSpaces);
 usernameTextField.addEventListener('keypress', preventSpaces);
+oldPwdTextField.addEventListener('keypress',preventSpaces);
+
+let profilePictureField = document.querySelector(profileSelector);
+profilePictureField.addEventListener('change',validateProfilePicture);
+
+let textFields = [usernameTextField,pwdTextField,rpwdTextField,fullNameTextField,oldPwdTextField];
 
 submitButton.setAttribute('disabled','disabled');
 
@@ -43,18 +46,25 @@ function enableSubmitButton(enabled) {
 function validateUserName() {
 
      if(usernameTextField.value.length >= 3) {
-         console.log(usernameTextField.value.toLowerCase());
          usernameTextField.setAttribute('value',usernameTextField.value.toLowerCase());
          return true;
      }
     
 }
 
+function validateOldPassword() {
+
+    return oldPwdTextField.value.length >= 5;
+
+}
+
 function validatePassword() {
 
     let size = pwdTextField.value.length >= 5;
     let same = pwdTextField.value == rpwdTextField.value;
-    return (size && same);
+    console.log(size);
+    console.log(same);
+    return ((size == true) && same) || (pwdTextField.value.length == 0 && same);
 
 }
 
@@ -76,7 +86,7 @@ function validateFullName() {
 
 function validateFields() {
 
-    enableSubmitButton(validateUserName() && validatePassword() && validateFullName());
+    enableSubmitButton(validateUserName() && validatePassword() && validateFullName() && validateOldPassword());
      
 }
 
