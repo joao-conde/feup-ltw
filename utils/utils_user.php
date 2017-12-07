@@ -20,7 +20,7 @@
             return $path;
         
         else
-            return "images/logo.svg"; 
+            return "images/anonymous-user.svg"; 
 
     }
 
