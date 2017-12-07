@@ -1,0 +1,117 @@
+section#main_area h1,h2 {
+    text-align: center;
+}
+section#main_area h1 {
+    text-decoration: underline;
+    text-decoration-color: #FF383F;
+}
+
+section#main_area p.messages {
+    text-align: center;
+    color:red;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+section#main_area form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    
+}
+
+section#main_area form > label {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:1.5em;
+}
+
+section#main_area form > input[type=text], input[type=password] {
+    width: 50%;
+    height: 4em;
+    margin: 0 auto;
+    background-color: #EFEFEF;
+    -webkit-appearance: none;
+    outline-width: 0;
+    height: 2em;
+    font-size: 1.5em;
+    padding: 0;
+    border-top-width: 0;
+	border-bottom-width: 1;
+	border-bottom-color: #FF383F;
+	border-left-width: 0;
+	border-right-width: 0;
+}
+
+section#main_area form > input:-webkit-autofill,
+section#main_area form > input:-webkit-autofill:hover, 
+section#main_area form > input:-webkit-autofill:focus {
+
+  -webkit-box-shadow: 0 0 0px 1000px #EFEFEF inset;
+  box-shadow: 0 0 0px 1000px #EFEFEF inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+section#main_area form > input[type=submit] {
+    width: 50%;
+    margin: 1em auto 0 auto;
+    border: solid 1px #FF383F;
+    height: 1.5em;
+    font-size: 1.5em;
+    color: #FF383F;
+    font-style: italic;
+}
+
+section#main_area form > input[type=file] {
+    width: 50%;
+    margin: 1em auto 11px auto;
+    color: #FF383F;
+    font-style: italic;
+    
+}
+
+section#main_area form img {
+    
+    max-width: 200px;
+    height: auto;
+    margin: auto;
+   
+}
+
+section#main_area form > p {
+    width: 50%;
+    margin: 1em auto 11px auto;
+    color: #FF383F;
+    font-style: italic;
+    text-decoration: underline;
+    
+}
+
+section#main_area form > input[disabled=disabled] {
+    color: #dadada;
+}
+
+section#main_area form > textarea {
+    width: 50%;
+    margin: auto;
+    height: 5em;
+    outline-width: 0;
+    resize: none;
+    margin-top: 1em;
+    border: 1px solid #FF383F;
+}
+
+section#main_area footer {
+    width: 25%;
+    margin: auto;
+    font-size: 0.9em;
+}
+
+section#main_area footer p a {
+    color: #FF383F;
+}
+
+
+
