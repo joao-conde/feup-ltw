@@ -42,7 +42,7 @@ $userWorkingLists = getUserListIsWorking($username);
         <td><?=$tdPercentageCompleted;?> % </td>
         <td><a href="#"><?=$list['projTitle'];?></a></td>
         <td><img src="<?=$owner_pic?>"></td>
-        <td><a href="#"><img class="edit" src="images/edit.svg"></a></td>
+        <td><a href="#"><img src="images/edit.svg" class="edit"></a></td>
 
     </tr>
 
