@@ -5,7 +5,7 @@ include_once('database/project.php');
 $username = $_SESSION['username'];
 $userOwnsProjects = getUserProjects($username);
 
-// var_dump($userOwnsLists);
+// var_dump($userOwnsProjects);
 
 ?>
 
@@ -15,6 +15,7 @@ $userOwnsProjects = getUserProjects($username);
     <tr>
         <th>Name</th>
         <th>Detail</th>
+        <th>Completion</th>
         <th>Deadline</th>
         <th>Owner</th>
     </tr>
@@ -24,6 +25,7 @@ $userOwnsProjects = getUserProjects($username);
     <tr>
         <td><a href="#"><?=$proj['projTitle'];?></a></td>
         <td><?=$proj['projDescription'];?></td>
+        <td>PERCENT</td>
         <td><?=$proj['projDateDue'];?></td>
         <td><a href="#"><?=$proj['fullName'];?></a></td>
     </tr>
