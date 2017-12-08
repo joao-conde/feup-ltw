@@ -9,7 +9,7 @@ $userOwnsProjects = getUserProjects($username);
 
 ?>
 
-<section id="main_area">
+<section class="main_area">
 
 <table>
     <tr>

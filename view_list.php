@@ -35,7 +35,8 @@ if(!logged())
 
     <h2><span id="list_title">Project: </span><?=$project['projTitle']?></h2>
 
-    <p id="list_desc"><span id="label">What to Do:</span><?=$foundlist['tdlDescription']?></p>
+    <label for="list_desc">What to Do</label>
+    <div><textarea disabled id="list_desc"><?=$foundlist['tdlDescription']?></textarea></div>
 
     <table>
 

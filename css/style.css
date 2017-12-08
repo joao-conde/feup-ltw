@@ -152,10 +152,38 @@ body > section.main_area > table tr > td > img {
 
 body > section.main_area > table tr > td > a > img {
     
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
     
-    }
+}
+
+body > section#view_todo_list > label {
+
+    display: block;
+    /* width: 100%; */
+    border: 1px solid black;
+    padding: 1em;
+    font-size: 1.2em;
+
+
+}
+
+body > section#view_todo_list > div > textarea#list_desc {
+
+    width: 100%;
+    resize: none;
+    background-color: transparent;
+    border: 0px;
+}
+
+body > section#view_todo_list > div
+{
+  border:1px solid #999999;
+  margin:0 0 1em 0;
+  padding:3px;
+}
+
+
 
 body > footer {
 
