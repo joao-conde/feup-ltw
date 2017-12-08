@@ -2,8 +2,6 @@ section.main_area h1,h2 {
     text-align: center;
 }
 section.main_area h1 {
-    text-decoration: underline;
-    text-decoration-color: #FF383F;
     font-size: 2em;
 }
 
