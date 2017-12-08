@@ -2,7 +2,7 @@
 
 include_once('templates/common/header.php');
 include_once('database/list.php');
-include_once('database/projects.php');
+include_once('database/project.php');
 include_once('utils/utils_lists.php');
 include_once('utils/utils_general.php');
 

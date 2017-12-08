@@ -43,4 +43,4 @@
         <p>Do not have account? Register <a href="register.php"> Here</a>!</p>
     </footer>
 </section>
-<?php include_once('templates/common/footer.php'); ?>
+<!-- <?php include_once('templates/common/footer.php'); ?> -->

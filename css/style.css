@@ -4,6 +4,7 @@ body{
     width: 100%;
     margin:  0 auto;
     background-color: #EFEFEF;
+    background-image: url('../images/office-view.jpg');           
     font-family: 'Barlow Condensed', sans-serif;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
@@ -115,15 +116,13 @@ body > nav#menu > ul > li > a > img {
 
 body > section.main_area {
     margin:1em 0.5em;
-   
+    background-color: transparent;    
 }
 
 body > section.main_area > table {
     border-collapse: collapse;
     width: 100%;
     margin: auto;
-    
-    
 }
 
 body > section.main_area > table tr > th {
