@@ -7,5 +7,4 @@
 
     else
         header('Location: '.'main.php');
-
 ?>

@@ -5,7 +5,7 @@
         redirect('index.php');
     }
 ?>
-<section id="main_area">
+<section class="main_area" id="tasks_list">
     <table>
         <tr>
             <th>Task</th>

@@ -113,12 +113,12 @@ body > nav#menu > ul > li > a > img {
     height: 1em;
 }
 
-body > section#main_area {
+body > section.main_area {
     margin:1em 0.5em;
    
 }
 
-body > section#main_area > table {
+body > section.main_area > table {
     border-collapse: collapse;
     width: 100%;
     margin: auto;
@@ -126,22 +126,38 @@ body > section#main_area > table {
     
 }
 
-body > section#main_area > table tr > th {
+body > section.main_area > table tr > th {
     text-align: left;
     border-bottom: 3px solid #FF383F;
     padding-bottom: 1em; 
 }
 
-body > section#main_area > table tr > td {
+body > section.main_area > table tr > td {
     text-align: left;
     padding: 1em 0; 
     border-bottom: 1px solid #FF383F;
 }
 
-body > section#main_area > table tr > td > a {
+body > section.main_area > table tr > td > a {
     text-decoration: none;
     color: black;
 }
+
+body > section.main_area > table tr > td > img {
+
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+
+}
+
+body > section.main_area > table tr > td > a > img {
+    
+        border-radius: 15px;
+        width: 30px;
+        height: 30px;
+    
+    }
 
 body > footer {
 

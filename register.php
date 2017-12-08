@@ -20,7 +20,7 @@
 ?>
 
 <script src="user_reg.js" defer></script>
-<section id="main_area">
+<section class="main_area" id="register">
     <h1> User Registration </h1>
     <p class="messages"> 
             <?php 

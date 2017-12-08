@@ -8,7 +8,7 @@
     $username = $_SESSION['username'];
     $fullname = $_SESSION['fullName'];
     $shortDescription = $_SESSION['bio'];
-    $picture = getUserImagePath();
+    $picture = getUserImagePath($username);
 
     if(isset($_SESSION['updateMessage']))
         $message = $_SESSION['updateMessage'];
@@ -16,7 +16,7 @@
 ?>
 
 <script src="user_update.js" defer></script>
-<section id="main_area">
+<section class="main_area" id="profile">
     <h1> User Profile </h1>
     <p class="messages"> 
             <?php 

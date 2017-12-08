@@ -1,5 +1,7 @@
 <?php 
 include_once('utils/utils_user.php');
+include_once('utils/utils_general.php');
+
 ?>
 <!DOCTYPE html>
 

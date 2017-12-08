@@ -7,7 +7,7 @@
         global $dbh;
 
         $query = "SELECT * 
-                  FROM Task
+                  FROM Task JOIN User ON User.username = Task.userResponsable
                   WHERE Task.todoListID = :todoListId";
 
         $stmt = $dbh->prepare($query);

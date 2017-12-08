@@ -1,7 +1,6 @@
 INSERT INTO Project(projTitle, projDescription, usernameCreator, projDateDue) 
     VALUES ("LTW Project", "Task Manager Web App", "fump", '14/12/2017');
 
-
 INSERT INTO TodoList(projectID,tdlTitle,tdlDescription,tdlDateDue) 
     VALUES (1,'Responsive Site','Make Website Responsive', '13/12/2017');
 

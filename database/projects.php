@@ -43,4 +43,20 @@
 
     }
 
+    function getProject($projectId) {
+
+        global $dbh;
+        
+        $query = 'SELECT * FROM Project WHERE id = :id';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':id', $projectId, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+
+
+    }
+
 ?>

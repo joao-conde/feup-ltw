@@ -21,7 +21,7 @@
         $message = '';
 
 ?>
-<section id="main_area">
+<section class="main_area" id="login">
     <h1> Welcome to Task Manager</h1>
     <h2> Login </h2>
     <p class="messages"> 
