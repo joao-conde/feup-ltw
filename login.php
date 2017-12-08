@@ -1,4 +1,5 @@
-<?php include_once('templates/common/header.php'); 
+<?php 
+    include_once('templates/common/header.php'); 
 
     if(isset($_GET['username']))
         $username = htmlentities($_GET['username']);

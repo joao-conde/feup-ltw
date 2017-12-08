@@ -1,6 +1,7 @@
 <?php
-    session_start();
     include_once('database/user.php');
+    session_start();
+    
     function logged() {
         return isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_SESSION['pwd']) && $_SESSION['pwd'];
     }
