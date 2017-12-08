@@ -1,4 +1,4 @@
-<?
+<?php
 
 include_once("database/connection.php");
 
@@ -19,9 +19,6 @@ function getUserLists($username) {
     return $stmt->fetchAll();
 
 }
-
-
-
 
 
 ?>
