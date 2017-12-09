@@ -27,6 +27,7 @@ CREATE TABLE Project(
     projTitle TEXT,
     projDescription TEXT,
     usernameCreator INTEGER REFERENCES User,
+    projDateDue DATE,
     UNIQUE(projTitle, usernameCreator)
 );
 
@@ -35,16 +36,17 @@ CREATE TABLE TodoList(
     projectID INTEGER REFERENCES Project,
     tdlTitle TEXT,
     tdlDescription TEXT,
-    tdlCategory TEXT
+    tdlDateDue DATE
 );
 
 CREATE TABLE Task(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username INTEGER REFERENCES User,
+    userResponsable TEXT REFERENCES User,
     todoListID INTEGER REFERENCES TodoList,
     taskTitle TEXT,
     taskDescription TEXT,
-    taskDateDue DATE
+    taskDateDue DATE,
+    percentageCompleted INTEGER
 );
 
 CREATE TABLE Dependency(

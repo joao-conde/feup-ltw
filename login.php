@@ -1,4 +1,5 @@
-<?php include_once('templates/common/header.php'); 
+<?php 
+    include_once('templates/common/header.php'); 
 
     if(isset($_GET['username']))
         $username = htmlentities($_GET['username']);
@@ -20,7 +21,7 @@
         $message = '';
 
 ?>
-<section id="main_area">
+<section class="main_area" id="login">
     <h1> Welcome to Task Manager</h1>
     <h2> Login </h2>
     <p class="messages"> 
@@ -42,4 +43,4 @@
         <p>Do not have account? Register <a href="register.php"> Here</a>!</p>
     </footer>
 </section>
-<?php include_once('templates/common/footer.php'); ?>
+<!-- <?php include_once('templates/common/footer.php'); ?> -->

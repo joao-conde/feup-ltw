@@ -1,6 +1,7 @@
 <?php
-    session_start();
     include_once('database/user.php');
+    session_start();
+    
     function logged() {
         return isset($_SESSION['username']) && !empty($_SESSION['username']) && isset($_SESSION['pwd']) && $_SESSION['pwd'];
     }
@@ -13,8 +14,8 @@
         return $_SESSION['fullName'];
     }
 
-    function getUserImagePathTN() {
-        $path = "user_profile_images/".$_SESSION['username']."_tn.jpg";
+    function getUserImagePathTN($username) {
+        $path = "user_profile_images/".$username."_tn.jpg";
 
         if(file_exists($path))
             return $path;
@@ -24,8 +25,8 @@
 
     }
 
-    function getUserImagePath() {
-        $path = "user_profile_images/".$_SESSION['username'].".jpg";
+    function getUserImagePath($username) {
+        $path = "user_profile_images/".$username.".jpg";
 
         if(file_exists($path))
             return $path;

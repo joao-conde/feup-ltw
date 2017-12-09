@@ -4,6 +4,7 @@ body{
     width: 100%;
     margin:  0 auto;
     background-color: #EFEFEF;
+    background-image: url('../images/office-view.jpg');           
     font-family: 'Barlow Condensed', sans-serif;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
@@ -113,35 +114,76 @@ body > nav#menu > ul > li > a > img {
     height: 1em;
 }
 
-body > section#main_area {
+body > section.main_area {
     margin:1em 0.5em;
-   
+    background-color: transparent;    
 }
 
-body > section#main_area > table {
+body > section.main_area > table {
     border-collapse: collapse;
     width: 100%;
     margin: auto;
-    
-    
 }
 
-body > section#main_area > table tr > th {
+body > section.main_area > table tr > th {
     text-align: left;
     border-bottom: 3px solid #FF383F;
     padding-bottom: 1em; 
 }
 
-body > section#main_area > table tr > td {
+body > section.main_area > table tr > td {
     text-align: left;
     padding: 1em 0; 
     border-bottom: 1px solid #FF383F;
 }
 
-body > section#main_area > table tr > td > a {
+body > section.main_area > table tr > td > a {
     text-decoration: none;
     color: black;
 }
+
+body > section.main_area > table tr > td > img {
+
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+
+}
+
+body > section.main_area > table tr > td > a > img {
+    
+        width: 20px;
+        height: 20px;
+    
+}
+
+body > section#view_todo_list > label {
+
+    display: block;
+    /* width: 100%; */
+    border: 1px solid black;
+    padding: 1em;
+    font-size: 1.2em;
+
+
+}
+
+body > section#view_todo_list > div > textarea#list_desc {
+
+    width: 100%;
+    resize: none;
+    background-color: transparent;
+    border: 0px;
+}
+
+body > section#view_todo_list > div
+{
+  border:1px solid #999999;
+  margin:0 0 1em 0;
+  padding:3px;
+}
+
+
 
 body > footer {
 

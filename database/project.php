@@ -62,4 +62,40 @@
 
     }
 
+    function getProject($projectId) {
+
+        global $dbh;
+        
+        $query = 'SELECT * FROM Project WHERE id = :id';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':id', $projectId, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+
+
+    }
+   
+    
+    function getUserProjects($username) {
+    
+        global $dbh;
+    
+        $query = "SELECT * FROM Project
+                  JOIN User ON User.username = Project.usernameCreator
+                  WHERE Project.usernameCreator = :username
+                  ORDER BY Project.projDateDue ASC";
+    
+        
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    
+        $stmt->execute();
+        return $stmt->fetchAll();
+    
+    }
+    
+
 ?>
