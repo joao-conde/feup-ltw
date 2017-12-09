@@ -46,7 +46,7 @@
         else
             setGoodUpdatedUserWWLO($username);
 
-        uploadProfilePicture();
+        uploadProfilePicture($username);
     }
     else if($resultError=='23000') {
         setRepeatedUserUpdate($fullname,$shortDescription);

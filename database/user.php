@@ -63,5 +63,18 @@
     }
 
 
+    function findUsers($pattern) {
+
+        global $dbh;
+
+        $stmt = $dbh->prepare('SELECT User.username, User.fullName FROM User WHERE upper(fullName) LIKE upper(?)');
+        
+        $stmt->execute(array("%$pattern%"));
+
+        return $stmt->fetchAll();
+
+    }
+
+
     
 ?>

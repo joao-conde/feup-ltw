@@ -8,7 +8,8 @@
 
         $query = "SELECT * 
                   FROM Task JOIN User ON User.username = Task.userResponsable
-                  WHERE Task.todoListID = :todoListId";
+                  WHERE Task.todoListID = :todoListId
+                  ORDER BY Task.taskDateDue";
 
         $stmt = $dbh->prepare($query);
         $stmt->bindParam(':todoListId', $todolistID, PDO::PARAM_INT);

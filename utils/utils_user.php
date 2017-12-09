@@ -59,7 +59,6 @@
     }
 
     function setGoodRegistrationUser($username) {
-        //$_SESSION['username'] = $username;
         $_SESSION['registerMessage'] = '*Registration Successful! Please login.';
     }
 
@@ -110,7 +109,7 @@
 
 
 
-    function uploadProfilePicture() {
+    function uploadProfilePicture($username) {
 
         $file = $_FILES['profileImage'];
         $goodImage = false;
@@ -144,8 +143,8 @@
  
         if($goodImage) {
 
-            $normalPath = "user_profile_images/".$_SESSION['username'].$extension;
-            $thumbnailPath = "user_profile_images/".$_SESSION['username']."_tn".$extension;
+            $normalPath = "user_profile_images/".$username.$extension;
+            $thumbnailPath = "user_profile_images/".$username."_tn".$extension;
 
 
             $normal = imagecreatetruecolor(300, 300);

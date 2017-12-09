@@ -5,6 +5,7 @@ body{
     margin:  0 auto;
     background-color: #EFEFEF;
     background-image: url('../images/office-view.jpg');           
+    background-attachment: fixed;
     font-family: 'Barlow Condensed', sans-serif;
     display: grid;
     grid-template-rows: auto auto 1fr auto;

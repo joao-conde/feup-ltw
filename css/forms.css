@@ -3,6 +3,7 @@ section.main_area h1,h2 {
 }
 section.main_area h1 {
     font-size: 2em;
+    margin-top: 0;
 }
 
 
@@ -21,6 +22,12 @@ section.main_area form {
     background-color: transparent;
 }
 
+section.main_area form#edit_list_form {
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
 section.main_area form > label {
     width: 50%;
     margin-left: auto;
@@ -28,7 +35,17 @@ section.main_area form > label {
     margin-top:1.5em;
 }
 
-section.main_area form > input[type=text], input[type=password] {
+section.main_area form#edit_list_form > * {
+    width: auto;
+    margin: 0 10px 0 0;
+}
+
+section.main_area form#edit_list_form > textarea {
+    flex-grow: 1;
+}
+
+
+section.main_area form > input[type=text], input[type=password], input[type=date] {
     width: 50%;
     height: 4em;
     margin: 0 auto;
@@ -90,8 +107,26 @@ section.main_area form > p {
     
 }
 
+
 section.main_area form > input[disabled=disabled] {
     color: #dadada;
+}
+
+section.main_area form > input#id,input[name=projectdeadline] {
+    display: none;
+}
+
+section.main_area table#tasks_list td#taskdeadline {
+    display: none;
+}
+
+section.main_area table#tasks_list td#range {
+    width: 20%;
+    margin:auto;
+}
+
+section.main_area table#tasks_list td label[for=compl] {
+    margin:auto 0.3em;
 }
 
 section.main_area form > textarea {
@@ -102,11 +137,12 @@ section.main_area form > textarea {
     resize: none;
     margin-top: 1em;
     border: 1px solid #FF383F;
+    padding: 0.5em;
 }
 
 section.main_area footer {
     width: 25%;
-    margin: auto;
+    margin: 0 auto;
     font-size: 0.9em;
 }
 

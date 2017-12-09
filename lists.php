@@ -38,11 +38,11 @@ $userWorkingLists = getUserListIsWorking($username);
     <tr>
         <td><a href="#"><?=$list['tdlTitle'];?></a></td>
         <td><?=$list['tdlDescription'];?></td>
-        <td><?=$list['tdlDateDue'];?></td>
+        <td><?=date('d/m/Y',$list['tdlDateDue']);?></td>
         <td><?=$tdPercentageCompleted;?> % </td>
         <td><a href="#"><?=$list['projTitle'];?></a></td>
         <td><img src="<?=$owner_pic?>"></td>
-        <td><a href="#"><img src="images/edit.svg" class="edit"></a></td>
+        <td><a href="edit_list.php?list_id=<?=$list['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
 
     </tr>
 
@@ -59,7 +59,7 @@ $userWorkingLists = getUserListIsWorking($username);
     <tr>
         <td><a href="#"><?=$list['tdlTitle'];?></a></td>
         <td><?=$list['tdlDescription'];?></td>
-        <td><?=$list['tdlDateDue'];?></td>
+        <td><?=date('d/m/Y',$list['tdlDateDue']);?></td>
         <td><?=$tdPercentageCompleted;?> % </td>
         <td><a href="#"><?=$list['projTitle'];?></a></td>
         <td><img src="<?=$owner_pic?>"></td>
