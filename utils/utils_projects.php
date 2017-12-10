@@ -10,7 +10,7 @@
         $numberOfLists = count($projectLists);
         $totalCompleted = 0;
 
-        foreach($todoLisprojectListstTasks as $list) {
+        foreach($projectLists as $list) {
 
             $totalCompleted += calculateTODOListCompletition($list['id']);
 

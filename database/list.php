@@ -8,8 +8,8 @@ function getTDListsOfProject($projID){
     
     $query = "SELECT * 
               FROM TodoList JOIN Project ON Project.id = TodoList.projectID
-              WHERE TodoList.projId = :projId
-              ORDER BY TodoLost.tdlDateDue";
+              WHERE TodoList.projectID = :projId
+              ORDER BY TodoList.tdlDateDue"; 
     
     $stmt = $dbh->prepare($query);
     $stmt->bindParam(':projId', $projID, PDO::PARAM_INT);
