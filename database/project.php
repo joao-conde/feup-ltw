@@ -42,10 +42,10 @@
         $stmtProject->bindParam(':usernameCreator', $usernameCreator, PDO::PARAM_STR);
         $stmtProject->execute();
 
-        $currProjectID = getProjectID($projTitle, $usernameCreator);
+        /* $currProjectID = getProjectID($projTitle, $usernameCreator);
 
         addUserToProject($usernameCreator, $currProjectID, 'Administrator');
-
+ */
     }
 
     function addUserToProject($username, $idProject, $userRole){

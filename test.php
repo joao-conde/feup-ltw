@@ -4,7 +4,7 @@
     </head>
     <body>
         <?php 
-            include_once("database/colaborators.php");
+            include_once("database/collaborators.php");
             $cols = getColaborators('leonardomgt');
 
             print_r($cols);

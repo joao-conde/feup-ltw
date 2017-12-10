@@ -19,7 +19,8 @@ CREATE TABLE User_Project(
     username INTEGER REFERENCES User,
     idProject INTEGER REFERENCES Project,
     userRole TEXT,
-    PRIMARY KEY(username, idProject)
+    PRIMARY KEY(username, idProject)/* ,
+    CHECK(idProject, 'Administrator') */
 );
 
 CREATE TABLE Project(
@@ -55,3 +56,21 @@ CREATE TABLE Dependency(
     PRIMARY KEY(taskDependentID, taskRequiredID)
 );
 
+
+DROP TRIGGER IF EXISTS InserirProjectoAdm;
+DROP TRIGGER IF EXISTS EliminarProjectoAdm;
+
+CREATE TRIGGER InserirProjectoAdm
+AFTER INSERT ON Project
+BEGIN
+    INSERT INTO User_Project(username, idProject, userRole) 
+    VALUES (New.usernameCreator, New.id, 'Administrator');
+END;
+
+CREATE TRIGGER EliminarProjectoAdm
+AFTER
+DELETE ON Project
+BEGIN
+    DELETE FROM User_Project
+    WHERE User_Project.idProject = Old.id;
+END;
