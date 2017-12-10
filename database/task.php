@@ -18,8 +18,7 @@
 
         return $stmt->fetchAll();
 
-        
-
+    
     }
 
 ?>
