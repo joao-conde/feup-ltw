@@ -15,8 +15,10 @@
 
         }
 
-        return (int) ($totalCompleted/$numberOfTasks);
+        if($numberOfTasks == 0)
+            return (int) $totalCompleted;
 
+        return (int) ($totalCompleted/$numberOfTasks);
     }
 ?>
 

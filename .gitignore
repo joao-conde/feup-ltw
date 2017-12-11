@@ -6,8 +6,5 @@
 *.tar.gz
 *.rar
 
-# Database Files #
-*.db
-
 # MAC files #
 .DS_Store

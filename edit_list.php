@@ -54,15 +54,13 @@ if(isset($_SESSION['updateListMessage']))
         <label for="title">Title </label>  
         <input type="text" name="title" id="title" value=<?='"'.$list['tdlTitle'].'"'?>/>
 
-       
-
         <label for="datedue">Deadline </label>  
         <input id="datedue "type="date" name="deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$project['projDateDue']);?>">
 
         <label for="description"> Description </label>
         <textarea name="description" id="description"><?=$list['tdlDescription']?></textarea>
 
-        <input type = "submit" value="Confirm">
+        <input type = "submit" value="Save">
 
     </form>
 
@@ -72,6 +70,7 @@ if(isset($_SESSION['updateListMessage']))
 
         <tr>
             <th>Task</th>
+            <th>Detail</th>
             <th>Completition</th>
             <th>Deadline</th>
             <th>Responsable</th>
@@ -83,6 +82,7 @@ if(isset($_SESSION['updateListMessage']))
             <tr>
 
                 <td><?=$task['taskTitle']?></td>
+                <td><?=$task['taskDescription']?></td>
                 <td><?=$task['percentageCompleted']?> % </td>
                 <td><?=date('d/m/Y',$task['taskDateDue'])?></td>
                 <td id="taskdeadline"><?=$task['taskDateDue']?></td>
@@ -96,9 +96,13 @@ if(isset($_SESSION['updateListMessage']))
         <tr id="add_new_task">
 
             <td><input type="text" name="task_title" placeholder="New Task Title"></td>
-            <td id="range"><input id="compl" type="range" min="0" max="100" step="1" name="task_completition" value="0"><label for="compl">0</label>%</td>
-            <td><input type="date" name="task_deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>"></td>
-            <td><input type="text" name="task_responsable" placeholder="New Task Responsable"><ul id="suggestions"></ul></td>
+            <td><textarea name="task_desc" placeholder="New Task Description"></textarea></td>
+            <td id="range"><input id="compl" type="range" min="0" max="100" step="5" name="task_completition" value="0"><label for="compl">0</label>%</td>
+            <td><input id="task_deadline" type="date" name="task_deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>"></td>
+            <td><input type="text" list="collaborators" name="task_responsable" placeholder="New Task Responsable">
+                <datalist id="collaborators">
+                </datalist>
+            </td>
             <td><input type="button" value="Add"></td>
 
         </tr>
