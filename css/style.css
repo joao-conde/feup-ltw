@@ -187,6 +187,30 @@ body > section#view_todo_list > div
 }
 
 
+body > section#view_project > label {
+    
+       display: block;
+       /* width: 100%; */
+       border: 1px solid black;
+       padding: 1em;
+       font-size: 1.2em;    
+    }
+    
+body > section#view_project > div > textarea#proj_desc {
+  
+       width: 100%;
+       resize: none;
+       background-color: transparent;
+       border: 0px;
+}
+    
+body > section#view_project > div
+{
+     border:1px solid #999999;
+     margin:0 0 1em 0;
+     padding:3px;
+}
+
 
 body > footer {
 

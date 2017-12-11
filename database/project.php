@@ -31,21 +31,23 @@
         return $result['id'];
     }
 
-    function insertProject($projTitle, $projDescription, $usernameCreator){
+    function insertProject($projTitle, $projDescription, $usernameCreator, $projDeadline){
         global $dbh;
 
-        $insertProjectQuery = 'INSERT INTO Project (projTitle, projDescription, usernameCreator) VALUES (:projTitle, :projDescription, :usernameCreator)';
+        $insertProjectQuery = 'INSERT INTO Project (projTitle, projDescription, usernameCreator, projDateDue) VALUES (:projTitle, :projDescription, :usernameCreator, :projDeadline)';
 
         $stmtProject = $dbh->prepare($insertProjectQuery);
         $stmtProject->bindParam(':projTitle', $projTitle, PDO::PARAM_STR);
         $stmtProject->bindParam(':projDescription', $projDescription, PDO::PARAM_STR);
         $stmtProject->bindParam(':usernameCreator', $usernameCreator, PDO::PARAM_STR);
+        $stmtProject->bindParam(':projDateDue', $projDeadline, PDO::PARAM_INT);        
         $stmtProject->execute();
 
         /* $currProjectID = getProjectID($projTitle, $usernameCreator);
 
         addUserToProject($usernameCreator, $currProjectID, 'Administrator');
- */
+ */     
+        return $stmtProject->errorCode();
     }
 
     function addUserToProject($username, $idProject, $userRole){
@@ -61,6 +63,7 @@
         $stmt->execute();
 
     }
+
 
     function getProject($projectId) {
 

@@ -15,9 +15,11 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
 ?>
 
+<script src="scripts/project.js" defer></script>
+
 <section class="main_area" id="projects_list">
 
-<table>
+<table id = "projects">
     <tr>
         <th>Name</th>
         <th>Detail</th>
@@ -73,12 +75,9 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
             <td><input type="text" name="proj_title" placeholder="New Project Title"></td>
             <td><textarea name="proj_desc" placeholder="New Project Description"></textarea></td>
-            <td id="range"><input id="compl" type="range" min="0" max="100" step="5" name="proj_completition" value="0"><label for="compl">0</label>%</td>
-            <td><input id="proj_deadline" type="date" name="proj_deadline" value="<?=date('Y-m-d',time());?>" max="<?=date('Y-m-d',time());?>"></td>
-            <td><input type="text" list="collaborators" name="proj_responsable" placeholder="New Project Responsable">
-                <datalist id="collaborators">
-                </datalist>
-            </td>
+            <td><input id="proj_deadline" type="date" name="proj_deadline" min="<?=date('Y-m-d',time());?>" value="<?=date('Y-m-d',time());?>" ></td>
+            <td id="complete">0 %</td>
+            <td id="user"><input type="text" name="proj_responsable" value=<?=$username?>></td>
             <td><input type="button" value="Add"></td>
 
         </tr>
