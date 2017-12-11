@@ -6,7 +6,7 @@ INSERT INTO Project(projTitle, projDescription, usernameCreator, projDateDue)
     VALUES ("LTW Project", "Task Manager Web App", "fump", 1513263085);
 
 INSERT INTO Project(projTitle, projDescription, usernameCreator, projDateDue) 
-    VALUES ("LAIG Project", "Ni Ju Game Interface", "conde", '29/12/2017');
+    VALUES ("LAIG Project", "Ni Ju Game Interface", "conde", 1514505600);
 
 
 /*

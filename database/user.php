@@ -75,6 +75,21 @@
 
     }
 
+    function findUsersOfProject($pattern, $project_id) {
+        
+        global $dbh;
+
+        $stmt = $dbh->prepare('SELECT User.username, User.fullName 
+                                FROM User JOIN User_Project ON User_Project.username = User.username
+                                WHERE upper(fullName) LIKE upper(?)
+                                AND User_Project.idProject = ?');
+        
+        $stmt->execute(array("%$pattern%", $project_id));
+
+        return $stmt->fetchAll();
+
+    }
+
 
     
 ?>

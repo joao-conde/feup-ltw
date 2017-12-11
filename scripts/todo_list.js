@@ -9,15 +9,20 @@ let projdeadline = parseInt(document.querySelector('form > input[name=projectdea
 let completition_slider = document.querySelector("table#tasks_list input[type=range]");
 let completition_slider_label = document.querySelector("table#tasks_list label[for=compl]");
 
-let responsible = document.querySelector("table#tasks_list tr#add_new_task td input[name=task_responsable");
-let usersList = document.querySelector("table#tasks_list tr#add_new_task td ul#suggestions");
+let projectUsers = [];
+let selectedUser = null;
 
-console.log(usersList);
+let responsible = document.querySelector("table#tasks_list tr#add_new_task td input[name=task_responsable");
+let usersList = document.querySelector("table#tasks_list tr#add_new_task td datalist#collaborators");
+
+let list_id = parseInt(document.querySelector("form > input#id").value);
 
 let ajaxRequestFindUsers = new XMLHttpRequest();
+let ajaxRequestInsertTask = new XMLHttpRequest();
 
 
 const api_find_users = "api_find_users.php";
+const api_add_task = "api_add_task.php";
 
 function getlastTaskTime() {
 
@@ -53,6 +58,7 @@ function validateDate() {
 }
 
 function validateFields() {
+
     if(validateTitle() && validateDesc() && validateDate())
         submit.removeAttribute('disabled');
     else
@@ -71,7 +77,9 @@ title.addEventListener('keyup',validateFields);
 desc.addEventListener('keyup',validateFields);
 deadline.addEventListener('keyup',validateFields);
 
-
+/*****
+ *  Tasks table
+ *******/
 
 function encodeForAjax(data) {
     return Object.keys(data).map(function(k){
@@ -90,30 +98,171 @@ function sendRequestFindUsers() {
     if(pattern.length < 3)
         return;
 
-
-    //ajaxRequestFindUsers.abort();
-    let requestData = {pattern: pattern};
+    let requestData = {pattern: pattern, list_id: list_id};
 
     ajaxRequestFindUsers.open("get", (api_find_users + '?' + encodeForAjax(requestData)),true);
     ajaxRequestFindUsers.send();
     ajaxRequestFindUsers.addEventListener('load',requestUsersListener);
 
+    selectUser();
+
 }
 
 function requestUsersListener() {
     
-    let users = JSON.parse(this.responseText);
+    projectUsers = JSON.parse(this.responseText);
     
-    
-
-    for(let i = 0; i < users.length; i++) {
-        let user = document.createElement("li");
-        user.innerHTML = users[i].fullName;
+    for(let i = 0; i < projectUsers.length; i++) {
+        let user = document.createElement("option");
+        user.setAttribute('value',projectUsers[i].fullName);
         usersList.appendChild(user);
     }
 
 }
 
 responsible.addEventListener('keyup', sendRequestFindUsers);
+responsible.addEventListener('input', selectUser);
 
 
+let addButton = document.querySelector('table#tasks_list tr#add_new_task input[type=button');
+let newTaskTitle = document.querySelector('table#tasks_list tr#add_new_task input[name=task_title');
+let newTaskDesc = document.querySelector('table#tasks_list tr#add_new_task textarea[name=task_desc');
+let newTaskPercentage = document.querySelector('table#tasks_list tr#add_new_task input#compl');
+let newTaskDeadLine = document.querySelector('table#tasks_list tr#add_new_task input[name=task_deadline');
+
+let newTaskFields = [addButton,newTaskTitle,newTaskPercentage,newTaskDeadLine,responsible];
+
+addButton.setAttribute('disabled', 'disabled');
+
+
+function validateTaskName() {
+
+    return newTaskTitle.value.length >= 3;
+
+}
+
+function validateTaskDeadLine() {
+
+    let task_deadline = new Date(newTaskDeadLine.value);
+    let time = task_deadline.getTime();    
+    return time <= new Date(deadline.value).getTime();
+
+}
+
+function validateTaskResponsable() {
+
+    return selectedUser != null;
+}
+
+function selectUser() {
+
+    selectedUser = null;
+
+    for(let i = 0; i < projectUsers.length; i++) {
+        
+        if(projectUsers[i].fullName == responsible.value) {
+            selectedUser = projectUsers[i];
+            break;
+        }
+    }
+
+    
+    validateTaskFields();
+
+}
+
+
+function validateTaskFields() {
+
+    if(validateTaskName() && validateTaskDeadLine() && validateTaskResponsable())
+        addButton.removeAttribute('disabled');
+    else
+        addButton.setAttribute('disabled', 'disabled');
+
+}
+
+
+
+
+for(let i = 0; i < newTaskFields.length; i++) {
+    newTaskFields[i].addEventListener('keyup', validateTaskFields);
+}
+
+
+
+function sendRequestAddTask() {
+    
+    let requestData = {title: newTaskTitle.value, 
+                       list_id: list_id, 
+                       user: selectedUser.username, 
+                       desc: newTaskDesc.value,
+                       deadline: new Date(newTaskDeadLine.value).getTime() / 1000,
+                       percentage: newTaskPercentage.value
+
+    };
+
+    ajaxRequestInsertTask.open("post", (api_add_task), true);
+    ajaxRequestInsertTask.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajaxRequestInsertTask.send(encodeForAjax(requestData));
+
+    ajaxRequestInsertTask.addEventListener('load',receiveNewTaskFromAjax);
+
+}
+
+function receiveNewTaskFromAjax() {
+
+    let table = document.querySelector("table#tasks_list tbody");
+    let trAddTask = document.querySelector("table#tasks_list tr#add_new_task");
+
+    let newTask = JSON.parse(this.responseText);
+
+    console.log(newTask);
+    
+    let tr = document.createElement("tr");
+
+    let tdTitle = document.createElement("td");
+    tdTitle.innerHTML = newTask.taskTitle;
+    tr.appendChild(tdTitle);
+
+    let tdDesc = document.createElement("td");
+    tdDesc.innerHTML = newTask.taskDescription;
+    tr.appendChild(tdDesc);
+
+    let tdPercentage = document.createElement("td");
+    tdPercentage.innerHTML = newTask.percentageCompleted + "%";
+    tr.appendChild(tdPercentage);
+
+    let tdDate = document.createElement("td");
+    tdDate.innerHTML = new Date(parseInt(newTask.taskDateDue)*1000).toLocaleDateString("pt-PT");
+    tr.appendChild(tdDate);
+
+    let tdDateNumber = document.createElement("td");
+    tdDateNumber.innerHTML = parseInt(newTask.taskDateDue)*1000;
+    tdDateNumber.setAttribute('id','taskdeadline');
+    tr.appendChild(tdDateNumber);
+
+    let tdUserName = document.createElement("td");
+    tdUserName.innerHTML = newTask.fullName;
+    tr.appendChild(tdUserName);
+
+    let tdUserImage = document.createElement("td");
+    let image = document.createElement("img");
+    image.setAttribute('src',newTask.userPicturePath);
+    tdUserImage.appendChild(image);
+    tr.appendChild(tdUserImage);
+    
+    table.insertBefore(tr,trAddTask);
+
+    let label = table.querySelector("label[for=compl]");
+
+    newTaskTitle.value = "";
+    newTaskDesc.value = "";
+    newTaskPercentage.value = "0";
+    newTaskDeadLine.value = new Date(projdeadline).toISOString().substring(0,10);
+    responsible.value = "";
+
+    label.innerHTML = "0";
+
+}
+
+addButton.addEventListener('click',sendRequestAddTask);

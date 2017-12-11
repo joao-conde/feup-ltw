@@ -77,6 +77,24 @@
         return $stmt->fetchAll();
     
     }
+
+
+    function getProjectFromList($list_id) {
+
+        global $dbh;
+        
+        $query = "SELECT Project.* FROM TodoList
+                  JOIN Project ON Project.id = TodoList.projectID
+                  WHERE TodoList.id = :list_id";
+    
+        
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':list_id', $list_id, PDO::PARAM_INT);
+    
+        $stmt->execute();
+        return $stmt->fetch();
+
+    }
     
 
 ?>
