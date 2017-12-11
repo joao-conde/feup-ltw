@@ -75,6 +75,7 @@ if(isset($_SESSION['updateListMessage']))
             <th>Deadline</th>
             <th>Responsable</th>
             <th></th>
+            <th></th>
         </tr>
 
         <?php foreach($listtasks as $task) { ?>
@@ -88,6 +89,8 @@ if(isset($_SESSION['updateListMessage']))
                 <td id="taskdeadline"><?=$task['taskDateDue']?></td>
                 <td><?=$task['fullName']?></td>
                 <td><img src="<?=getUserImagePathTN($task['userResponsable'])?>"</td>
+                <td><a href="edit_task.php?task_id=<?=$task['id']?>"><img src="images/edit.svg"></a></td>
+
 
             </tr>
 
@@ -95,15 +98,15 @@ if(isset($_SESSION['updateListMessage']))
 
         <tr id="add_new_task">
 
-            <td><input type="text" name="task_title" placeholder="New Task Title"></td>
-            <td><textarea name="task_desc" placeholder="New Task Description"></textarea></td>
+            <td id="td_task_title"><input type="text" name="task_title" placeholder="New Task Title"></td>
+            <td id="td_task_desc"><textarea name="task_desc" placeholder="New Task Description"></textarea></td>
             <td id="range"><input id="compl" type="range" min="0" max="100" step="5" name="task_completition" value="0"><label for="compl">0</label>%</td>
-            <td><input id="task_deadline" type="date" name="task_deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>"></td>
-            <td><input type="text" list="collaborators" name="task_responsable" placeholder="New Task Responsable">
+            <td id="td_task_dead_line"><input id="task_deadline" type="date" name="task_deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>"></td>
+            <td id="td_responsible"><input type="text" list="collaborators" name="task_responsable" placeholder="Responsable">
                 <datalist id="collaborators">
                 </datalist>
             </td>
-            <td><input type="button" value="Add"></td>
+            <td id="td_add"><input type="button" value="Add"></td>
 
         </tr>
 

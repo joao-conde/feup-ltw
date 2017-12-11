@@ -201,7 +201,9 @@ function sendRequestAddTask() {
 
     };
 
-    ajaxRequestInsertTask.open("post", (api_add_task), true);
+    console.log(requestData);
+
+    ajaxRequestInsertTask.open("post", api_add_task, true);
     ajaxRequestInsertTask.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajaxRequestInsertTask.send(encodeForAjax(requestData));
 
@@ -213,6 +215,8 @@ function receiveNewTaskFromAjax() {
 
     let table = document.querySelector("table#tasks_list tbody");
     let trAddTask = document.querySelector("table#tasks_list tr#add_new_task");
+
+    console.log(this.responseText);
 
     let newTask = JSON.parse(this.responseText);
 

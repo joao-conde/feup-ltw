@@ -41,7 +41,7 @@ function getUserListIsWorking($username) {
 
     global $dbh;
 
-    $query = "SELECT ToDolist.*, Project.id id_project, Project.projTitle, Project.projDescription, Project.usernameCreator, Project.projDateDue FROM Task 
+    $query = "SELECT DISTINCT ToDolist.*, Project.id id_project, Project.projTitle, Project.projDescription, Project.usernameCreator, Project.projDateDue FROM Task 
               JOIN ToDoList ON ToDoList.id = Task.todoListID  
               JOIN Project ON Project.id = ToDoList.projectID
               WHERE Task.userResponsable = :username

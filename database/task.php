@@ -63,4 +63,19 @@
         
     }
 
+    function getTaskFromId($task_id) {
+        
+        global $dbh;
+        
+        $query = 'SELECT Task.* FROM Task WHERE id = :id';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':id', $task_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+        
+    }
+
 ?>

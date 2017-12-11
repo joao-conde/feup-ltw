@@ -44,7 +44,6 @@ section.main_area form#edit_list_form > textarea {
     flex-grow: 1;
 }
 
-
 section.main_area form > input[type=text], input[type=password], input[type=date] {
     width: 50%;
     height: 4em;
@@ -63,14 +62,15 @@ section.main_area form > input[type=text], input[type=password], input[type=date
     
 }
 
-section.main_area table tr td input[type=text], input[type=password], input#task_dead_line {
-    /* width: 50%; */
-    /* height: 4em; */
+
+section.main_area table#tasks_list tr > td > input[type=text], input[type=date] {
+
+    width: 80%;
+    margin: auto;
+    font-size: 1em;
     margin: 0 auto;
     -webkit-appearance: none;
     outline-width: 0;
-    /* height: 2em; */
-    /* font-size: 1.5em; */
     padding: 0;
     border-top-width: 0;
 	border-bottom-width: 1;
@@ -79,6 +79,64 @@ section.main_area table tr td input[type=text], input[type=password], input#task
     border-right-width: 0;
     background-color: transparent;
 }
+
+section.main_area table#tasks_list tr > td#range {
+    width: 10%;
+    margin: auto 2px;
+}
+
+section.main_area table#tasks_list tr > td#range input {
+    width: 50%;
+}
+
+
+section.main_area table#tasks_list tr > td#td_task_dead_line {
+    width: 13%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_task_title {
+    width: 15%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_task_desc {
+    width: 40%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_responsible {
+    width: 17%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_add {
+    width: 15%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td > textarea {
+    width: 90%;
+    margin: auto;
+    height: 3em;
+    outline-width: 0;
+    resize: none;
+    margin-top: 1em;
+    border: 1px solid #FF383F;
+    padding: 0.5em;
+}
+
+section.main_area table#tasks_list tr > td > input[type=button] {
+    width: 80%;
+    margin: auto;
+    height: 3em;
+    outline-width: 0;
+    resize: none;
+    margin-top: 1em;
+    border: 1px solid #FF383F;
+    padding: 0.5em;
+}
+
 
 
 section.main_area form > input:-webkit-autofill,
@@ -138,10 +196,6 @@ section.main_area table#tasks_list td#taskdeadline {
     display: none;
 }
 
-section.main_area table#tasks_list td#range {
-    width: 20%;
-    margin:auto;
-}
 
 section.main_area table#tasks_list td label[for=compl] {
     margin:auto 0.3em;
