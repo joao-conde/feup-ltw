@@ -98,7 +98,7 @@
     
         global $dbh;
     
-        $query="SELECT Project.projTitle, Project.projDateDue, User_Project.userRole FROM Project
+        $query="SELECT Project.projTitle, Project.projDateDue, User_Project.userRole, Project.id, Project.usernameCreator, Project.projDescription FROM Project
                 JOIN User_Project ON Project.id = User_Project.idProject
                 WHERE User_Project.username = :username
                 ORDER BY Project.projDateDue ASC";
