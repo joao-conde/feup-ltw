@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__DIR__)."\database\user.php");
+include_once("database/user.php");
 
 
 // Ajax Redirect 

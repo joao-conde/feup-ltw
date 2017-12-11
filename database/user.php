@@ -79,7 +79,7 @@
     
         global $dbh;
         
-        include_once(dirname(__DIR__)."/database/project.php");
+        include_once("database/project.php");
 
         $resultProjects = getUserProjects($username);
 
