@@ -14,7 +14,7 @@
 
     if($resultError=='00000') {
         setGoodRegistrationUser($username);
-        uploadProfilePicture();
+        uploadProfilePicture($username);
         header('Location: '.'login.php?username='.$username);
     }
     else if($resultError=='23000') {

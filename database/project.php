@@ -1,6 +1,6 @@
 <?php
 
-    include_once("database/connection.php");
+    include_once(dirname(__DIR__)."\database\connection.php");
 
     function getUserCreatorProject($id) {
 
@@ -83,10 +83,10 @@
     
         global $dbh;
     
-        $query = "SELECT * FROM Project
-                  JOIN User ON User.username = Project.usernameCreator
-                  WHERE Project.usernameCreator = :username
-                  ORDER BY Project.projDateDue ASC";
+        $query="SELECT Project.projTitle, Project.projDateDue, User_Project.userRole FROM Project
+                JOIN User_Project ON Project.id = User_Project.idProject
+                WHERE User_Project.username = :username
+                ORDER BY Project.projDateDue ASC";
     
         
         $stmt = $dbh->prepare($query);
@@ -97,5 +97,4 @@
     
     }
     
-
 ?>

@@ -1,0 +1,112 @@
+<?php
+
+include_once('templates/common/header.php');
+include_once('database/list.php');
+include_once('database/project.php');
+include_once('utils/utils_lists.php');
+
+if(!logged())
+    redirect('index.php');
+
+$username = $_SESSION['username'];
+
+$foundlist = null;
+$userOwnLists = getUserLists($username);
+
+foreach($userOwnLists as $list) {
+
+    if($list['id'] == $_GET['list_id']){
+        $foundlist = $list;
+        break;
+    }
+
+}
+
+if($foundlist == null)
+    redirect('lists.php');
+
+$listtasks = getTasksOfTDList($foundlist['id']);
+$project = getProject($foundlist['projectID']);
+
+if(isset($_SESSION['updateListMessage']))
+    $message = $_SESSION['updateListMessage'];
+
+?>
+
+<script src="scripts/todo_list.js" defer></script>
+<section class="main_area" id = "edit_list">
+
+    <h1> Edit TODO List (Project: <?=$project['projTitle']?>) </h1>
+
+    <p class="messages"> 
+            <?php 
+                if(isset($message))
+                    echo $message;
+                $_SESSION['updateListMessage'] = '';
+            ?>
+    </p>
+    
+    <form id="edit_list_form" action="action_update_list.php" method="post">
+
+        <input type="text" name="id" id="id" value="<?=$list['id']?>">
+        <input type="text" name="projectdeadline" value="<?=$project['projDateDue']?>">
+
+        <label for="title">Title </label>  
+        <input type="text" name="title" id="title" value=<?='"'.$list['tdlTitle'].'"'?>/>
+
+       
+
+        <label for="datedue">Deadline </label>  
+        <input id="datedue "type="date" name="deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$project['projDateDue']);?>">
+
+        <label for="description"> Description </label>
+        <textarea name="description" id="description"><?=$list['tdlDescription']?></textarea>
+
+        <input type = "submit" value="Confirm">
+
+    </form>
+
+    <h2> Tasks List </h2>
+
+    <table id="tasks_list">
+
+        <tr>
+            <th>Task</th>
+            <th>Completition</th>
+            <th>Deadline</th>
+            <th>Responsable</th>
+            <th></th>
+        </tr>
+
+        <?php foreach($listtasks as $task) { ?>
+
+            <tr>
+
+                <td><?=$task['taskTitle']?></td>
+                <td><?=$task['percentageCompleted']?> % </td>
+                <td><?=date('d/m/Y',$task['taskDateDue'])?></td>
+                <td id="taskdeadline"><?=$task['taskDateDue']?></td>
+                <td><?=$task['fullName']?></td>
+                <td><img src="<?=getUserImagePathTN($task['userResponsable'])?>"</td>
+
+            </tr>
+
+        <?php } ?>
+
+        <tr id="add_new_task">
+
+            <td><input type="text" name="task_title" placeholder="New Task Title"></td>
+            <td id="range"><input id="compl" type="range" min="0" max="100" step="1" name="task_completition" value="0"><label for="compl">0</label>%</td>
+            <td><input type="date" name="task_deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>"></td>
+            <td><input type="text" name="task_responsable" placeholder="New Task Responsable"><ul id="suggestions"></ul></td>
+            <td><input type="button" value="Add"></td>
+
+        </tr>
+
+    </table>
+
+
+</section>
+
+
+<?php include('templates/common/footer.php'); ?>

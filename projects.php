@@ -26,7 +26,7 @@ $userOwnsProjects = getUserProjects($username);
         <td><a href="#"><?=$proj['projTitle'];?></a></td>
         <td><?=$proj['projDescription'];?></td>
         <td>PERCENT</td>
-        <td><?=$proj['projDateDue'];?></td>
+        <td><?=date('d/m/Y',$proj['projDateDue']);?></td>
         <td><a href="#"><?=$proj['fullName'];?></a></td>
     </tr>
 

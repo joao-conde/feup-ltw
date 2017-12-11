@@ -6,11 +6,12 @@
 
         global $dbh;
 
-        $query='SELECT User_Project.username, Project.projTitle, User_Project.userRole FROM (
+        $query='SELECT User.fullName, Project.projTitle, User_Project.userRole FROM (
                     SELECT idProject FROM User_Project
                     WHERE username = :username
                 ) AS Projects
                 JOIN User_Project ON Projects.idProject = User_Project.idProject
+                JOIN User ON User.username = User_Project.username
                 JOIN Project ON Project.id = User_Project.idProject
                 WHERE User_Project.username != :username
                 ORDER BY User_Project.username;';

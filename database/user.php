@@ -1,6 +1,6 @@
 <?php
 
-    include_once("database/connection.php");
+    include_once(dirname(__DIR__)."\database\connection.php");
 
     function updateUserPassword($username,$encryptedPassword) {
         global $dbh;
@@ -63,5 +63,33 @@
     }
 
 
+    function findUsers($pattern) {
+
+        global $dbh;
+
+        $stmt = $dbh->prepare('SELECT User.username, User.fullName FROM User WHERE upper(fullName) LIKE upper(?)');
+        
+        $stmt->execute(array("%$pattern%"));
+
+        return $stmt->fetchAll();
+
+    }
+
+    function getUserEvents($username, $date) {
     
+        global $dbh;
+        
+        include_once(dirname(__DIR__)."/database/project.php");
+
+        $resultProjects = getUserProjects($username);
+
+        foreach ($resultProjects as $key => $value) {
+            if(date("Y-m-d", $value['projDateDue']) != $date){
+                unset($resultProjects[$key]);
+            }          
+        }
+
+        return $resultProjects;
+    
+    }
 ?>

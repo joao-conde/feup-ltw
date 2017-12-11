@@ -54,7 +54,7 @@ if(!logged())
 
                 <td><?=$task['taskTitle']?></td>
                 <td><?=$task['percentageCompleted']?> % </td>
-                <td><?=$task['taskDateDue']?></td>
+                <td><?=date('d/m/Y',$task['taskDateDue'])?></td>
                 <td><?=$task['fullName']?></td>
                 <td><img src="<?=getUserImagePathTN($task['userResponsable'])?>"</td>
 

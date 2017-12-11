@@ -18,7 +18,7 @@
         $collaborators = getColaborators($_SESSION['username']);
         
         foreach ($collaborators as $value) { 
-            echo '<tr><td>'.htmlspecialchars($value['User_Project.username'])
+            echo '<tr><td>'.htmlspecialchars($value['User.fullName'])
                 .'</td><td>'.htmlspecialchars($value['Project.projTitle'])
                 .'</td><td>'.htmlspecialchars($value['User_Project.userRole']).'</td></tr>';
         } ?>

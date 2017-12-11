@@ -18,6 +18,5 @@
         return (int) ($totalCompleted/$numberOfTasks);
 
     }
-
-
 ?>
+

@@ -39,4 +39,24 @@ function getUserListIsWorking($username) {
 
 }
 
+function updateList($list_id, $list_title, $list_desc, $list_deadline) {
+
+    global $dbh;
+
+    $query = 'UPDATE ToDoList SET tdlTitle = :title, tdlDescription = :description, tdlDateDue = :deadline WHERE id = :id';
+
+
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':id', $list_id, PDO::PARAM_INT);
+    $stmt->bindParam(':title', $list_title, PDO::PARAM_STR);
+    $stmt->bindParam(':description', $list_desc, PDO::PARAM_STR);
+    $stmt->bindParam(':deadline', $list_deadline, PDO::PARAM_INT);
+
+    $stmt->execute();
+    return $stmt->errorCode();
+
+}
+
+
+
 ?>

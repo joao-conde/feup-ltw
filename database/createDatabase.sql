@@ -28,7 +28,7 @@ CREATE TABLE Project(
     projTitle TEXT,
     projDescription TEXT,
     usernameCreator INTEGER REFERENCES User,
-    projDateDue DATE,
+    projDateDue INTEGER,
     UNIQUE(projTitle, usernameCreator)
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE TodoList(
     projectID INTEGER REFERENCES Project,
     tdlTitle TEXT,
     tdlDescription TEXT,
-    tdlDateDue DATE
+    tdlDateDue INTEGER
 );
 
 CREATE TABLE Task(
@@ -46,7 +46,7 @@ CREATE TABLE Task(
     todoListID INTEGER REFERENCES TodoList,
     taskTitle TEXT,
     taskDescription TEXT,
-    taskDateDue DATE,
+    taskDateDue INTEGER,
     percentageCompleted INTEGER
 );
 

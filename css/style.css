@@ -4,7 +4,8 @@ body{
     width: 100%;
     margin:  0 auto;
     background-color: #EFEFEF;
-    background-image: url('../images/office-view.jpg');           
+    background-image: url('../images/office-view.jpg');
+    background-attachment: fixed;
     font-family: 'Barlow Condensed', sans-serif;
     display: grid;
     grid-template-rows: auto auto 1fr auto;
@@ -208,3 +209,19 @@ body > footer > p:last-of-type {
     text-align: right;
 }
 
+
+/* ========== CALENDAR ============ */
+
+body div#calendar_section_top {
+    border-top: 1px solid rgb(34, 31, 31);
+    border-bottom: 1px solid rgb(34, 31, 31);
+    grid-area: 2 / 1 / span 1 / span 1;
+}
+
+body div#calendar_section_top ul {
+    display: flex;
+    list-style: none;
+    background-color: #EFEFEF;
+    margin: 0;
+    justify-content: center;
+}
