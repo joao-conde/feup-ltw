@@ -75,6 +75,24 @@
 
     }
 
+    function getUserEvents($username, $date) {
+    
+        global $dbh;
+        
+        include_once(dirname(__DIR__)."/database/project.php");
+
+        $resultProjects = getUserProjects($username);
+
+        foreach ($resultProjects as $key => $value) {
+            if(date("Y-m-d", $value['projDateDue']) != $date){
+                unset($resultProjects[$key]);
+            }          
+        }
+
+        return $resultProjects;
+    
+    }
+
     function findUsersOfProject($pattern, $project_id) {
         
         global $dbh;
@@ -89,7 +107,4 @@
         return $stmt->fetchAll();
 
     }
-
-
-    
 ?>

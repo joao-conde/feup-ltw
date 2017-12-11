@@ -28,6 +28,12 @@ section.main_area form#edit_list_form {
     align-items: center;
 }
 
+section.main_area form#edit_project_form {
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
 section.main_area form > label {
     width: 50%;
     margin-left: auto;
@@ -43,6 +49,16 @@ section.main_area form#edit_list_form > * {
 section.main_area form#edit_list_form > textarea {
     flex-grow: 1;
 }
+
+section.main_area form#edit_project_form > * {
+    width: auto;
+    margin: 0 10px 0 0;
+}
+
+section.main_area form#edit_project_form > textarea {
+    flex-grow: 1;
+}
+
 
 section.main_area form > input[type=text], input[type=password], input[type=date] {
     width: 50%;
@@ -138,6 +154,23 @@ section.main_area table#tasks_list tr > td > input[type=button] {
 }
 
 
+section.main_area table tr td input[type=text], input[type=password], input#tdldeadline {
+    /* width: 50%; */
+    /* height: 4em; */
+    margin: 0 auto;
+    -webkit-appearance: none;
+    outline-width: 0;
+    /* height: 2em; */
+    /* font-size: 1.5em; */
+    padding: 0;
+    border-top-width: 0;
+	border-bottom-width: 1;
+	border-bottom-color: #FF383F;
+	border-left-width: 0;
+    border-right-width: 0;
+    background-color: transparent;
+}
+
 
 section.main_area form > input:-webkit-autofill,
 section.main_area form > input:-webkit-autofill:hover, 
@@ -192,7 +225,7 @@ section.main_area form > input#id,input[name=projectdeadline] {
     display: none;
 }
 
-section.main_area table#tasks_list td#taskdeadline {
+section.main_area table#tasks_list td#taskdeadline, td#user {
     display: none;
 }
 

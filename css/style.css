@@ -4,7 +4,7 @@ body{
     width: 100%;
     margin:  0 auto;
     background-color: #EFEFEF;
-    background-image: url('../images/office-view.jpg');           
+    background-image: url('../images/office-view.jpg');
     background-attachment: fixed;
     font-family: 'Barlow Condensed', sans-serif;
     display: grid;
@@ -187,6 +187,30 @@ body > section#view_todo_list > div
 }
 
 
+body > section#view_project > label {
+    
+       display: block;
+       /* width: 100%; */
+       border: 1px solid black;
+       padding: 1em;
+       font-size: 1.2em;    
+    }
+    
+body > section#view_project > div > textarea#proj_desc {
+  
+       width: 100%;
+       resize: none;
+       background-color: transparent;
+       border: 0px;
+}
+    
+body > section#view_project > div
+{
+     border:1px solid #999999;
+     margin:0 0 1em 0;
+     padding:3px;
+}
+
 
 body > footer {
 
@@ -211,3 +235,19 @@ body > footer > p:last-of-type {
     text-align: right;
 }
 
+
+/* ========== CALENDAR ============ */
+
+body div#calendar_section_top {
+    border-top: 1px solid rgb(34, 31, 31);
+    border-bottom: 1px solid rgb(34, 31, 31);
+    grid-area: 2 / 1 / span 1 / span 1;
+}
+
+body div#calendar_section_top ul {
+    display: flex;
+    list-style: none;
+    background-color: #EFEFEF;
+    margin: 0;
+    justify-content: center;
+}

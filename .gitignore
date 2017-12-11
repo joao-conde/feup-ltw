@@ -6,5 +6,10 @@
 *.tar.gz
 *.rar
 
+#DB
+
+*.db
+*.smbdelete*
+
 # MAC files #
 .DS_Store

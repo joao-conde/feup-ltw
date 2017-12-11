@@ -5,7 +5,7 @@
         redirect('index.php');
     }
 ?>
-<section class="main_area" id="tasks_list">
+<!-- <section class="main_area" id="tasks_list">
     <table>
         <tr>
             <th>Task</th>
@@ -152,11 +152,11 @@
             <td><a href="#">PLOG</a></td>
         </tr>
     </table>
-</section>
-<!-- <div id="calendar_div">
+</section> -->
+<div id="calendar_div">
     <?php 
-        /* include_once('testing/calendar.php');
-        echo getCalendar(); */
+        include_once('testing/calendar.php');
+        echo getCalendar();
      ?>
-</div> -->
+</div>
 <?php include_once('templates/common/footer.php'); ?>
