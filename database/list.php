@@ -2,6 +2,23 @@
 
 include_once("database/connection.php");
 
+function getTDListsOfProject($projID){
+
+    global $dbh;
+    
+    $query = "SELECT * 
+              FROM TodoList JOIN Project ON Project.id = TodoList.projectID
+              WHERE TodoList.projectID = :projId
+              ORDER BY TodoList.tdlDateDue"; 
+    
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':projId', $projID, PDO::PARAM_INT);
+    
+    $stmt->execute(); 
+    
+    return $stmt->fetchAll();
+}
+
 function getUserLists($username) {
 
     global $dbh;

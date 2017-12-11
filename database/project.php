@@ -16,6 +16,22 @@
         return $userCreator;
     }
 
+    function getUserProjectIsWorking($username) {
+        
+          global $dbh;
+        
+          $query = "SELECT * FROM Project
+                    WHERE Project.usernameCreator = :username
+                    ORDER BY Project.projDateDue ASC";
+        
+          $stmt = $dbh->prepare($query);
+          $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        
+          $stmt->execute();
+          return $stmt->fetchAll();
+        
+    }
+
     function insertProject($projTitle, $projDescription, $usernameCreator){
         global $dbh;
 
