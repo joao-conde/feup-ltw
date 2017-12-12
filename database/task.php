@@ -1,6 +1,6 @@
 <?php
 
-    include_once('database/connection.php');
+    include_once(dirname(__DIR__).'/database/connection.php');
 
     function getTasksOfTDList($todolistID) {
 
@@ -61,6 +61,48 @@
 
         return $stmt->fetch();
         
+    }
+
+    function getUserTasksOrderedBy($username, $orderBy){
+
+        global $dbh;
+        
+        $query='SELECT userResponsable, Task.id, taskTitle, taskDescription, taskDateDue, percentageCompleted, tdlTitle
+                FROM Task
+                JOIN TodoList ON Task.todoListID = TodoList.id
+                JOIN User ON User.username = Task.userResponsable
+                WHERE User.username = :username
+                ORDER BY :orderBy ASC';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':orderBy', $orderBy, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+
+    }
+
+    function getUserTasks($username){
+
+        return getUserTasksOrderedBy($username, 'taskDateDue');
+
+    }
+
+    function updateTaskCompletion($taskID, $taskCompletion){
+
+        global $dbh;
+
+        $query='UPDATE Task SET percentageCompleted = :taskCompletion
+                WHERE Task.id = :taskID';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':taskID', $taskID, PDO::PARAM_INT);
+        $stmt->bindParam(':taskCompletion', $taskCompletion, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->errorCode();
     }
 
 ?>

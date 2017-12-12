@@ -126,6 +126,10 @@ body > section.main_area > table {
     margin: auto;
 }
 
+body>section.main_area>table tr.task_completed {
+    background-color: rgb(148, 255, 162)
+}
+
 body > section.main_area > table tr > th {
     text-align: left;
     border-bottom: 3px solid #FF383F;
@@ -157,6 +161,15 @@ body > section.main_area > table tr > td > a > img {
     
         width: 20px;
         height: 20px;
+    
+}
+
+body > section.main_area > table div#task_semaphore {
+    
+        border-radius: 7.5px;
+        width: 12px;
+        height: 12px;
+        background-color: hsl(71, 100%, 50%)
     
 }
 

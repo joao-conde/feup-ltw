@@ -18,7 +18,7 @@ let usersList = document.querySelector("table#tasks_list tr#add_new_task td data
 let list_id = parseInt(document.querySelector("form > input#id").value);
 
 let ajaxRequestFindUsers = new XMLHttpRequest();
-let ajaxRequestInsertTask = new XMLHttpRequest();
+let ajaxRequestChangeTaskCompletion = new XMLHttpRequest();
 
 
 const api_find_users = "api_find_users.php";
@@ -201,11 +201,11 @@ function sendRequestAddTask() {
 
     };
 
-    ajaxRequestInsertTask.open("post", (api_add_task), true);
-    ajaxRequestInsertTask.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    ajaxRequestInsertTask.send(encodeForAjax(requestData));
+    ajaxRequestChangeTaskCompletion.open("post", (api_add_task), true);
+    ajaxRequestChangeTaskCompletion.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajaxRequestChangeTaskCompletion.send(encodeForAjax(requestData));
 
-    ajaxRequestInsertTask.addEventListener('load',receiveNewTaskFromAjax);
+    ajaxRequestChangeTaskCompletion.addEventListener('load',receiveNewTaskFromAjax);
 
 }
 
