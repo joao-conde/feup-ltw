@@ -36,11 +36,6 @@ INSERT INTO TodoList(projectID,tdlTitle,tdlDescription,tdlDateDue)
     Tasks
 */
 
-INSERT INTO TodoList(projectID,tdlTitle,tdlDescription,tdlDateDue) 
-VALUES (1,'User Interface','Javascript Files', '10/12/2017');
-
-INSERT INTO TodoList(projectID,tdlTitle,tdlDescription,tdlDateDue) 
-VALUES (1,'Database','Database Files', '10/12/2017');
 
 INSERT INTO Task(userResponsable,todoListID,taskTitle,taskDescription,taskDateDue, percentageCompleted)
     VALUES ('fump',1,'CSS for Tablet', 'CSS for Tablet', 1513003885,0);

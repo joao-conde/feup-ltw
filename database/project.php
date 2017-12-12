@@ -40,7 +40,7 @@
         $stmtProject->bindParam(':projTitle', $projTitle, PDO::PARAM_STR);
         $stmtProject->bindParam(':projDescription', $projDescription, PDO::PARAM_STR);
         $stmtProject->bindParam(':usernameCreator', $usernameCreator, PDO::PARAM_STR);
-        $stmtProject->bindParam(':projDateDue', $projDeadline, PDO::PARAM_INT);        
+        $stmtProject->bindParam(':projDeadline', $projDeadline, PDO::PARAM_INT);        
         $stmtProject->execute();
 
         /* $currProjectID = getProjectID($projTitle, $usernameCreator);

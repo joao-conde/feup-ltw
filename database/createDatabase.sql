@@ -27,7 +27,7 @@ CREATE TABLE Project(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     projTitle TEXT,
     projDescription TEXT,
-    usernameCreator INTEGER REFERENCES User,
+    usernameCreator TEXT REFERENCES User,
     projDateDue INTEGER,
     UNIQUE(projTitle, usernameCreator)
 );

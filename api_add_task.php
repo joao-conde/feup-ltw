@@ -10,6 +10,7 @@
     $task_date_due = $_POST['deadline'];
     $task_percentage = $_POST['percentage'];
 
+
     if(insertTask($task_title, $task_todo_list_id, $task_user, $task_desc, $task_date_due, $task_percentage) == '00000') {
 
         $insertedTask = getLastTaskFromList($task_todo_list_id);

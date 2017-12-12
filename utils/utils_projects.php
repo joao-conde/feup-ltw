@@ -16,7 +16,9 @@
 
         }
 
-        return (int) ($totalCompleted/$numberOfLists);
+        
+
+        return (int) ($totalCompleted == 0) ? 100 : ($totalCompleted/$numberOfLists);
     }
 
 ?>

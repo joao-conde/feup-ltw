@@ -38,7 +38,6 @@ function showCompl() {
 }
 
 
-
 title.addEventListener('keyup',validateFields);
 desc.addEventListener('keyup',validateFields);
 deadline.addEventListener('keyup',validateFields);
@@ -53,43 +52,44 @@ function encodeForAjax(data) {
 
 function receiveNewProjectFromAjax() {
     
-        console.log(this);
+    
 
-        JSON.parse(this.responseText);
+      
+       
 
-        // let table = document.querySelector("table#projects tbody");
-        // let trAddProject = document.querySelector("table#projects tr#add_new_project");
-        // console.log(this.responseText);
-        // let newProject = JSON.parse(this.responseText);
+        let table = document.querySelector("table#projects tbody");
+        let trAddProject = document.querySelector("table#projects tr#add_new_project");
+        console.log(this.responseText);
+        let newProject = JSON.parse(this.responseText);
     
-        // console.log(newProject);
+        console.log(newProject);
         
-        // let tr = document.createElement("tr");
+        let tr = document.createElement("tr");
     
-        // let tdTitle = document.createElement("td");
-        // tdTitle.innerHTML = newProject.project_title;
-        // tr.appendChild(tdTitle);
+        let tdTitle = document.createElement("td");
+        tdTitle.innerHTML = newProject.project_title;
+        tr.appendChild(tdTitle);
     
-        // let tdDesc = document.createElement("td");
-        // tdDesc.innerHTML = newProject.project_desc;
-        // tr.appendChild(tdDesc);
+        let tdDesc = document.createElement("td");
+        tdDesc.innerHTML = newProject.project_desc;
+        tr.appendChild(tdDesc);
     
     
-        // let tdDate = document.createElement("td");
-        // tdDate.innerHTML = new Date(parseInt(newProject.project_deadline)*1000).toLocaleDateString("pt-PT");
-        // tr.appendChild(tdDate);
+        let tdDate = document.createElement("td");
+        tdDate.innerHTML = new Date(parseInt(newProject.project_deadline)*1000).toLocaleDateString("pt-PT");
+        tr.appendChild(tdDate);
         
-        // let tdUserName = document.createElement("td");
-        // tdUserName.innerHTML = newProject.project_user;
-        // tr.appendChild(tdUserName);
+        let tdUserName = document.createElement("td");
+        tdUserName.innerHTML = newProject.project_user;
+        tr.appendChild(tdUserName);
     
-        // let tdUserImage = document.createElement("td");
-        // let image = document.createElement("img");
-        // image.setAttribute('src',newProject.userPicturePath);
-        // tdUserImage.appendChild(image);
-        // tr.appendChild(tdUserImage);
+        let tdUserImage = document.createElement("td");
+        let image = document.createElement("img");
+        image.setAttribute('src',newProject.userPicturePath);
+        tdUserImage.appendChild(image);
+        tr.appendChild(tdUserImage);
         
-        // //table.insertBefore(tr,trAddProject);
+        //table.insertBefore(tr,trAddProject);
     
         // let label = table.querySelector("label[for=compl]");
     
@@ -107,13 +107,14 @@ function receiveNewProjectFromAjax() {
 function sendRequestAddProject() {
  
     let requestData = {
-        title: title.value,  
-        desc: desc.value,
-        username: user.value,
-        deadline: new Date(deadline.value).getTime() / 1000
-    };
+         title: title.value,  
+         desc: desc.value,
+         username: user.value,
+         deadline: new Date(deadline.value).getTime() / 1000
+     };
 
-    //console.log(requestData);
+
+    console.log(requestData);
     
     ajaxRequestInsertProject.open("post", api_add_project, true);
     ajaxRequestInsertProject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
