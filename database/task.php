@@ -78,4 +78,44 @@
         
     }
 
+    function updateTask($id, $user, $title, $desc, $deadline) {
+
+        global $dbh;
+        
+        $query = 'UPDATE Task 
+                  SET userResponsable = :user,
+                      taskTitle = :title,
+                      taskDescription = :tdesc,
+                      taskDateDue = :deadline
+                  WHERE id = :id';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':user', $user, PDO::PARAM_STR);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':tdesc', $desc, PDO::PARAM_STR);
+        $stmt->bindParam(':deadline', $deadline, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->errorCode();
+
+
+    }
+    
+    function deleteTask($task_id) {
+
+        global $dbh;
+        
+        $query = 'DELETE FROM Task 
+                  WHERE id = :id';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':id', $task_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->errorCode();
+
+    }
 ?>

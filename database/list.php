@@ -74,6 +74,21 @@ function updateList($list_id, $list_title, $list_desc, $list_deadline) {
 
 }
 
+function getListFromId($list_id) {
+    
+    global $dbh;
+
+    $query = 'SELECT * FROM TodoList WHERE id = :id';
+
+
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':id', $list_id, PDO::PARAM_INT);
+
+    $stmt->execute();
+    return $stmt->fetch();
+    
+}
+
 
 
 ?>

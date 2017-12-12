@@ -76,12 +76,14 @@ if(isset($_SESSION['updateListMessage']))
             <th>Responsable</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
 
         <?php foreach($listtasks as $task) { ?>
 
             <tr>
 
+                <td id="task_id" class ="hidden"><?=$task['id']?></td>
                 <td><?=$task['taskTitle']?></td>
                 <td><?=$task['taskDescription']?></td>
                 <td><?=$task['percentageCompleted']?> % </td>
@@ -90,7 +92,7 @@ if(isset($_SESSION['updateListMessage']))
                 <td><?=$task['fullName']?></td>
                 <td><img src="<?=getUserImagePathTN($task['userResponsable'])?>"</td>
                 <td><a href="edit_task.php?task_id=<?=$task['id']?>"><img src="images/edit.svg"></a></td>
-
+                <td><a href="" id="delete_task_button"><img src="images/delete.svg"></a></td>
 
             </tr>
 
