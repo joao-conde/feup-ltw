@@ -1,162 +1,49 @@
 <?php 
-    include_once('templates/common/header.php'); 
-    include_once('utils/utils_general.php'); 
-    if(!logged()){
-        redirect('index.php');
-    }
+
+include_once('templates/common/header.php'); 
+include_once('database/task.php');
+include_once('utils/utils_general.php');
+
+if(!logged())
+    redirect('index.php');
+
+$username = $_SESSION['username'];
+$userTasks = getUserTasks($username);
+
 ?>
-<section class="main_area" id="tasks_list">
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Completion</th>
-            <th>Deadline</th>
-            <th>Project</th>
+
+<script src="scripts/task.js" defer></script>
+<section class="main_area" id="tasks">
+
+<table id='my_tasks'>
+    <tr>
+        <th id='taskTitle'>Name</th>
+        <th id='taskDescription'>Description</th>
+        <th id='taskDateDue'>Deadline</th>
+        <th id='percentageCompleted'> % <input id="show_completed", type="checkbox" checked></th>
+        <th id='todoListID'>TODO List</th>
+        <th></th>
+    </tr>
+    
+    <?php foreach($userTasks as $task) { ?>
+
+        <tr <?php /* if($task['percentageCompleted'] == 100) echo 'class="task_completed"' */?>>
+
+            <td><?=$task['taskTitle'];?></td>
+            <td><?=$task['taskDescription'];?></td>
+            <td><?=date('d/m/Y',$task['taskDateDue']);?></td>
+            <td class="range"><input id='<?= $task['id'];?>' type="range" min="0" max="100" step="5" name="task_completition" value="<?php echo $task['percentageCompleted'];?>"><label for="compl"><?php echo $task['percentageCompleted'];?></label>%</td>
+            <td><a href="#"><?=$task['tdlTitle'];?></a></td>
+            <td><div id="task_semaphore"></div></td>
+
         </tr>
-        <tr>
-            <td><a href="#">Task1</a></td>
-            <td>50%</td>
-            <td>23/12/2017</td>
-            <td><a href="#">LTW</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task2</a></td>
-            <td>10%</td>
-            <td>1/1/2018</td>
-            <td><a href="#">RCOM</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task3</td>
-            <td>70%</td>
-            <td>5/2/2018</td>
-            <td><a href="#">LAIG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-        <tr>
-            <td><a href="#">Task4</a></td>
-            <td>10%</td>
-            <td>23/3/2018</td>
-            <td><a href="#">PLOG</a></td>
-        </tr>
-    </table>
+
+    <?php } ?>
+
+</table>
+
+
+
 </section>
-<!-- <div id="calendar_div">
-    <?php 
-        /* include_once('testing/calendar.php');
-        echo getCalendar(); */
-     ?>
-</div> -->
+
 <?php include_once('templates/common/footer.php'); ?>

@@ -6,7 +6,7 @@
         redirect('index.php');
     }
 ?>
-<section class="main_area" id="tasks_list">
+<section class="main_area" id="collaborators_list">
     <table>
         <tr>
             <th>Collaborator</th>

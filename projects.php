@@ -22,12 +22,11 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 <table id = "projects">
     <tr>
         <th>Name</th>
-        <th>Detail</th>
+        <th class="mobileHidden">Detail</th>
         <th>Deadline</th>
-        <th>%</th>
-        <th>Owner</th>
-        <th></th>
-        <th></th>
+        <th class="mobileHidden">%</th>
+        <th class="mobileHidden">Owner</th>
+        <th class="mobileHidden"></th>
     </tr>
 
     <?php foreach($userOwnsProjects as $proj) { 
@@ -39,11 +38,11 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
     <tr>
         <td><a href="#"><?=$proj['projTitle'];?></a></td>
-        <td><?=$proj['projDescription'];?></td>
+        <td class="mobileHidden"><?=$proj['projDescription'];?></td>
         <td><?=date('d/m/Y',$proj['projDateDue']);?></td>
-        <td><?=$projPercentageCompleted;?> % </td>
-        <td><img src="<?=$owner_pic?>"></td>
-        <td><a href="edit_project.php?project_id=<?=$proj['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
+        <td class="mobileHidden"><?=$projPercentageCompleted;?> % </td>
+        <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
+        <td class="mobileHidden"><a href="edit_project.php?project_id=<?=$proj['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
         
     </tr>
 
@@ -59,11 +58,11 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
     <tr>
         <td><a href="#"><?=$proj['projTitle'];?></a></td>
-        <td><?=$proj['projDescription'];?></td>
+        <td class="mobileHidden"><?=$proj['projDescription'];?></td>
         <td><?=date('d/m/Y',$proj['projDateDue']);?></td>
-        <td><?=$projPercentageCompleted;?> % </td>
-        <td><img src="<?=$owner_pic?>"></td>
-        <td><a href="view_project.php?project_id=<?=$proj['id'];?>"><img src="images/eye.svg" class="view"></a></td>
+        <td class="mobileHidden"><?=$projPercentageCompleted;?> % </td>
+        <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
+        <td class="mobileHidden"><a href="view_project.php?project_id=<?=$proj['id'];?>"><img src="images/eye.svg" class="view"></a></td>
         
     </tr>
 
