@@ -179,11 +179,36 @@ body > section#view_todo_list > div > textarea#list_desc {
     border: 0px;
 }
 
-body > section#view_todo_list > div
-{
+body > section#view_todo_list > div {
   border:1px solid #999999;
   margin:0 0 1em 0;
   padding:3px;
+}
+
+body > section table#lists_list tr td > form > input#delete_list {
+
+    background: url('../images/delete.svg');
+    background-size: 100%;
+    padding: 0;
+    margin: auto;
+    width: 1em;
+    height: 1em;
+    border-width: 0;
+    cursor: pointer;
+
+}
+
+body > section table#lists_list tr td > form.disabled > input#delete_list {
+    
+    background: url('../images/delete_disabled.svg');
+    background-size: 100%;
+    padding: 0;
+    margin: auto;
+    width: 1em;
+    height: 1em;
+    border-width: 0;
+
+
 }
 
 

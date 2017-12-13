@@ -90,5 +90,22 @@ function getListFromId($list_id) {
 }
 
 
+function deleteList($list_id) {
+    
+    global $dbh;
+    
+    $query = 'DELETE FROM TodoList 
+                WHERE id = :id';
+
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':id', $list_id, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->errorCode();
+
+}
+
+
 
 ?>

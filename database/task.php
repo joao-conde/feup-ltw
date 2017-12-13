@@ -118,4 +118,23 @@
         return $stmt->errorCode();
 
     }
+
+    function getTasksFromList($list_id) {
+
+        global $dbh;
+        
+        $query = 'SELECT * 
+                  FROM Task JOIN TodoList ON Task.todoListID = TodoList.id
+                  WHERE TodoList.id = :id';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':id', $list_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+
+    }
+
+
 ?>

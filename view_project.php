@@ -9,22 +9,22 @@ include_once('utils/utils_general.php');
 if(!logged())
     redirect('index.php');
 
-    $userWorkingProjects = getUserProjectIsWorking($_SESSION['username']);
+$userWorkingProjects = getUserProjectIsWorking($_SESSION['username']);
 
-    $foundproject = null;
+$foundproject = null;
 
-    foreach($userWorkingProjects as $proj) {
-        if($proj['id'] == $_GET['project_id']){
-            $foundproject = $proj;
-            break;
-        }
+foreach($userWorkingProjects as $proj) {
+    if($proj['id'] == $_GET['project_id']){
+        $foundproject = $proj;
+        break;
     }
+}
 
-    if($foundproject == null) 
-        redirect('projects.php');
+if($foundproject == null) 
+    redirect('projects.php');
 
 
-    $projectLists = getUserLists($_SESSION['username']);
+$projectLists = getUserLists($_SESSION['username']);
     
 ?>
 

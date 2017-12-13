@@ -108,6 +108,7 @@ if(isset($_SESSION['updateListMessage']))
                 <datalist id="collaborators">
                 </datalist>
             </td>
+            <td></td>
             <td id="td_add"><input type="button" value="Add"></td>
 
         </tr>

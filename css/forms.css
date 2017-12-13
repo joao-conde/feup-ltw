@@ -98,8 +98,12 @@ section.main_area table#tasks_list tr > td > input[type=text], input[type=date] 
     background-color: transparent;
 }
 
+section.main_area table#tasks_list tr td {
+    vertical-align: bottom;
+}
+
 section.main_area table#tasks_list tr > td#range {
-    width: 10%;
+    width: 7%;
     margin: auto 2px;
 }
 
@@ -109,12 +113,12 @@ section.main_area table#tasks_list tr > td#range input {
 
 
 section.main_area table#tasks_list tr > td#td_task_dead_line {
-    width: 13%;
+    width: 15%;
     margin: auto;
 }
 
 section.main_area table#tasks_list tr > td#td_task_title {
-    width: 15%;
+    width: 20%;
     margin: auto;
 }
 
@@ -173,7 +177,7 @@ section.main_area table tr td input#tdldeadline {
     background-color: transparent;
 }
 
-section.main_area table tr td a {
+section.main_area table tr td a.edit {
     margin-left: 25px;
 }
 
