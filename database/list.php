@@ -41,7 +41,7 @@ function getUserListIsWorking($username) {
 
     global $dbh;
 
-    $query = "SELECT ToDolist.*, Project.id id_project, Project.projTitle, Project.projDescription, Project.usernameCreator, Project.projDateDue FROM Task 
+    $query = "SELECT DISTINCT ToDolist.*, Project.id id_project, Project.projTitle, Project.projDescription, Project.usernameCreator, Project.projDateDue FROM Task 
               JOIN ToDoList ON ToDoList.id = Task.todoListID  
               JOIN Project ON Project.id = ToDoList.projectID
               WHERE Task.userResponsable = :username
@@ -72,6 +72,21 @@ function updateList($list_id, $list_title, $list_desc, $list_deadline) {
     $stmt->execute();
     return $stmt->errorCode();
 
+}
+
+function getListFromId($list_id) {
+    
+    global $dbh;
+
+    $query = 'SELECT * FROM TodoList WHERE id = :id';
+
+
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':id', $list_id, PDO::PARAM_INT);
+
+    $stmt->execute();
+    return $stmt->fetch();
+    
 }
 
 

@@ -3,7 +3,7 @@ section.main_area h1,h2 {
 }
 section.main_area h1 {
     font-size: 2em;
-    margin-top: 0;
+    margin: 0;
 }
 
 
@@ -28,6 +28,12 @@ section.main_area form#edit_list_form {
     align-items: center;
 }
 
+section.main_area form#edit_project_form {
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
 section.main_area form > label {
     width: 50%;
     margin-left: auto;
@@ -44,8 +50,19 @@ section.main_area form#edit_list_form > textarea {
     flex-grow: 1;
 }
 
+section.main_area form#edit_project_form > * {
+    width: auto;
+    margin: 0 10px 0 0;
+}
 
-section.main_area form > input[type=text], input[type=password], input[type=date] {
+section.main_area form#edit_project_form > textarea {
+    flex-grow: 1;
+}
+
+
+section.main_area form > input[type=text], 
+section.main_area form > input[type=password], 
+section.main_area form > input[type=date] {
     width: 50%;
     height: 4em;
     margin: 0 auto;
@@ -63,7 +80,83 @@ section.main_area form > input[type=text], input[type=password], input[type=date
     
 }
 
-section.main_area table tr td input[type=text], input[type=password], input#task_dead_line {
+
+section.main_area table#tasks_list tr > td > input[type=text], input[type=date] {
+
+    width: 80%;
+    margin: auto;
+    font-size: 1em;
+    margin: 0 auto;
+    -webkit-appearance: none;
+    outline-width: 0;
+    padding: 0;
+    border-top-width: 0;
+	border-bottom-width: 1;
+	border-bottom-color: #FF383F;
+	border-left-width: 0;
+    border-right-width: 0;
+    background-color: transparent;
+}
+
+section.main_area table#tasks_list tr > td#range {
+    width: 10%;
+    margin: auto 2px;
+}
+
+section.main_area table#tasks_list tr > td#range input {
+    width: 50%;
+}
+
+
+section.main_area table#tasks_list tr > td#td_task_dead_line {
+    width: 13%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_task_title {
+    width: 15%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_task_desc {
+    width: 40%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_responsible {
+    width: 17%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td#td_add {
+    width: 15%;
+    margin: auto;
+}
+
+section.main_area table#tasks_list tr > td > textarea {
+    width: 90%;
+    margin: auto;
+    height: 3em;
+    outline-width: 0;
+    resize: none;
+    margin-top: 1em;
+    border: 1px solid #FF383F;
+    padding: 0.5em;
+}
+
+section.main_area table#tasks_list tr > td > input[type=button] {
+    width: 80%;
+    height: 3em;
+    outline-width: 0;
+    resize: none;
+    margin-top: 1em;
+    border: 1px solid #FF383F;
+    padding: 0.5em;
+}
+
+section.main_area table tr td input[type=text], 
+section.main_area table tr td input[type=password], 
+section.main_area table tr td input#tdldeadline {
     /* width: 50%; */
     /* height: 4em; */
     margin: 0 auto;
@@ -78,6 +171,10 @@ section.main_area table tr td input[type=text], input[type=password], input#task
 	border-left-width: 0;
     border-right-width: 0;
     background-color: transparent;
+}
+
+section.main_area table tr td a {
+    margin-left: 25px;
 }
 
 
@@ -134,14 +231,10 @@ section.main_area form > input#id,input[name=projectdeadline] {
     display: none;
 }
 
-section.main_area table#tasks_list td#taskdeadline {
+section.main_area table#tasks_list td#taskdeadline, td#user {
     display: none;
 }
 
-section.main_area table#tasks_list td#range {
-    width: 20%;
-    margin:auto;
-}
 
 section.main_area table#tasks_list td label[for=compl] {
     margin:auto 0.3em;
@@ -168,5 +261,8 @@ section.main_area footer p a {
     color: #FF383F;
 }
 
+*.hidden {
+    display:none;
+}
 
 

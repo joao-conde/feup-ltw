@@ -1,41 +1,16 @@
 'use strict';
 
-let title = document.querySelector('form > input[name=title');
-let desc = document.querySelector('form > textarea[name=description');
-let deadline = document.querySelector('form > input[name=deadline');
-let submit = document.querySelector('form > input[type=submit');
-let projdeadline = parseInt(document.querySelector('form > input[name=projectdeadline').value) * 1000;
+let title = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_title');
+let desc = document.querySelector('section#projects_list table#projects tr#add_new_project textarea[name=proj_desc');
+let deadline = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_deadline');
+let submit = document.querySelector('section#projects_list table#projects tr#add_new_project input[type=button');
+let user = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_responsable');
 
-let completition_slider = document.querySelector("table#tasks_list input[type=range]");
-let completition_slider_label = document.querySelector("table#tasks_list label[for=compl]");
+let responsible = document.querySelector("table#projects tr#add_new_project td input[name=proj_responsable");
 
-let responsible = document.querySelector("table#tasks_list tr#add_new_task td input[name=task_responsable");
-let usersList = document.querySelector("table#tasks_list tr#add_new_task td ul#suggestions");
+let ajaxRequestInsertProject = new XMLHttpRequest();
 
-console.log(usersList);
-
-let ajaxRequestFindUsers = new XMLHttpRequest();
-
-
-const api_find_users = "api_find_users.php";
-
-function getlastTaskTime() {
-
-    let table_rows = document.querySelector('table#tasks_list').getElementsByTagName('tr');
-
-    let lasttime = 0;
-
-    for(let i = 1; i < table_rows.length-1; i++) {
-
-        let new_t = new Date(parseInt(table_rows[i].querySelector('td#taskdeadline').innerHTML)*1000).getTime();
-        if(new_t > lasttime)
-            lasttime = new_t;
-    }
-
-    return lasttime;
-
-}
-
+const api_add_project = "api_add_project.php";
 
 function validateTitle() {
     return title.value.length > 0;
@@ -45,15 +20,9 @@ function validateDesc() {
     return desc.value.length > 0;
 }
 
-function validateDate() {
-
-    let listdeadline = new Date(deadline.value).getTime();
-    let lastTaskTime = getlastTaskTime();
-    return projdeadline >= listdeadline && listdeadline >= lastTaskTime;
-}
 
 function validateFields() {
-    if(validateTitle() && validateDesc() && validateDate())
+    if(validateTitle() && validateDesc())
         submit.removeAttribute('disabled');
     else
         submit.setAttribute('disabled','disabled');
@@ -64,13 +33,10 @@ function showCompl() {
     completition_slider_label.innerHTML = completition_slider.value;
 }
 
-completition_slider.addEventListener('input',showCompl);
-
 
 title.addEventListener('keyup',validateFields);
 desc.addEventListener('keyup',validateFields);
 deadline.addEventListener('keyup',validateFields);
-
 
 
 function encodeForAjax(data) {
@@ -79,41 +45,75 @@ function encodeForAjax(data) {
     }).join('&');  
 }
 
-function sendRequestFindUsers() {
 
-    let pattern = responsible.value;
-
-    while (usersList.firstChild) {
-        usersList.removeChild(usersList.firstChild);
+function receiveNewProjectFromAjax() {
+    
+        let table = document.querySelector("table#projects tbody");
+        let trAddProject = document.querySelector("table#projects tr#add_new_project");
+        console.log(this.responseText);
+        let newProject = JSON.parse(this.responseText);
+    
+        //console.log(newProject);
+        
+        let tr = document.createElement("tr");
+    
+        let tdTitle = document.createElement("td");
+        tdTitle.innerHTML = newProject.project_title;
+        tr.appendChild(tdTitle);
+    
+        let tdDesc = document.createElement("td");
+        tdDesc.innerHTML = newProject.project_desc;
+        tr.appendChild(tdDesc);
+    
+    
+        let tdDate = document.createElement("td");
+        tdDate.innerHTML = new Date(parseInt(newProject.project_deadline)*1000).toLocaleDateString("pt-PT");
+        tr.appendChild(tdDate);
+        
+        let tdUserName = document.createElement("td");
+        tdUserName.innerHTML = newProject.project_user;
+        tr.appendChild(tdUserName);
+    
+        let tdUserImage = document.createElement("td");
+        let image = document.createElement("img");
+        image.setAttribute('src',newProject.userPicturePath);
+        tdUserImage.appendChild(image);
+        tr.appendChild(tdUserImage);
+        
+        table.insertBefore(tr,trAddProject);
+    
+        // let label = table.querySelector("label[for=compl]");
+    
+        // newTaskTitle.value = "";
+        // newTaskDesc.value = "";
+        // newTaskPercentage.value = "0";
+        // newTaskDeadLine.value = new Date(projdeadline).toISOString().substring(0,10);
+        // responsible.value = "";
+    
+        // label.innerHTML = "0";
+    
     }
 
-    if(pattern.length < 3)
-        return;
+
+function sendRequestAddProject() {
+ 
+    let requestData = {
+         title: title.value,  
+         desc: desc.value,
+         username: user.value,
+         deadline: new Date(deadline.value).getTime() / 1000
+     };
 
 
-    //ajaxRequestFindUsers.abort();
-    let requestData = {pattern: pattern};
-
-    ajaxRequestFindUsers.open("get", (api_find_users + '?' + encodeForAjax(requestData)),true);
-    ajaxRequestFindUsers.send();
-    ajaxRequestFindUsers.addEventListener('load',requestUsersListener);
-
+    console.log(requestData);
+    
+    ajaxRequestInsertProject.open("post", api_add_project, true);
+    ajaxRequestInsertProject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    ajaxRequestInsertProject.send(encodeForAjax(requestData));
+    
+    ajaxRequestInsertProject.addEventListener('load',receiveNewProjectFromAjax);
+    
 }
 
-function requestUsersListener() {
-    
-    let users = JSON.parse(this.responseText);
-    
-    
 
-    for(let i = 0; i < users.length; i++) {
-        let user = document.createElement("li");
-        user.innerHTML = users[i].fullName;
-        usersList.appendChild(user);
-    }
-
-}
-
-responsible.addEventListener('keyup', sendRequestFindUsers);
-
-
+submit.addEventListener('click', sendRequestAddProject);

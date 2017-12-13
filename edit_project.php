@@ -3,7 +3,6 @@
 include_once('templates/common/header.php');
 include_once('database/list.php');
 include_once('database/project.php');
-// include_once('utils/utils_lists.php');
 include_once('utils/utils_projects.php');
 
 if(!logged())
@@ -56,7 +55,6 @@ if(isset($_SESSION['updateProjectMessage']))
         <input type="text" name="title" id="title" value=<?='"'.$foundproj['projTitle'].'"'?>/>
 
        
-
         <label for="datedue">Deadline </label>  
         <input id="datedue "type="date" name="deadline" value="<?=date('Y-m-d',$foundproj['projDateDue']);?>" max="<?=date('Y-m-d',$project['projDateDue']);?>">
 
@@ -67,12 +65,12 @@ if(isset($_SESSION['updateProjectMessage']))
 
     </form>
 
-    <h2> TODO Lists </h2>
+    <h2> PROJECTS </h2>
 
-    <table id="todo_lists">
+    <table id="projects">
 
         <tr>
-            <th>Task</th>
+            <th>TODO Lists</th>
             <th>Completition</th>
             <th>Deadline</th>
             <th>Responsable</th>

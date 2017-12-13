@@ -1,6 +1,6 @@
 <?php
 
-    include_once(dirname(__DIR__)."\database\connection.php");
+    include_once("database/connection.php");
 
     function getUserCreatorProject($id) {
 
@@ -31,21 +31,23 @@
         return $result['id'];
     }
 
-    function insertProject($projTitle, $projDescription, $usernameCreator){
+    function insertProject($projTitle, $projDescription, $usernameCreator, $projDeadline){
         global $dbh;
 
-        $insertProjectQuery = 'INSERT INTO Project (projTitle, projDescription, usernameCreator) VALUES (:projTitle, :projDescription, :usernameCreator)';
+        $insertProjectQuery = 'INSERT INTO Project (projTitle, projDescription, usernameCreator, projDateDue) VALUES (:projTitle, :projDescription, :usernameCreator, :projDeadline)';
 
         $stmtProject = $dbh->prepare($insertProjectQuery);
         $stmtProject->bindParam(':projTitle', $projTitle, PDO::PARAM_STR);
         $stmtProject->bindParam(':projDescription', $projDescription, PDO::PARAM_STR);
         $stmtProject->bindParam(':usernameCreator', $usernameCreator, PDO::PARAM_STR);
+        $stmtProject->bindParam(':projDeadline', $projDeadline, PDO::PARAM_INT);        
         $stmtProject->execute();
 
         /* $currProjectID = getProjectID($projTitle, $usernameCreator);
 
         addUserToProject($usernameCreator, $currProjectID, 'Administrator');
- */
+ */     
+        return $stmtProject->errorCode();
     }
 
     function addUserToProject($username, $idProject, $userRole){
@@ -61,6 +63,7 @@
         $stmt->execute();
 
     }
+
 
     function getProject($projectId) {
 
@@ -98,7 +101,7 @@
     
         global $dbh;
     
-        $query="SELECT Project.projTitle, Project.projDateDue, User_Project.userRole FROM Project
+        $query="SELECT Project.projTitle, Project.projDateDue, User_Project.userRole, Project.id, Project.usernameCreator, Project.projDescription FROM Project
                 JOIN User_Project ON Project.id = User_Project.idProject
                 WHERE User_Project.username = :username
                 ORDER BY Project.projDateDue ASC";
