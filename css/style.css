@@ -126,9 +126,11 @@ body > section.main_area > table {
     margin: auto;
 }
 
+/*TODO: Add some css to task_completed*/
 body>section.main_area>table tr.task_completed {
     background-color: rgb(148, 255, 162)
 }
+
 
 body > section.main_area > table tr > th {
     text-align: left;
@@ -138,7 +140,8 @@ body > section.main_area > table tr > th {
 
 body > section.main_area > table tr > td {
     text-align: left;
-    padding: 1em 0; 
+    padding: 0.75em 0;
+
     border-bottom: 1px solid #FF383F;
 }
 
@@ -169,9 +172,25 @@ body > section.main_area > table div#task_semaphore {
         border-radius: 7.5px;
         width: 12px;
         height: 12px;
-        background-color: hsl(71, 100%, 50%)
+        background-color: hsl(0, 100%, 50%);
+        border-style: solid;
+        border-width: 1px;
     
 }
+
+/* @keyframes taskCompleted {
+    0% {
+        opacity: 1;
+        height: 20px;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        height: 0px;
+    }
+} */
+
+
 
 body > section#view_todo_list > label {
 

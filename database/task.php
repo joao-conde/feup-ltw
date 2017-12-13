@@ -67,17 +67,14 @@
 
         global $dbh;
         
-        $query='SELECT userResponsable, Task.id, taskTitle, taskDescription, taskDateDue, percentageCompleted, tdlTitle
+        $query="SELECT userResponsable, Task.id, taskTitle, taskDescription, taskDateDue, percentageCompleted, tdlTitle
                 FROM Task
                 JOIN TodoList ON Task.todoListID = TodoList.id
                 JOIN User ON User.username = Task.userResponsable
-                WHERE User.username = :username
-                ORDER BY :orderBy ASC';
+                WHERE User.username = '".$username."'
+                ORDER BY ".$orderBy." ASC";
 
         $stmt = $dbh->prepare($query);
-        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-        $stmt->bindParam(':orderBy', $orderBy, PDO::PARAM_STR);
-
         $stmt->execute();
 
         return $stmt->fetchAll();
