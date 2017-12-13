@@ -4,13 +4,9 @@ let title = document.querySelector('section#projects_list table#projects tr#add_
 let desc = document.querySelector('section#projects_list table#projects tr#add_new_project textarea[name=proj_desc');
 let deadline = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_deadline');
 let submit = document.querySelector('section#projects_list table#projects tr#add_new_project input[type=button');
-// let projdeadline = parseInt(document.querySelector('form > input[name=proj_deadline').value) * 1000;
 let user = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_responsable');
-// let completition_slider = document.querySelector("table#projects tr#add_new_project input[type=range]");
-// let completition_slider_label = document.querySelector("table#projects tr#add_new_project label[for=compl]");
 
 let responsible = document.querySelector("table#projects tr#add_new_project td input[name=proj_responsable");
-// let usersList = document.querySelector("table#tasks_list tr#add_new_task td ul#suggestions");
 
 let ajaxRequestInsertProject = new XMLHttpRequest();
 
@@ -52,17 +48,12 @@ function encodeForAjax(data) {
 
 function receiveNewProjectFromAjax() {
     
-    
-
-      
-       
-
         let table = document.querySelector("table#projects tbody");
         let trAddProject = document.querySelector("table#projects tr#add_new_project");
         console.log(this.responseText);
         let newProject = JSON.parse(this.responseText);
     
-        console.log(newProject);
+        //console.log(newProject);
         
         let tr = document.createElement("tr");
     
@@ -89,7 +80,7 @@ function receiveNewProjectFromAjax() {
         tdUserImage.appendChild(image);
         tr.appendChild(tdUserImage);
         
-        //table.insertBefore(tr,trAddProject);
+        table.insertBefore(tr,trAddProject);
     
         // let label = table.querySelector("label[for=compl]");
     

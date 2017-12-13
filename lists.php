@@ -19,10 +19,10 @@ $userWorkingLists = getUserListIsWorking($username);
 <table>
     <tr>
         <th>Name</th>
-        <th>Detail</th>
+        <th class="mobileHidden">Detail</th>
         <th>Deadline</th>
         <th> % </th>
-        <th>Project</th>
+        <th class="mobileHidden">Project</th>
         <th></th>
         <th></th>
     </tr>
@@ -37,11 +37,11 @@ $userWorkingLists = getUserListIsWorking($username);
 
     <tr>
         <td><a href="#"><?=$list['tdlTitle'];?></a></td>
-        <td><?=$list['tdlDescription'];?></td>
+        <td class="mobileHidden"><?=$list['tdlDescription'];?></td>
         <td><?=date('d/m/Y',$list['tdlDateDue']);?></td>
         <td><?=$tdPercentageCompleted;?> % </td>
-        <td><a href="#"><?=$list['projTitle'];?></a></td>
-        <td><img src="<?=$owner_pic?>"></td>
+        <td class="mobileHidden"><a href="#"><?=$list['projTitle'];?></a></td>
+        <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
         <td><a href="edit_list.php?list_id=<?=$list['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
 
     </tr>
@@ -58,11 +58,11 @@ $userWorkingLists = getUserListIsWorking($username);
 
     <tr>
         <td><a href="#"><?=$list['tdlTitle'];?></a></td>
-        <td><?=$list['tdlDescription'];?></td>
+        <td class="mobileHidden"><?=$list['tdlDescription'];?></td>
         <td><?=date('d/m/Y',$list['tdlDateDue']);?></td>
         <td><?=$tdPercentageCompleted;?> % </td>
-        <td><a href="#"><?=$list['projTitle'];?></a></td>
-        <td><img src="<?=$owner_pic?>"></td>
+        <td class="mobileHidden"><a href="#"><?=$list['projTitle'];?></a></td>
+        <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
         <td><a href="view_list.php?list_id=<?=$list['id'];?>"><img class="view" src="images/eye.svg"></a></td>
 
     </tr>

@@ -1,0 +1,54 @@
+@media(max-width: 70em){
+
+    body header{
+		grid-template-columns: auto auto;
+	}
+
+	body div#profile {
+        grid-area: 1/2 / span 1 / span 1;
+	}
+
+    /* Esconde a imagem de perfil do utilizador */
+    body img{
+        display: none;
+    }
+
+    /* TASKS CSS*/
+
+    /* Esconde os table headers indesejados */
+    body section#tasks_list table th.mobileHidden{
+        display: none;
+    }
+
+    /* Esconde todos as table rows indesejados */
+    body section#tasks_list table tr td.mobileHidden{
+        display: none;
+    }
+
+    /* LISTS CSS*/
+
+    /* Esconde os table headers indesejados */
+    body section#todo_lists table th.mobileHidden{
+        display: none;
+    }
+
+    /* Esconde todos as table rows indesejados */
+    body section#todo_lists table tr td.mobileHidden{
+        display: none;
+    }
+
+
+    /* PROJECTS CSS*/
+
+    /* Esconde os table headers indesejados */
+    body section#projects_list table th.mobileHidden{
+        display: none;
+    }
+
+    /* Esconde todos as table rows indesejados */
+    body section#projects_list table tr td.mobileHidden{
+        display: none;
+    }
+
+
+}
