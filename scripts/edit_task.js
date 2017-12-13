@@ -42,7 +42,7 @@ const api_find_users = "api_find_users.php";
 function getCurrentDayEpochSecs() {
 
     let time = new Date();
-    let todayString = time.getDate() + "/" + (time.getMonth() + 1) + "/" + time.getFullYear();
+    let todayString = (time.getMonth() + 1) + "/" + time.getDate() +  + "/" + time.getFullYear();
     return convertDateToEpochSecs(todayString);
 
 }

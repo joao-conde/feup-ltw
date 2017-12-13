@@ -42,11 +42,7 @@
         $stmtProject->bindParam(':usernameCreator', $usernameCreator, PDO::PARAM_STR);
         $stmtProject->bindParam(':projDeadline', $projDeadline, PDO::PARAM_INT);        
         $stmtProject->execute();
-
-        /* $currProjectID = getProjectID($projTitle, $usernameCreator);
-
-        addUserToProject($usernameCreator, $currProjectID, 'Administrator');
- */     
+     
         return $stmtProject->errorCode();
     }
 
@@ -101,9 +97,10 @@
     
         global $dbh;
     
-        $query="SELECT Project.projTitle, Project.projDateDue, User_Project.userRole, Project.id, Project.usernameCreator, Project.projDescription FROM Project
+        $query="SELECT DISTINCT Project.projTitle, Project.projDateDue, User_Project.userRole, Project.id, Project.usernameCreator, Project.projDescription FROM Project
                 JOIN User_Project ON Project.id = User_Project.idProject
                 WHERE User_Project.username = :username
+                AND Project.usernameCreator <> :username
                 ORDER BY Project.projDateDue ASC";
     
         
@@ -132,5 +129,51 @@
         return $stmt->fetch();
 
     }
+
+
+    function addCollaboratorsToProject($users_list, $proj_id) {
+
+        global $dbh;
+
+        $insertQuery = 'INSERT INTO User_Project (username, idProject) VALUES (:username, :idProject)';
+        $stmt = $dbh->prepare($insertQuery);
+
+        foreach($users_list as $username) {
+
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt->bindParam(':idProject', $proj_id, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+        }
+        
+    }
+
+
+    function updateProject($proj_id, $proj_title, $proj_deadline, $proj_description) {
+
+        global $dbh;
+        
+        $query = 'UPDATE Project 
+                    SET projTitle = :proj_title,
+                        projDescription = :proj_description,
+                        projDateDue = :proj_deadline
+                    WHERE id = :proj_id';
+        
+        $stmt = $dbh->prepare($query);
+
+        $stmt->bindParam(':proj_id', $proj_id, PDO::PARAM_INT);
+        $stmt->bindParam(':proj_title', $proj_title, PDO::PARAM_STR);
+        $stmt->bindParam(':proj_deadline', $proj_deadline, PDO::PARAM_INT);
+        $stmt->bindParam(':proj_description', $proj_description, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return $stmt->errorCode();
+            
+
+    }
+
+
     
 ?>

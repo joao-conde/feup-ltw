@@ -15,9 +15,9 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
 ?>
 
-<script src="scripts/project.js" defer></script>
-
 <section class="main_area" id="projects_list">
+
+
 
 <table id = "projects">
     <tr>
@@ -33,7 +33,6 @@ $userWorkingProjects = getUserProjectIsWorking($username);
     <?php foreach($userOwnsProjects as $proj) { 
         
         $owner_pic = getUserImagePathTN($proj['usernameCreator']);
-        
         $projPercentageCompleted = calculateProjectCompletition($proj['id']);
          
     ?>
@@ -54,7 +53,6 @@ $userWorkingProjects = getUserProjectIsWorking($username);
     <?php foreach($userWorkingProjects as $proj) { 
         
         $owner_pic = getUserImagePathTN($proj['usernameCreator']);
-        
         $projPercentageCompleted = calculateProjectCompletition($proj['id']);
         
     ?>
@@ -71,18 +69,9 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
     <?php } ?>
 
-    <tr id="add_new_project">
-
-            <td><input type="text" name="proj_title" placeholder="New Project Title"></td>
-            <td><textarea name="proj_desc" placeholder="New Project Description"></textarea></td>
-            <td><input id="proj_deadline" type="date" name="proj_deadline" min="<?=date('Y-m-d',time());?>" value="<?=date('Y-m-d',time());?>" ></td>
-            <td id="complete">0 %</td>
-            <td id="user"><input type="text" name="proj_responsable" value=<?=$username?>></td>
-            <td><input type="button" value="Add"></td>
-
-        </tr>
-
 </table>
+
+<p id="add_project"><a href="add_project.php"> Start a new Project </a></p>
 
 </section>
 

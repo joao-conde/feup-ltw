@@ -270,3 +270,21 @@ section.main_area footer p a {
 }
 
 
+section.main_area p#add_project  {
+
+    width:50%;
+    margin:auto;
+    padding: 10px 0 0 0;
+    text-align: center;
+
+}
+
+section.main_area p#add_project a {
+    
+   text-decoration-color: #FF383F;
+   color: inherit;
+   font-size: 1.5em;
+    
+}
+
+

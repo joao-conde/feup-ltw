@@ -6,7 +6,7 @@ function getTDListsOfProject($projID){
 
     global $dbh;
     
-    $query = "SELECT * 
+    $query = "SELECT TodoList.*, Project.id id_project, Project.projTitle, Project.projDescription, Project.usernameCreator, Project.projDateDue  
               FROM TodoList JOIN Project ON Project.id = TodoList.projectID
               WHERE TodoList.projectID = :projId
               ORDER BY TodoList.tdlDateDue"; 
@@ -23,7 +23,7 @@ function getUserLists($username) {
 
     global $dbh;
 
-    $query = "SELECT ToDolist.*, Project.id id_project, Project.projTitle, Project.projDescription, Project.usernameCreator, Project.projDateDue  FROM TodoList
+    $query = "SELECT Todolist.*, Project.id id_project, Project.projTitle, Project.projDescription, Project.usernameCreator, Project.projDateDue  FROM TodoList
               JOIN Project ON TodoList.projectId = Project.id
               WHERE Project.usernameCreator = :username
               ORDER BY TodoList.tdlDateDue ASC";
@@ -103,6 +103,26 @@ function deleteList($list_id) {
     $stmt->execute();
 
     return $stmt->errorCode();
+
+}
+
+function insertNewList($project_id, $list_title, $list_desc, $list_deadline) {
+
+    global $dbh;
+
+    $query = 'INSERT INTO TodoList(projectID, tdlTitle, tdlDescription, tdlDateDue)
+                VALUES(:proj_id, :list_title, :list_desc, :list_deadline)';
+
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':proj_id', $project_id, PDO::PARAM_INT);
+    $stmt->bindParam(':list_title', $list_title, PDO::PARAM_STR);
+    $stmt->bindParam(':list_desc', $list_desc, PDO::PARAM_STR);
+    $stmt->bindParam(':list_deadline', $list_deadline, PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->errorCode();
+
 
 }
 

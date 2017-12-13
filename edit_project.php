@@ -4,6 +4,7 @@ include_once('templates/common/header.php');
 include_once('database/list.php');
 include_once('database/project.php');
 include_once('utils/utils_projects.php');
+include_once('utils/utils_lists.php');
 
 if(!logged())
     redirect('index.php');
@@ -26,14 +27,16 @@ if($foundproj == null)
     redirect('projects.php');
 
 $todoListsOfProject = getTDListsOfProject($foundproj['id']);
-// $project = getProject($foundlist['projectID']);
 
-if(isset($_SESSION['updateProjectMessage']))
+if(isset($_SESSION['updateProjectMessage']) && $_SESSION['updateProjectMessage'] != '')
     $message = $_SESSION['updateProjectMessage'];
+
+if(isset($_SESSION['insertProjectMessage']) && $_SESSION['insertProjectMessage'] != '')
+    $message = $_SESSION['insertProjectMessage'];
 
 ?>
 
-<script src="scripts/project.js" defer></script>
+<script src="scripts/edit_project.js" defer></script>
 <section class="main_area" id = "edit_project">
 
     <h1> Edit Project <?=$foundproj['projTitle']?> </h1>
@@ -43,12 +46,13 @@ if(isset($_SESSION['updateProjectMessage']))
                 if(isset($message))
                     echo $message;
                 $_SESSION['updateProjectMessage'] = '';
+                $_SESSION['insertProjectMessage'] = '';
             ?>
     </p>
     
     <form id="edit_project_form" action="action_update_project.php" method="post">
 
-        <input type="text" name="id" id="id" value="<?=$list['id']?>">
+        <input type="text" name="id" id="id" value="<?=$foundproj['id']?>">
         <input type="text" name="projectdeadline" value="<?=$foundproj['projDateDue']?>">
 
         <label for="title">Title </label>  
@@ -61,44 +65,47 @@ if(isset($_SESSION['updateProjectMessage']))
         <label for="description"> Description </label>
         <textarea name="description" id="description"><?=$foundproj['projDescription']?></textarea>
 
-        <input type = "submit" value="Confirm">
+        <input type = "submit" value="Save">
 
     </form>
 
-    <h2> PROJECTS </h2>
+    <h2> TODO Lists </h2>
 
-    <table id="projects">
+    <table id="project_lists">
 
         <tr>
-            <th>TODO Lists</th>
-            <th>Completition</th>
+            <th>List Title</th>
+            <th>Description</th>
             <th>Deadline</th>
-            <th>Responsable</th>
+            <th>%</th>
             <th></th>
         </tr>
 
-        <?php foreach($todoListsOfProject as $todolist) { ?>
-
+        <?php 
+        
+            foreach($todoListsOfProject as $todolist) { 
+                
+                $list_percentage = calculateTODOListCompletition($todolist['id']);
+            
+        ?>
             <tr>
-           <?php $tdPercentageCompleted = calculateProjectCompletition($foundproj['id']); ?>
-
                 <td><?=$todolist['tdlTitle']?></td>
-                <td><?=$tdPercentageCompleted;?> % </td>
+                <td><?=$todolist['tdlDescription']?></td>
                 <td><?=date('d/m/Y',$todolist['tdlDateDue'])?></td>
-                <td id="taskdeadline"><?=$todolist['tdlDateDue']?></td>
-                <td><img src="<?=getUserImagePathTN($todolist['userResponsable'])?>"</td>
-
+                <td><?=$list_percentage?>%</td>
+                <td class="hidden" id="taskdeadline"><?= $todolist['tdlDateDue'];?></td>
+                <td><a href="edit_list.php?list_id=<?=$todolist['id']?>"><img src="images/edit.svg" class="edit"></a></td>
             </tr>
 
         <?php } ?>
 
-        <tr id="add_new_task">
+        <tr id="add_new_list">
 
-            <td><input type="text" name="task_title" placeholder="New Task Title"></td>
-            <td id="range"><input id="compl" type="range" min="0" max="100" step="1" name="task_completition" value="0"><label for="compl">0</label>%</td>
-            <td><input type="date" name="task_deadline" value="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>" max="<?=date('Y-m-d',$foundlist['tdlDateDue']);?>"></td>
-            <td><input type="text" name="task_responsable" placeholder="New Task Responsable"><ul id="suggestions"></ul></td>
-            <td><input type="button" value="Add"></td>
+            <td><input type="text" name="list_title" placeholder="New Task Title"></td>
+            <td id="td_list_desc"><textarea name="list_desc" placeholder="New List Description"></textarea></td>
+            <td><input type="date" name="list_deadline" value="<?=date('Y-m-d',$foundproj['projDateDue']);?>"  max="<?=date('Y-m-d',$foundproj['projDateDue']);?>"></td>
+            <td></td>
+            <td><input name="add_new_list_button" type="button" value="Add"></td>
 
         </tr>
 

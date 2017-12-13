@@ -18,7 +18,7 @@
         if($numberOfTasks == 0)
             return (int) $totalCompleted;
 
-        return (int) ($totalCompleted/$numberOfTasks);
+        return round(($totalCompleted/$numberOfTasks));
     }
 ?>
 
