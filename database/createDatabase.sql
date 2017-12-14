@@ -19,8 +19,7 @@ CREATE TABLE User_Project(
     username INTEGER REFERENCES User,
     idProject INTEGER REFERENCES Project,
     userRole TEXT,
-    PRIMARY KEY(username, idProject)/* ,
-    CHECK(idProject, 'Administrator') */
+    PRIMARY KEY(username, idProject)
 );
 
 CREATE TABLE Project(

@@ -28,7 +28,7 @@ $userTasks = getUserTasks($username);
     
     <?php foreach($userTasks as $task) { ?>
 
-        <tr <?php /* if($task['percentageCompleted'] == 100) echo 'class="task_completed"' */?>>
+        <tr <?php ?>>
 
             <td><?=$task['taskTitle'];?></td>
             <td class="mobileHidden"><?=$task['taskDescription'];?></td>
