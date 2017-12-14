@@ -79,8 +79,8 @@
     }
 
 
-	body div#profile {
-        grid-area: 1/2 / span 1 / span 1;
+	body div#profile h3 {
+        display: none;
 	}
 
     body img{
