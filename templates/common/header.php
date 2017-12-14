@@ -10,9 +10,9 @@ include_once('utils/utils_general.php');
     <script src="https://use.fontawesome.com/8518b8a976.js"></script>
     <title>Task Manager</title>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="images/logo.svg">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/forms.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
