@@ -43,7 +43,6 @@
     }
 
     function setUserSession($user) {
-        //resetSessionVariables();
         $_SESSION['username'] = $user['username'];
         $_SESSION['fullName'] = $user['fullName'];
         $_SESSION['bio'] = $user['shortDescription'];

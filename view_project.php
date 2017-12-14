@@ -5,6 +5,7 @@ include_once('database/project.php');
 include_once('utils/utils_projects.php');
 include_once('utils/utils_lists.php');
 include_once('utils/utils_general.php');
+include_once('utils/utils_user.php');
 
 if(!logged())
     redirect('index.php');
@@ -24,7 +25,9 @@ if($foundproject == null)
     redirect('projects.php');
 
 
+$collaborators = getUsersFromProject($foundproject['id']);
 $projectLists = getUserLists($_SESSION['username']);
+
     
 ?>
 
@@ -32,17 +35,32 @@ $projectLists = getUserLists($_SESSION['username']);
 
     <h1><span id="project_title">Project: </span><?=$foundproject['projTitle']?></h1>
 
-    <label for="project_desc">What to Do</label>
+    <label for="project_desc">Project Description</label>
     <div><textarea disabled id="project_desc"><?=$foundproject['projDescription']?></textarea></div>
+
+    <label for"proj_deadline">Deadline</label>
+    <p><?= date('Y-m-d',$foundproject['projDateDue'])?></p>
+
+    <ul>
+        <?php 
+            foreach($collaborators as $collaborator) { 
+                
+                $userPicPath = getUserImagePathTN($collaborator['username']);
+        ?>
+
+            <li><?=$collaborator['fullName']?><img src="<?=$userPicPath?>"></li>
+
+        <?php } ?>
+
+    </ul>
 
     <table>
 
         <tr>
             <th>TODO List</th>
+            <th>Description</th>
             <th>Completition</th>
             <th>Deadline</th>
-            <th>Responsable</th>
-            <th></th>
         </tr>
 
         <?php foreach($projectLists as $list) { ?>
@@ -50,11 +68,9 @@ $projectLists = getUserLists($_SESSION['username']);
             <tr>
 
                 <td><?=$list['tdlTitle']?></td>
+                <td><?=$list['tdlDescription']?></td>
                 <td><?=calculateTODOListCompletition($list['id'])?> % </td>
                 <td><?=date('d/m/Y',$list['tdlDateDue'])?></td>
-                <td><?=$foundproject['usernameCreator']?></td>
-                <td><img src="<?=getUserImagePathTN($foundproject['usernameCreator'])?>"</td>
-
             </tr>
 
         <?php } ?>

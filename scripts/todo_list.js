@@ -18,12 +18,8 @@ let usersList = document.querySelector("table#tasks_list tr#add_new_task td data
 let list_id = parseInt(document.querySelector("form > input#id").value);
 
 let ajaxRequestFindUsers = new XMLHttpRequest();
-<<<<<<< HEAD
-let ajaxRequestChangeTaskCompletion = new XMLHttpRequest();
-=======
 let ajaxRequestInsertTask = new XMLHttpRequest();
 let ajaxRequestDeleteTask = new XMLHttpRequest();
->>>>>>> ef86dddf778cff4dc3e1fd9c03be236501b090bb
 
 
 const api_find_users = "api_find_users.php";
@@ -213,7 +209,7 @@ function sendRequestAddTask() {
     ajaxRequestInsertTask.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     ajaxRequestInsertTask.send(encodeForAjax(requestData));
 
-    ajaxRequestChangeTaskCompletion.addEventListener('load',receiveNewTaskFromAjax);
+    ajaxRequestInsertTask.addEventListener('load',receiveNewTaskFromAjax);
 
 }
 
@@ -317,7 +313,9 @@ addButton.addEventListener('click',sendRequestAddTask);
 
 let table = document.querySelector('table#tasks_list').childNodes[1];
 
-for(let i = 1; i < table.childNodes.length-1; i++) {
+
+
+for(let i = 1; i < table.childNodes.length-2; i++) {
 
     let tr = table.childNodes[i];
 
@@ -333,6 +331,8 @@ for(let i = 1; i < table.childNodes.length-1; i++) {
 
 
 function sendAjaxRequestDeleteTask(event) {
+
+    console.log(this);
 
     event.preventDefault();
     let task_id = this;  // wow javascript is awesome
