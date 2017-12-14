@@ -19,8 +19,8 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
 <table id = "projects">
     <tr>
-        <th>Name</th>
-        <th class="mobileHidden">Detail</th>
+        <th>Project</th>
+        <th class="mobileHidden">Description</th>
         <th>Deadline</th>
         <th>%</th>
         <th class="mobileHidden">Owner</th>

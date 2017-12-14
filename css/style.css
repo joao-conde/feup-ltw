@@ -12,6 +12,30 @@ body{
     grid-template-columns: auto;
 }
 
+body nav#menu ul li{
+    margin-left: 6%;
+}
+
+body section#edit_project form ul li{
+    flex-direction: column;
+}
+
+body section#edit_project form ul li img{
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+
+body section#edit_project form ul li button{
+    width: 30px;
+    height: 30px;
+    background: url('../images/delete.svg') no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+
 
 body > header {
     background-color: rgb(199, 43, 51);
@@ -145,6 +169,18 @@ body > section.main_area > table tr > td {
     border-bottom: 1px solid #FF383F;
 }
 
+body section#tasks table th#taskTitle {
+    width: 10%;
+}
+
+body section#tasks table th#percentageCompleted {
+    width: 10%;
+}
+
+body section#tasks table th#todoListID {
+    width: 10%;
+}
+
 
 
 body > section.main_area > table tr > td > a {
@@ -166,6 +202,8 @@ body > section.main_area > table tr > td > a > img {
         height: 20px;
     
 }
+
+
 
 body > section.main_area > table div#task_semaphore {
     
@@ -308,4 +346,14 @@ body div#calendar_section_top ul {
     background-color: #EFEFEF;
     margin: 0;
     justify-content: center;
+}
+
+body section#edt_project table th#title{
+    width: 10%;
+    display: none;
+}
+
+body section#edit_project table tr#add_new_list td#td_list_desc textarea{
+    resize: none;
+    width: 80%;
 }

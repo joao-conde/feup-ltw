@@ -74,7 +74,7 @@ if(isset($_SESSION['insertProjectMessage']) && $_SESSION['insertProjectMessage']
     <table id="project_lists">
 
         <tr>
-            <th>List Title</th>
+            <th id="title">List Title</th>
             <th>Description</th>
             <th>Deadline</th>
             <th>%</th>
@@ -101,7 +101,7 @@ if(isset($_SESSION['insertProjectMessage']) && $_SESSION['insertProjectMessage']
 
         <tr id="add_new_list">
 
-            <td><input type="text" name="list_title" placeholder="New Task Title"></td>
+            <td><input type="text" name="list_title" placeholder="New List Title"></td>
             <td id="td_list_desc"><textarea name="list_desc" placeholder="New List Description"></textarea></td>
             <td><input type="date" name="list_deadline" value="<?=date('Y-m-d',$foundproj['projDateDue']);?>"  max="<?=date('Y-m-d',$foundproj['projDateDue']);?>"></td>
             <td></td>

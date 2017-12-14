@@ -39,7 +39,7 @@ $projectLists = getUserLists($_SESSION['username']);
 
         <tr>
             <th>TODO List</th>
-            <th>Completition</th>
+            <th>%</th>
             <th>Deadline</th>
             <th>Responsable</th>
             <th></th>

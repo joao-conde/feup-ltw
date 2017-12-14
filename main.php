@@ -17,7 +17,7 @@ $userTasks = getUserTasks($username);
 
 <table id='my_tasks'>
     <tr>
-        <th id='taskTitle'>Name</th>
+        <th id='taskTitle'>Task</th>
         <th class="mobileHidden" id='taskDescription'>Description</th>
         <th id='taskDateDue'>Deadline</th>
         <th id='percentageCompleted'> % <input id="show_completed", type="checkbox" checked></th>
