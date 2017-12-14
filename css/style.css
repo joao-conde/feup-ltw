@@ -56,7 +56,6 @@ body > header {
     grid-template-columns: 1fr 7% 10%;
     grid-template-rows: 1fr;
     height: 80px;
-    /* visibility: hidden; */
 }
 
 body > header > div#logo h1 {
@@ -168,11 +167,6 @@ body > section.main_area > table {
     margin: auto;
 }
 
-/*TODO: Add some css to task_completed*/
-body>section.main_area>table tr.task_completed {
-    background-color: rgb(148, 255, 162)
-}
-
 
 body > section.main_area > table tr > th {
     text-align: left;
@@ -260,7 +254,6 @@ body > section.main_area > table div#task_semaphore {
 body > section#view_todo_list > label {
 
     display: block;
-    /* width: 100%; */
     border: 1px solid black;
     padding: 1em;
     font-size: 1.2em;
@@ -328,7 +321,6 @@ body > section table#lists_list tr td > form.disabled > input#delete_list {
 body > section#view_project > label {
     
        display: block;
-       /* width: 100%; */
        border: 1px solid black;
        padding: 1em;
        font-size: 1.2em;    
@@ -358,7 +350,6 @@ body > footer {
     grid-template-rows: auto;
     grid-template-columns: auto auto;
     border-top: 1px solid rgb(34, 31, 31);
-    /* visibility: hidden; */
 
 }
 
@@ -415,4 +406,19 @@ body section#edt_project table th#title{
 body section#edit_project table tr#add_new_list td#td_list_desc textarea{
     resize: none;
     width: 80%;
+}
+
+body section.main_area ul#user_pics{
+    display: flex;
+    list-style: none;
+    justify-content: center; 
+}
+
+body section.main_area ul#user_pics li{
+    margin: 1em;
+}
+
+body section.main_area ul#user_pics li img{
+    width: 100px;
+    height: 100px;
 }

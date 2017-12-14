@@ -26,7 +26,7 @@ if($foundproject == null)
 
 
 $collaborators = getUsersFromProject($foundproject['id']);
-$projectLists = getUserLists($_SESSION['username']);
+$projectLists = getTDListsOfProject($foundproject['id']);
 
     
 ?>
@@ -41,7 +41,7 @@ $projectLists = getUserLists($_SESSION['username']);
     <label for"proj_deadline">Deadline</label>
     <p><?= date('Y-m-d',$foundproject['projDateDue'])?></p>
 
-    <ul>
+    <ul id='user_pics'>
         <?php 
             foreach($collaborators as $collaborator) { 
                 
