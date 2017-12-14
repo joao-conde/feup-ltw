@@ -6,7 +6,7 @@
 
         global $dbh;
 
-        $query='SELECT User.fullName, Project.projTitle, User_Project.userRole FROM (
+        $query='SELECT User.username, User.fullName, Project.projTitle, User_Project.userRole FROM (
                     SELECT idProject FROM User_Project
                     WHERE username = :username
                 ) AS Projects

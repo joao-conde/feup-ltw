@@ -174,6 +174,44 @@
 
     }
 
+    function getUsersFromProject($proj_id) {
+        
+        global $dbh;
+        
+        $query = 'SELECT User.* 
+                  FROM User 
+                  JOIN User_Project ON User.username = User_Project.username
+                  JOIN Project ON Project.id = User_Project.idProject
+                  WHERE Project.id = :proj_id';
 
-    
+
+        $stmt = $dbh->prepare($query);
+
+        $stmt->bindParam(':proj_id', $proj_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+
+    }
+
+    function removeUserFromProject($username,$proj_id) {
+
+        global $dbh;
+
+        $query = 'DELETE FROM User_Project
+                  WHERE username = :username AND idProject = :proj_id';
+
+        $stmt = $dbh->prepare($query);
+
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        $stmt->bindParam(':proj_id', $proj_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->errorCode();
+
+    }
+
+
 ?>

@@ -19,7 +19,7 @@ if(isset($_SESSION['deleteListMessage']))
 
 ?>
 <script src="scripts/list.js" defer></script>
-<section class="main_area">
+<section class="main_area" id="todo_lists">
 
 <p class="messages"> 
     <?php 
@@ -31,11 +31,11 @@ if(isset($_SESSION['deleteListMessage']))
 
 <table id="lists_list">
     <tr>
-        <th>Name</th>
-        <th class="mobileHidden">Detail</th>
+        <th>TODO List</th>
+        <th>Description</th>
         <th>Deadline</th>
-        <th> % </th>
-        <th class="mobileHidden">Project</th>
+        <th  % </th>
+        <th>Project</th>
         <th></th>
         <th></th>
         <th></th>
@@ -79,10 +79,10 @@ if(isset($_SESSION['deleteListMessage']))
         <td><?=$list['tdlTitle'];?></td>
         <td class="mobileHidden"><?=$list['tdlDescription'];?></td>
         <td><?=date('d/m/Y',$list['tdlDateDue']);?></td>
-        <td><?=$tdPercentageCompleted;?> % </td>
-        <td class="mobileHidden"><a href="view_project.php?project_id=<?=$list['id_project']?>"><?=$list['projTitle'];?></a></td>
+        <td class="mobileHidden"><?=$tdPercentageCompleted;?> % </td>
+        <td><a href="view_project.php?project_id=<?=$list['id_project']?>"><?=$list['projTitle'];?></a></td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
-        <td><a href="view_list.php?list_id=<?=$list['id'];?>"><img class="view" src="images/eye.svg"></a></td>
+        <td class="mobileHidden"><a href="view_list.php?list_id=<?=$list['id'];?>"><img class="view" src="images/eye.svg"></a></td>
         <td></td>
         
 
@@ -91,8 +91,6 @@ if(isset($_SESSION['deleteListMessage']))
     <?php } ?>
 
 </table>
-
-
 
 </section>
 

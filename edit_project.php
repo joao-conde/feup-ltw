@@ -5,6 +5,7 @@ include_once('database/list.php');
 include_once('database/project.php');
 include_once('utils/utils_projects.php');
 include_once('utils/utils_lists.php');
+include_once('utils/utils_user.php');
 
 if(!logged())
     redirect('index.php');
@@ -27,6 +28,7 @@ if($foundproj == null)
     redirect('projects.php');
 
 $todoListsOfProject = getTDListsOfProject($foundproj['id']);
+$collaborators = getUsersFromProject($foundproj['id']);
 
 if(isset($_SESSION['updateProjectMessage']) && $_SESSION['updateProjectMessage'] != '')
     $message = $_SESSION['updateProjectMessage'];
@@ -69,12 +71,28 @@ if(isset($_SESSION['insertProjectMessage']) && $_SESSION['insertProjectMessage']
 
     </form>
 
+<h2> Project Team </h2>
+    <ul>
+        <?php 
+            foreach($collaborators as $collaborator) { 
+                
+                $userPicPath = getUserImagePathTN($collaborator['username']);
+        ?>
+
+            <li title="<?=$collaborator['fullName']?>"><img src="<?=$userPicPath?>"></li>
+
+        <?php } ?>
+
+    </ul>
+
+    <a href="edit_project_team.php?project_id=<?=$foundproj['id']?>"> Edit Project Team </a>
+
     <h2> TODO Lists </h2>
 
     <table id="project_lists">
 
         <tr>
-            <th>List Title</th>
+            <th id="title">List Title</th>
             <th>Description</th>
             <th>Deadline</th>
             <th>%</th>
@@ -101,7 +119,7 @@ if(isset($_SESSION['insertProjectMessage']) && $_SESSION['insertProjectMessage']
 
         <tr id="add_new_list">
 
-            <td><input type="text" name="list_title" placeholder="New Task Title"></td>
+            <td><input type="text" name="list_title" placeholder="New List Title"></td>
             <td id="td_list_desc"><textarea name="list_desc" placeholder="New List Description"></textarea></td>
             <td><input type="date" name="list_deadline" value="<?=date('Y-m-d',$foundproj['projDateDue']);?>"  max="<?=date('Y-m-d',$foundproj['projDateDue']);?>"></td>
             <td></td>

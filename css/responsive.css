@@ -1,54 +1,120 @@
-@media(max-width: 70em){
+@media(max-width: 40em){
 
-    body header{
-		grid-template-columns: auto auto;
+    /* MOBILE RESPONSIVE CSS */
+
+    body{
+        font-size: 0.9em;
+    }
+
+    body nav#menu{
+        display: none;
+    }
+
+    body section#register form{
+        width: 100%;
+    }
+
+    body section#register form label[for="username"]{
+        text-align: center;
+    }
+
+    body section#register form input[type="text"]{
+        width: 80%;
+        text-align: center;        
+    }
+
+    body section#register form label[for="pwd"]{
+        text-align: center;
+    }
+
+    body section#register form input[type="password"]{
+        width: 80%;
+        text-align: center;        
+    }
+
+    body section#register form label[for="repeatPassword"]{
+        text-align: center;
+    }
+
+    body section#register form input[type="password"]{
+        width: 80%;
+        text-align: center;        
+    }
+
+
+    body section#register form label[for="fullname"]{
+        text-align: center;
+    }
+    
+    body section#register form input[type="text"]{
+        width: 80%;
+        text-align: center;        
+    }
+
+    body section#register form label[for="bio"]{
+        text-align: center;
+    }
+    
+    body section#register form textarea{
+        width: 80%;
+        text-align: center;        
+    }
+
+    body section#login form{
+        width: 100%;
+    }
+
+    body section#login form label[for="username"]{
+        text-align: center;
+    }
+
+    body section#login form label[for="password"]{
+        text-align: center;
+    }
+
+    body section#login form input[type="text"]{
+        width: 80%;
+        text-align: center;
+    }
+
+    body section#login form input[type="password"]{
+        width: 80%;
+        text-align: center;
+    }
+
+
+	body div#profile h3 {
+        display: none;
 	}
 
-	body div#profile {
-        grid-area: 1/2 / span 1 / span 1;
-	}
-
-    /* Esconde a imagem de perfil do utilizador */
     body img{
         display: none;
     }
 
-    /* TASKS CSS*/
-
-    /* Esconde os table headers indesejados */
-    body section#tasks_list table th.mobileHidden{
+    body section#tasks table th.mobileHidden{
         display: none;
     }
 
-    /* Esconde todos as table rows indesejados */
-    body section#tasks_list table tr td.mobileHidden{
-        display: none;
+    body section#tasks table th div#taskTitle{
+        width: 30%;
+        padding-right: 5em;
+
     }
 
-    /* LISTS CSS*/
-
-    /* Esconde os table headers indesejados */
-    body section#todo_lists table th.mobileHidden{
-        display: none;
+    body section#tasks table th div#taskDateDue{
+        padding-right: 1.2em;
     }
 
-    /* Esconde todos as table rows indesejados */
-    body section#todo_lists table tr td.mobileHidden{
-        display: none;
+    body section#tasks table th div#percentageCompleted{
+       width: 10%;
     }
 
-
-    /* PROJECTS CSS*/
-
-    /* Esconde os table headers indesejados */
-    body section#projects_list table th.mobileHidden{
+    body section#tasks table td#semaphore div{
+        margin-right: 100%;
+     }
+    
+    body section#tasks table tr td.mobileHidden{
         display: none;
-    }
-
-    /* Esconde todos as table rows indesejados */
-    body section#projects_list table tr td.mobileHidden{
-        display: none;
-    }
-
+    } 
 
 }

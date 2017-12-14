@@ -70,8 +70,8 @@ if(isset($_SESSION['updateListMessage']))
 
         <tr>
             <th>Task</th>
-            <th>Detail</th>
-            <th>Completition</th>
+            <th>Description</th>
+            <th>%</th>
             <th>Deadline</th>
             <th>Responsable</th>
             <th></th>
@@ -100,6 +100,7 @@ if(isset($_SESSION['updateListMessage']))
 
         <tr id="add_new_task">
 
+            <td id="task_id" class="hidden"><?= $task['id']?></td>
             <td id="td_task_title"><input type="text" name="task_title" placeholder="New Task Title"></td>
             <td id="td_task_desc"><textarea name="task_desc" placeholder="New Task Description"></textarea></td>
             <td id="range"><input id="compl" type="range" min="0" max="100" step="5" name="task_completition" value="0"><label for="compl">0</label>%</td>

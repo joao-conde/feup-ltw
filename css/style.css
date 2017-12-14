@@ -12,6 +12,30 @@ body{
     grid-template-columns: auto;
 }
 
+body nav#menu ul li{
+    margin-left: 6%;
+}
+
+body section#edit_project form ul li{
+    flex-direction: column;
+}
+
+body section#edit_project form ul li img{
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+
+body section#edit_project form ul li button{
+    width: 30px;
+    height: 30px;
+    background: url('../images/delete.svg') no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+
 
 body > header {
     background-color: rgb(199, 43, 51);
@@ -168,6 +192,18 @@ body > section.main_area > table tr > td {
     border-bottom: 1px solid #FF383F;
 }
 
+body section#tasks table th#taskTitle {
+    width: 10%;
+}
+
+body section#tasks table th#percentageCompleted {
+    width: 10%;
+}
+
+body section#tasks table th#todoListID {
+    width: 10%;
+}
+
 
 
 body > section.main_area > table tr > td > a {
@@ -189,6 +225,8 @@ body > section.main_area > table tr > td > a > img {
         height: 20px;
     
 }
+
+
 
 body > section.main_area > table div#task_semaphore {
     
@@ -267,6 +305,7 @@ body > section table#lists_list tr td > form.disabled > input#delete_list {
 }
 
 
+
 body > section#view_project > label {
     
        display: block;
@@ -317,7 +356,7 @@ body > footer > p:last-of-type {
 
 input[type='range'] {
     -webkit-appearance: none;
-    width: 80%;
+    width: 60%;
     height: 7px;
     background: #858484;
     outline: none;
@@ -325,6 +364,7 @@ input[type='range'] {
     -webkit-transition: .2s;
     transition: opacity .2s;
     margin-right: 15px;
+    margin-left: 15px;
 }
 
 input[type='range']:hover {
@@ -340,12 +380,20 @@ input[type='range']::-webkit-slider-thumb {
     border-radius: 7.5px;
 }
 
-input[type='range']::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    background: rgb(199, 43, 51);
-    cursor: pointer;
-    border-radius: 7.5px;
+body div#calendar_section_top ul {
+    display: flex;
+    list-style: none;
+    background-color: #EFEFEF;
+    margin: 0;
+    justify-content: center;
 }
 
+body section#edt_project table th#title{
+    width: 10%;
+    display: none;
+}
 
+body section#edit_project table tr#add_new_list td#td_list_desc textarea{
+    resize: none;
+    width: 80%;
+}

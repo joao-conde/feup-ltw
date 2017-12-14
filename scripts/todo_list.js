@@ -317,7 +317,9 @@ addButton.addEventListener('click',sendRequestAddTask);
 
 let table = document.querySelector('table#tasks_list').childNodes[1];
 
-for(let i = 1; i < table.childNodes.length-1; i++) {
+
+
+for(let i = 1; i < table.childNodes.length-2; i++) {
 
     let tr = table.childNodes[i];
 
@@ -333,6 +335,8 @@ for(let i = 1; i < table.childNodes.length-1; i++) {
 
 
 function sendAjaxRequestDeleteTask(event) {
+
+    console.log(this);
 
     event.preventDefault();
     let task_id = this;  // wow javascript is awesome
