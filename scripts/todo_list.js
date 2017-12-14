@@ -1,5 +1,9 @@
 'use strict';
 
+//===== SET ACTIVE TAB =====
+changeActiveTab(1);
+
+
 let title = document.querySelector('form > input[name=title');
 let desc = document.querySelector('form > textarea[name=description');
 let deadline = document.querySelector('form > input[name=deadline');

@@ -2,6 +2,10 @@
 
     /* MOBILE RESPONSIVE CSS */
 
+    body{
+        font-size: 0.9em;
+    }
+
     body nav#menu{
         display: none;
     }
@@ -91,20 +95,22 @@
         display: none;
     }
 
-    body section#tasks table th#taskTitle{
+    body section#tasks table th div#taskTitle{
         width: 30%;
+        padding-right: 5em;
+
     }
 
-    body section#tasks table th#taskDateDue{
-        width: 20%;
+    body section#tasks table th div#taskDateDue{
+        padding-right: 1.2em;
     }
 
-    body section#tasks table th#percentageCompleted{
+    body section#tasks table th div#percentageCompleted{
        width: 10%;
     }
 
     body section#tasks table td#semaphore div{
-        margin-left: 50%;
+        margin-right: 100%;
      }
     
     body section#tasks table tr td.mobileHidden{

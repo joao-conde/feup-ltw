@@ -13,6 +13,7 @@ $userTasks = getUserTasks($username);
 ?>
 
 <script src="scripts/task.js" defer></script>
+
 <section class="main_area" id="tasks">
 
 <p class="messages"> 
@@ -25,11 +26,11 @@ $userTasks = getUserTasks($username);
 
 <table id='my_tasks'>
     <tr>
-        <th id='taskTitle'>Task</th>
-        <th class="mobileHidden" id='taskDescription'>Description</th>
-        <th id='taskDateDue'>Deadline</th>
-        <th id='percentageCompleted'> % <input id="show_completed", type="checkbox" checked></th>
-        <th class="mobileHidden" id='todoListID'>TODO List</th>
+        <th><div class='div_order_by' id='taskTitle'>Name<img src="images/down-arrow.png" alt="Down arrow"></div></th>
+        <th class='mobileHidden'><div class='div_order_by' id='taskDescription'>Description<img src="images/down-arrow.png" alt="Down arrow"></div></th>
+        <th><div class='div_order_by' id='taskDateDue'>Deadline<img src="images/down-arrow.png" alt="Down arrow"></div></th>
+        <th><div class='div_order_by' id='percentageCompleted'> % <img src="images/down-arrow.png" alt="Down arrow"></div><input id="show_completed", type="checkbox" checked><label for='show_completed'>Hide completed tasks.</label></th>
+        <th class='mobileHidden'><div class='div_order_by' id='todoListID'>TODO List<img src="images/down-arrow.png" alt="Down arrow"></div></th>
         <th id="semaphore"></th>
     </tr>
     

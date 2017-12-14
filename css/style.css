@@ -132,6 +132,12 @@ body > nav#menu ul {
 body > nav#menu > ul > li {
     flex-grow: 1;
     padding: 1em;
+    font-weight: bold;
+}
+
+body > nav#menu > ul > li.active {
+    text-decoration: underline;
+    text-decoration-color: rgb(199, 43, 51);
 }
 
 body > nav#menu > ul > li > a {
@@ -139,6 +145,7 @@ body > nav#menu > ul > li > a {
     padding: 1em;
     color: rgb(34, 31, 31);
 }
+
 
 body > nav#menu > ul > li > a:hover {
     background-color: rgb(201, 199, 199);
@@ -173,10 +180,26 @@ body > section.main_area > table tr > th {
     padding-bottom: 1em; 
 }
 
+body > section.main_area > table tr > th > div.div_order_by {
+    display: inline-block;
+    cursor: pointer;
+}
+
+body > section.main_area > table tr > th > div.div_order_by > img {
+    height: 10px;
+    width: 10px;
+    padding-left: 4px;
+    padding-right: 10px;
+}
+
+body > section.main_area > table tr > th > label[for='show_completed'] {
+    font-size: 80%;
+    color: rgb(34, 31, 31);
+}
+
 body > section.main_area > table tr > td {
     text-align: left;
     padding: 0.75em 0;
-
     border-bottom: 1px solid #FF383F;
 }
 
@@ -350,13 +373,30 @@ body > footer > p:last-of-type {
     text-align: right;
 }
 
+input[type='range'] {
+    -webkit-appearance: none;
+    width: 60%;
+    height: 7px;
+    background: #858484;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-right: 15px;
+    margin-left: 15px;
+}
 
-/* ========== CALENDAR ============ */
+input[type='range']:hover {
+    opacity: 1;
+}
 
-body div#calendar_section_top {
-    border-top: 1px solid rgb(34, 31, 31);
-    border-bottom: 1px solid rgb(34, 31, 31);
-    grid-area: 2 / 1 / span 1 / span 1;
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: rgb(199, 43, 51);
+    cursor: pointer;
+    border-radius: 7.5px;
 }
 
 body div#calendar_section_top ul {

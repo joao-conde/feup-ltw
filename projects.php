@@ -18,6 +18,7 @@ if(isset($_SESSION['deleteProjMessage']))
 
 
 ?>
+<script src="scripts/project.js" defer></script>
 
 <section class="main_area" id="projects_list">
 

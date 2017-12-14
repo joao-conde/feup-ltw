@@ -7,6 +7,8 @@
         redirect('index.php');
     }
 ?>
+<script src="scripts/collaborators.js" defer></script>
+
 <section class="main_area" id="collaborators_list">
     <table>
         <tr>
