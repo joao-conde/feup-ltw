@@ -17,16 +17,14 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
 <section class="main_area" id="projects_list">
 
-
-
 <table id = "projects">
     <tr>
         <th>Name</th>
         <th class="mobileHidden">Detail</th>
         <th>Deadline</th>
-        <th class="mobileHidden">%</th>
+        <th>%</th>
         <th class="mobileHidden">Owner</th>
-        <th class="mobileHidden"></th>
+        <th></th>
     </tr>
 
     <?php foreach($userOwnsProjects as $proj) { 
@@ -40,9 +38,9 @@ $userWorkingProjects = getUserProjectIsWorking($username);
         <td><a href="#"><?=$proj['projTitle'];?></a></td>
         <td class="mobileHidden"><?=$proj['projDescription'];?></td>
         <td><?=date('d/m/Y',$proj['projDateDue']);?></td>
-        <td class="mobileHidden"><?=$projPercentageCompleted;?> % </td>
+        <td><?=$projPercentageCompleted;?> % </td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
-        <td class="mobileHidden"><a href="edit_project.php?project_id=<?=$proj['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
+        <td><a href="edit_project.php?project_id=<?=$proj['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
         
     </tr>
 
@@ -60,9 +58,9 @@ $userWorkingProjects = getUserProjectIsWorking($username);
         <td><a href="#"><?=$proj['projTitle'];?></a></td>
         <td class="mobileHidden"><?=$proj['projDescription'];?></td>
         <td><?=date('d/m/Y',$proj['projDateDue']);?></td>
-        <td class="mobileHidden"><?=$projPercentageCompleted;?> % </td>
+        <td><?=$projPercentageCompleted;?> % </td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
-        <td class="mobileHidden"><a href="view_project.php?project_id=<?=$proj['id'];?>"><img src="images/eye.svg" class="view"></a></td>
+        <td><a href="view_project.php?project_id=<?=$proj['id'];?>"><img src="images/eye.svg" class="view"></a></td>
         
     </tr>
 

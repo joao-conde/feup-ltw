@@ -164,6 +164,7 @@ function loadRequestOrderingTasksBy(){
 
         let taskDesc = document.createElement("td");
         taskDesc.innerHTML = task.taskDescription;
+        taskDesc.setAttribute('class','mobileHidden');
         tr.appendChild(taskDesc);
 
         let taskDate = document.createElement("td");
@@ -196,6 +197,7 @@ function loadRequestOrderingTasksBy(){
         taskTdlLink.setAttribute("href", "#");
         taskTdlLink.innerHTML = task.tdlTitle;
         taskTdlTitle.appendChild(taskTdlLink);
+        taskTdlTitle.setAttribute('class','mobileHidden');
         tr.appendChild(taskTdlTitle);
 
 

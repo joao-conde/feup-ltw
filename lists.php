@@ -19,7 +19,7 @@ if(isset($_SESSION['deleteListMessage']))
 
 ?>
 
-<section class="main_area">
+<section class="main_area" id="todo_lists">
 
 <p class="messages"> 
     <?php 
@@ -34,11 +34,11 @@ if(isset($_SESSION['deleteListMessage']))
         <th>Name</th>
         <th class="mobileHidden">Detail</th>
         <th>Deadline</th>
-        <th> % </th>
-        <th class="mobileHidden">Project</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th class="mobileHidden"> % </th>
+        <th>Project</th>
+        <th class="mobileHidden"></th>
+        <th class="mobileHidden"></th>
+        <th class="mobileHidden"></th>
     </tr>
     
     <?php foreach($userOwnsLists as $list) { 
@@ -51,13 +51,13 @@ if(isset($_SESSION['deleteListMessage']))
 
     <tr>
         <td><?=$list['tdlTitle'];?></td>
-        <td><?=$list['tdlDescription'];?></td>
+        <td class="mobileHidden"><?=$list['tdlDescription'];?></td>
         <td><?=date('d/m/Y',$list['tdlDateDue']);?></td>
-        <td><?=$tdPercentageCompleted;?> % </td>
+        <td class="mobileHidden"><?=$tdPercentageCompleted;?> % </td>
         <td><a href="edit_project.php?project_id=<?=$list['id_project']?>"><?=$list['projTitle'];?></a></td>
-        <td><img src="<?=$owner_pic?>"></td>
-        <td><a href="edit_list.php?list_id=<?=$list['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
-        <td><form action="action_delete_list.php" method="post" <?php if($number_tasks > 0) echo("class = disabled") ?>>
+        <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
+        <td class="mobileHidden"><a href="edit_list.php?list_id=<?=$list['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
+        <td class="mobileHidden"><form action="action_delete_list.php" method="post" <?php if($number_tasks > 0) echo("class = disabled") ?>>
                 <input type="text" name="list_id" class="hidden" value=<?=$list['id']?>>
                 <input id="delete_list" type="submit" value="" <?php if($number_tasks > 0) echo("disabled title=Disabled") ?>>
             </form>
@@ -79,10 +79,10 @@ if(isset($_SESSION['deleteListMessage']))
         <td><?=$list['tdlTitle'];?></td>
         <td class="mobileHidden"><?=$list['tdlDescription'];?></td>
         <td><?=date('d/m/Y',$list['tdlDateDue']);?></td>
-        <td><?=$tdPercentageCompleted;?> % </td>
-        <td class="mobileHidden"><a href="view_project.php?project_id=<?=$list['id_project']?>"><?=$list['projTitle'];?></a></td>
+        <td class="mobileHidden"><?=$tdPercentageCompleted;?> % </td>
+        <td><a href="view_project.php?project_id=<?=$list['id_project']?>"><?=$list['projTitle'];?></a></td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
-        <td><a href="view_list.php?list_id=<?=$list['id'];?>"><img class="view" src="images/eye.svg"></a></td>
+        <td class="mobileHidden"><a href="view_list.php?list_id=<?=$list['id'];?>"><img class="view" src="images/eye.svg"></a></td>
         <td></td>
         
 

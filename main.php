@@ -18,11 +18,11 @@ $userTasks = getUserTasks($username);
 <table id='my_tasks'>
     <tr>
         <th id='taskTitle'>Name</th>
-        <th id='taskDescription'>Description</th>
+        <th class="mobileHidden" id='taskDescription'>Description</th>
         <th id='taskDateDue'>Deadline</th>
         <th id='percentageCompleted'> % <input id="show_completed", type="checkbox" checked></th>
-        <th id='todoListID'>TODO List</th>
-        <th></th>
+        <th class="mobileHidden" id='todoListID'>TODO List</th>
+        <th id="semaphore"></th>
     </tr>
     
     <?php foreach($userTasks as $task) { ?>
@@ -30,11 +30,11 @@ $userTasks = getUserTasks($username);
         <tr <?php /* if($task['percentageCompleted'] == 100) echo 'class="task_completed"' */?>>
 
             <td><?=$task['taskTitle'];?></td>
-            <td><?=$task['taskDescription'];?></td>
+            <td class="mobileHidden"><?=$task['taskDescription'];?></td>
             <td><?=date('d/m/Y',$task['taskDateDue']);?></td>
             <td class="range"><input id='<?= $task['id'];?>' type="range" min="0" max="100" step="5" name="task_completition" value="<?php echo $task['percentageCompleted'];?>"><label for="compl"><?php echo $task['percentageCompleted'];?></label>%</td>
-            <td><a href="#"><?=$task['tdlTitle'];?></a></td>
-            <td><div id="task_semaphore"></div></td>
+            <td class="mobileHidden"><a href="#"><?=$task['tdlTitle'];?></a></td>
+            <td id="semaphore"><div id="task_semaphore"></div></td>
 
         </tr>
 
