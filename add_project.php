@@ -49,13 +49,6 @@ if(isset($_SESSION['updateProjectMessage']))
         </select>
 
         <ul>
-
-            <!-- <li>
-                    <p>Pedro<p>
-                    <img src="images/anonymous-user.svg">
-                    <button>
-                </li> -->
-
         </ul>
 
         <input type = "submit" value="Add">

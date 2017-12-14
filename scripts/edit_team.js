@@ -105,19 +105,19 @@ function receiveAjaxResponseAddDel() {
                 inputUsername.setAttribute('class','hidden');
 
                 li.appendChild(inputUsername);
-    
+
+                let button = document.createElement('button');
+                button.setAttribute('id','delete_member');
+                button.addEventListener('click',addRemoveMember.bind(this,response.username,0));
                 let img = document.createElement('img');
                 img.setAttribute('src', receivedUsers[i].userPicturePath);
+
+                let div = document.createElement('div');
+                div.appendChild(img);
+                div.appendChild(button);
     
-                li.appendChild(img);
+                li.appendChild(div);
                 ul.appendChild(li);
-    
-                let button = document.createElement('button');
-
-                button.addEventListener('click',addRemoveMember.bind(this,response.username,0));
-
-                li.appendChild(button);
-
         
                 member_field.value="";
     

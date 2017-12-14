@@ -16,14 +16,24 @@ body nav#menu ul li{
     margin-left: 6%;
 }
 
+body section#edit_project form ul{
+    width: 50%;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+}
+
 body section#edit_project form ul li{
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5em;
+    
 }
 
 body section#edit_project form ul li img{
-    border-radius: 50px;
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -33,6 +43,7 @@ body section#edit_project form ul li button{
     background: url('../images/delete.svg') no-repeat;
     background-size: 100%;
     cursor: pointer;
+    border-width: 0;
 }
 
 
@@ -170,17 +181,24 @@ body > section.main_area > table tr > td {
 }
 
 body section#tasks table th#taskTitle {
-    width: 10%;
+    width: 20%;
 }
 
 body section#tasks table th#percentageCompleted {
-    width: 10%;
+    width: 20%;
 }
 
 body section#tasks table th#todoListID {
-    width: 10%;
+    width: 17%;
 }
 
+body section#tasks table th#taskDescription {
+    width: 30%;
+}
+
+body section#tasks table th#taskDateDue {
+    width: 10%;
+}
 
 
 body > section.main_area > table tr > td > a {

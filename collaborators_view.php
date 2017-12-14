@@ -12,7 +12,6 @@
         <tr>
             <th>Collaborator</th>
             <th>Project</th>
-            <th>User Role</th>
             <th></th
         </tr>
         
@@ -22,8 +21,7 @@
         foreach ($collaborators as $value) { 
             $colabpic = getUserImagePathTN($value['User.username']);
             echo '<tr><td>'.htmlspecialchars($value['User.fullName'])
-                    .'</td><td>'.htmlspecialchars($value['Project.projTitle'])
-                            .'</td><td>'.htmlspecialchars($value['User_Project.userRole']).'</td>';
+                    .'</td><td>'.htmlspecialchars($value['Project.projTitle']).'</td>';
         ?>
                         
             <td><img src="<?=$colabpic?>"></td></tr>

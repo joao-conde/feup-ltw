@@ -287,4 +287,79 @@ section.main_area p#add_project a {
     
 }
 
+section.main_area ul#team_members {
+
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    
+}
+
+section.main_area ul#team_members div {
+    
+    display: flex;
+    flex-direction: column;
+        
+}
+
+section.main_area ul#team_members img {
+    
+    width: 100px;
+    height: 100px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+section.main_area ul#team_members div button {
+    
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    text-align: center;
+    background: url('../images/delete.svg') no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+    border-width: 0;
+}
+
+section.main_area ul#team_members li {
+    
+    margin:0 20px;
+    text-align: center;
+    font-size: 0.9em;
+    
+}
+
+section.main_area > div {
+    
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    margin-top:2em;
+        
+}
+
+section.main_area a#edit_members {
+    
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid black;
+    padding: 1em;
+        
+}
+
+section#edit_proj_team a {
+    color:inherit;
+}
+
+section#edit_proj_team div#new_member_div {
+
+    text-align: center;
+
+}
+
 

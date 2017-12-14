@@ -72,7 +72,7 @@ if(isset($_SESSION['insertProjectMessage']) && $_SESSION['insertProjectMessage']
     </form>
 
 <h2> Project Team </h2>
-    <ul>
+    <ul id="team_members">
         <?php 
             foreach($collaborators as $collaborator) { 
                 
@@ -85,7 +85,7 @@ if(isset($_SESSION['insertProjectMessage']) && $_SESSION['insertProjectMessage']
 
     </ul>
 
-    <a href="edit_project_team.php?project_id=<?=$foundproj['id']?>"> Edit Project Team </a>
+    <div><a id="edit_members" href="edit_project_team.php?project_id=<?=$foundproj['id']?>"> Edit Project Team </a></div>
 
     <h2> TODO Lists </h2>
 

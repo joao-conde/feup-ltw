@@ -34,7 +34,7 @@ $collaborators = getUsersFromProject($foundproj['id']);
 
     <?php $href = 'edit_project.php?project_id='.$foundproj['id']; ?>
     <h1> Edit Project Team: <a href=<?=$href?>>  <?=$foundproj['projTitle']?></a> </h1>
-    <label for="team_members"> Team Members </label>
+    <h2><label for="team_members"> Team Members </label></h2>
     <ul id="team_members">
 
     <?php 
@@ -46,8 +46,8 @@ $collaborators = getUsersFromProject($foundproj['id']);
             <li>
                 <input type="text" class="hidden" id="username" value="<?=$collaborator['username']?>">
                 <input type="text" class="hidden" id="fullName" value="<?=$collaborator['fullName']?>"> 
-                <?=$collaborator['fullName']?><img src="<?=$userPicPath?>"> <button <?php if($collaborator['username'] == $foundproj['usernameCreator']) echo "disabled=disabled"; ?>  id="delete_member"></button>  
-                <?php if($collaborator['username'] == $foundproj['usernameCreator']) echo '<span id="owner"> - Owner </span>'; ?>
+                <div><?=$collaborator['fullName']?><img src="<?=$userPicPath?>"> <button <?php if($collaborator['username'] == $foundproj['usernameCreator']) echo "class=hidden"; ?>  id="delete_member"></button> </div> 
+                <?php if($collaborator['username'] == $foundproj['usernameCreator']) echo '<span id="owner">Owner </span>'; ?>
             </li>
 
     <?php       } ?>
@@ -55,8 +55,10 @@ $collaborators = getUsersFromProject($foundproj['id']);
     </ul>
 
     <input type="number" class="hidden" id="proj_id" value=<?=$foundproj['id']?>>
-    <label for="new_member">Add New Member</label>
-    <input type="text" id="new_member" placeholder="search by name" list="collaborators">
+    <div id="new_member_div">
+        <label for="new_member">Add New Member</label>
+        <input type="text" id="new_member" placeholder="search by name" list="collaborators">
+    </div>
     <datalist id="collaborators">
     </datalist>
     
