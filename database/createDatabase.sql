@@ -17,10 +17,9 @@ CREATE TABLE User(
 
 CREATE TABLE User_Project(
     username INTEGER REFERENCES User,
-    idProject INTEGER REFERENCES Project,
+    idProject INTEGER REFERENCES Project ON DELETE CASCADE ON UPDATE CASCADE,
     userRole TEXT,
-    PRIMARY KEY(username, idProject)/* ,
-    CHECK(idProject, 'Administrator') */
+    PRIMARY KEY(username, idProject)
 );
 
 CREATE TABLE Project(

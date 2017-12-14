@@ -15,6 +15,14 @@ $userTasks = getUserTasks($username);
 <script src="scripts/task.js" defer></script>
 <section class="main_area" id="tasks">
 
+<p class="messages"> 
+    <?php 
+        if(isset($message))
+            echo $message;
+        $_SESSION['deleteProjMessage'] = '';
+    ?>
+</p>
+
 <table id='my_tasks'>
     <tr>
         <th id='taskTitle'>Task</th>
@@ -33,7 +41,7 @@ $userTasks = getUserTasks($username);
             <td class="mobileHidden"><?=$task['taskDescription'];?></td>
             <td><?=date('d/m/Y',$task['taskDateDue']);?></td>
             <td class="range"><input id='<?= $task['id'];?>' type="range" min="0" max="100" step="5" name="task_completition" value="<?php echo $task['percentageCompleted'];?>"><label for="compl"><?php echo $task['percentageCompleted'];?></label>%</td>
-            <td class="mobileHidden"><a href="#"><?=$task['tdlTitle'];?></a></td>
+            <td class="mobileHidden"><?=$task['tdlTitle'];?></a></td>
             <td id="semaphore"><div id="task_semaphore"></div></td>
 
         </tr>

@@ -213,5 +213,21 @@
 
     }
 
+    function deleteProject($proj_id) {
+
+        global $dbh;
+        
+        $query = 'DELETE FROM Project
+                    WHERE id = :id';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':id', $proj_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->errorCode();
+
+    }
+
 
 ?>

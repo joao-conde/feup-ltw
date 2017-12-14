@@ -126,6 +126,19 @@ function insertNewList($project_id, $list_title, $list_desc, $list_deadline) {
 
 }
 
-
-
+function getListsFromProject($project_id) {
+    
+        global $dbh;
+    
+        $query = 'SELECT * FROM TodoList WHERE projectID = :project_id';
+    
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':project_id', $project_id, PDO::PARAM_INT);
+    
+        $stmt->execute();
+    
+        return $stmt->fetchAll();
+    
+    }
+    
 ?>

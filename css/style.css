@@ -216,20 +216,6 @@ body > section.main_area > table div#task_semaphore {
     
 }
 
-/* @keyframes taskCompleted {
-    0% {
-        opacity: 1;
-        height: 20px;
-    }
-    100% {
-        opacity: 0;
-        visibility: hidden;
-        height: 0px;
-    }
-} */
-
-
-
 body > section#view_todo_list > label {
 
     display: block;
@@ -255,6 +241,20 @@ body > section#view_todo_list > div {
   padding:3px;
 }
 
+body > section table#projects tr th a img#add_proj_image {
+
+    width: 15px;
+    height: 15px;
+
+}
+
+body > section table#projects tr th a {
+    
+    vertical-align: center;
+    
+}
+
+body > section table#projects tr td > form > input#delete_proj,
 body > section table#lists_list tr td > form > input#delete_list {
 
     background: url('../images/delete.svg');
@@ -268,6 +268,7 @@ body > section table#lists_list tr td > form > input#delete_list {
 
 }
 
+body > section table#projects tr td > form.disabled > input#delete_proj,
 body > section table#lists_list tr td > form.disabled > input#delete_list {
     
     background: url('../images/delete_disabled.svg');

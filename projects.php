@@ -2,6 +2,7 @@
 
 include_once('templates/common/header.php'); 
 include_once('database/project.php');
+include_once('database/list.php');
 include_once('utils/utils_projects.php');
 include_once('utils/utils_general.php');
 
@@ -12,10 +13,21 @@ $username = $_SESSION['username'];
 $userOwnsProjects = getUserProjects($username);
 $userWorkingProjects = getUserProjectIsWorking($username);
 
+if(isset($_SESSION['deleteProjMessage']))
+    $message = $_SESSION['deleteProjMessage'];
+
 
 ?>
 
 <section class="main_area" id="projects_list">
+
+<p class="messages"> 
+    <?php 
+        if(isset($message))
+            echo $message;
+        $_SESSION['deleteProjMessage'] = '';
+    ?>
+</p>
 
 <table id = "projects">
     <tr>
@@ -24,6 +36,7 @@ $userWorkingProjects = getUserProjectIsWorking($username);
         <th>Deadline</th>
         <th>%</th>
         <th class="mobileHidden">Owner</th>
+        <th><a href="add_project.php"><img id="add_proj_image" src="images/add.svg"></a></th>
         <th></th>
     </tr>
 
@@ -31,16 +44,22 @@ $userWorkingProjects = getUserProjectIsWorking($username);
         
         $owner_pic = getUserImagePathTN($proj['usernameCreator']);
         $projPercentageCompleted = calculateProjectCompletition($proj['id']);
+        $numberOfLists = count(getListsFromProject($proj['id']));
          
     ?>
 
     <tr>
-        <td><a href="#"><?=$proj['projTitle'];?></a></td>
+        <td><?=$proj['projTitle'];?></td>
         <td class="mobileHidden"><?=$proj['projDescription'];?></td>
         <td><?=date('d/m/Y',$proj['projDateDue']);?></td>
         <td><?=$projPercentageCompleted;?> % </td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
         <td><a href="edit_project.php?project_id=<?=$proj['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
+        <td><form action="action_delete_project.php" method="post" <?php if($numberOfLists > 0) echo("class = disabled") ?>>
+                <input type="text" name="project_id" class="hidden" value=<?=$proj['id']?>>
+                <input id="delete_proj" type="submit" value="" <?php if($numberOfLists > 0) echo("disabled title=Disabled") ?>>
+            </form>
+        </td>
         
     </tr>
 
@@ -61,14 +80,13 @@ $userWorkingProjects = getUserProjectIsWorking($username);
         <td><?=$projPercentageCompleted;?> % </td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
         <td><a href="view_project.php?project_id=<?=$proj['id'];?>"><img src="images/eye.svg" class="view"></a></td>
+        <td></td>
         
     </tr>
 
     <?php } ?>
 
 </table>
-
-<p id="add_project"><a href="add_project.php"> Start a new Project </a></p>
 
 </section>
 
