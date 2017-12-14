@@ -70,8 +70,8 @@ if(isset($_SESSION['updateListMessage']))
 
         <tr>
             <th>Task</th>
-            <th>Detail</th>
-            <th>Completition</th>
+            <th>Description</th>
+            <th>%</th>
             <th>Deadline</th>
             <th>Responsable</th>
             <th></th>

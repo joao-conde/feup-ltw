@@ -48,7 +48,7 @@ $projectLists = getUserLists($_SESSION['username']);
                 $userPicPath = getUserImagePathTN($collaborator['username']);
         ?>
 
-            <li><?=$collaborator['fullName']?><img src="<?=$userPicPath?>"></li>
+            <li title="<?=$collaborator['fullName']?>"><img src="<?=$userPicPath?>"></li>
 
         <?php } ?>
 

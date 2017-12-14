@@ -15,7 +15,7 @@ if(isset($_SESSION['updateProjectMessage']))
 ?>
 
 <script src="scripts/add_project.js" defer></script>
-<section class="main_area" id = "edit_project">
+<section class="main_area" id="edit_project">
 
     <h1> Add Project </h1>
 
@@ -50,7 +50,11 @@ if(isset($_SESSION['updateProjectMessage']))
 
         <ul>
 
-            <!-- <li><p>Pedro<p><img src="images/anonymous-user.svg"></li> -->
+            <!-- <li>
+                    <p>Pedro<p>
+                    <img src="images/anonymous-user.svg">
+                    <button>
+                </li> -->
 
         </ul>
 

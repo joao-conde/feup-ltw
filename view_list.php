@@ -42,7 +42,7 @@ if(!logged())
 
         <tr>
             <th>Task</th>
-            <th>Completition</th>
+            <th>%</th>
             <th>Deadline</th>
             <th>Responsable</th>
             <th></th>
