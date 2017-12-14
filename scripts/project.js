@@ -1,119 +1,123 @@
 'use strict';
 
-let title = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_title');
-let desc = document.querySelector('section#projects_list table#projects tr#add_new_project textarea[name=proj_desc');
-let deadline = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_deadline');
-let submit = document.querySelector('section#projects_list table#projects tr#add_new_project input[type=button');
-let user = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_responsable');
-
-let responsible = document.querySelector("table#projects tr#add_new_project td input[name=proj_responsable");
-
-let ajaxRequestInsertProject = new XMLHttpRequest();
-
-const api_add_project = "api_add_project.php";
-
-function validateTitle() {
-    return title.value.length > 0;
-}
-
-function validateDesc() {
-    return desc.value.length > 0;
-}
+//===== SET ACTIVE TAB =====
+changeActiveTab(2);
 
 
-function validateFields() {
-    if(validateTitle() && validateDesc())
-        submit.removeAttribute('disabled');
-    else
-        submit.setAttribute('disabled','disabled');
-}
+// let title = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_title');
+// let desc = document.querySelector('section#projects_list table#projects tr#add_new_project textarea[name=proj_desc');
+// let deadline = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_deadline');
+// let submit = document.querySelector('section#projects_list table#projects tr#add_new_project input[type=button');
+// let user = document.querySelector('section#projects_list table#projects tr#add_new_project input[name=proj_responsable');
 
-function showCompl() {
+// let responsible = document.querySelector("table#projects tr#add_new_project td input[name=proj_responsable");
 
-    completition_slider_label.innerHTML = completition_slider.value;
-}
+// let ajaxRequestInsertProject = new XMLHttpRequest();
 
+// const api_add_project = "api_add_project.php";
 
-title.addEventListener('keyup',validateFields);
-desc.addEventListener('keyup',validateFields);
-deadline.addEventListener('keyup',validateFields);
+// function validateTitle() {
+//     return title.value.length > 0;
+// }
 
-
-function encodeForAjax(data) {
-    return Object.keys(data).map(function(k){
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');  
-}
+// function validateDesc() {
+//     return desc.value.length > 0;
+// }
 
 
-function receiveNewProjectFromAjax() {
+// function validateFields() {
+//     if(validateTitle() && validateDesc())
+//         submit.removeAttribute('disabled');
+//     else
+//         submit.setAttribute('disabled','disabled');
+// }
+
+// function showCompl() {
+
+//     completition_slider_label.innerHTML = completition_slider.value;
+// }
+
+
+// title.addEventListener('keyup',validateFields);
+// desc.addEventListener('keyup',validateFields);
+// deadline.addEventListener('keyup',validateFields);
+
+
+// function encodeForAjax(data) {
+//     return Object.keys(data).map(function(k){
+//       return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+//     }).join('&');  
+// }
+
+
+// function receiveNewProjectFromAjax() {
     
-        let table = document.querySelector("table#projects tbody");
-        let trAddProject = document.querySelector("table#projects tr#add_new_project");
-        console.log(this.responseText);
-        let newProject = JSON.parse(this.responseText);
+//         let table = document.querySelector("table#projects tbody");
+//         let trAddProject = document.querySelector("table#projects tr#add_new_project");
+//         console.log(this.responseText);
+//         let newProject = JSON.parse(this.responseText);
     
-        //console.log(newProject);
+//         //console.log(newProject);
         
-        let tr = document.createElement("tr");
+//         let tr = document.createElement("tr");
     
-        let tdTitle = document.createElement("td");
-        tdTitle.innerHTML = newProject.project_title;
-        tr.appendChild(tdTitle);
+//         let tdTitle = document.createElement("td");
+//         tdTitle.innerHTML = newProject.project_title;
+//         tr.appendChild(tdTitle);
     
-        let tdDesc = document.createElement("td");
-        tdDesc.innerHTML = newProject.project_desc;
-        tr.appendChild(tdDesc);
+//         let tdDesc = document.createElement("td");
+//         tdDesc.innerHTML = newProject.project_desc;
+//         tr.appendChild(tdDesc);
     
     
-        let tdDate = document.createElement("td");
-        tdDate.innerHTML = new Date(parseInt(newProject.project_deadline)*1000).toLocaleDateString("pt-PT");
-        tr.appendChild(tdDate);
+//         let tdDate = document.createElement("td");
+//         tdDate.innerHTML = new Date(parseInt(newProject.project_deadline)*1000).toLocaleDateString("pt-PT");
+//         tr.appendChild(tdDate);
         
-        let tdUserName = document.createElement("td");
-        tdUserName.innerHTML = newProject.project_user;
-        tr.appendChild(tdUserName);
+//         let tdUserName = document.createElement("td");
+//         tdUserName.innerHTML = newProject.project_user;
+//         tr.appendChild(tdUserName);
     
-        let tdUserImage = document.createElement("td");
-        let image = document.createElement("img");
-        image.setAttribute('src',newProject.userPicturePath);
-        tdUserImage.appendChild(image);
-        tr.appendChild(tdUserImage);
+//         let tdUserImage = document.createElement("td");
+//         let image = document.createElement("img");
+//         image.setAttribute('src',newProject.userPicturePath);
+//         tdUserImage.appendChild(image);
+//         tr.appendChild(tdUserImage);
         
-        table.insertBefore(tr,trAddProject);
+//         table.insertBefore(tr,trAddProject);
     
-        // let label = table.querySelector("label[for=compl]");
+//         // let label = table.querySelector("label[for=compl]");
     
-        // newTaskTitle.value = "";
-        // newTaskDesc.value = "";
-        // newTaskPercentage.value = "0";
-        // newTaskDeadLine.value = new Date(projdeadline).toISOString().substring(0,10);
-        // responsible.value = "";
+//         // newTaskTitle.value = "";
+//         // newTaskDesc.value = "";
+//         // newTaskPercentage.value = "0";
+//         // newTaskDeadLine.value = new Date(projdeadline).toISOString().substring(0,10);
+//         // responsible.value = "";
     
-        // label.innerHTML = "0";
+//         // label.innerHTML = "0";
     
-    }
+//     }
 
 
-function sendRequestAddProject() {
+// function sendRequestAddProject() {
  
-    let requestData = {
-         title: title.value,  
-         desc: desc.value,
-         username: user.value,
-         deadline: new Date(deadline.value).getTime() / 1000
-     };
+//     let requestData = {
+//          title: title.value,  
+//          desc: desc.value,
+//          username: user.value,
+//          deadline: new Date(deadline.value).getTime() / 1000
+//      };
 
 
-    console.log(requestData);
+//     console.log(requestData);
     
-    ajaxRequestInsertProject.open("post", api_add_project, true);
-    ajaxRequestInsertProject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    ajaxRequestInsertProject.send(encodeForAjax(requestData));
+//     ajaxRequestInsertProject.open("post", api_add_project, true);
+//     ajaxRequestInsertProject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//     ajaxRequestInsertProject.send(encodeForAjax(requestData));
     
-    ajaxRequestInsertProject.addEventListener('load',receiveNewProjectFromAjax);
+//     ajaxRequestInsertProject.addEventListener('load',receiveNewProjectFromAjax);
     
-}
+// }
 
 
-submit.addEventListener('click', sendRequestAddProject);
+// submit.addEventListener('click', sendRequestAddProject);

@@ -13,15 +13,16 @@ $userTasks = getUserTasks($username);
 ?>
 
 <script src="scripts/task.js" defer></script>
+
 <section class="main_area" id="tasks">
 
 <table id='my_tasks'>
     <tr>
-        <th id='taskTitle'>Name</th>
-        <th id='taskDescription'>Description</th>
-        <th id='taskDateDue'>Deadline</th>
-        <th id='percentageCompleted'> % <input id="show_completed", type="checkbox" checked></th>
-        <th id='todoListID'>TODO List</th>
+        <th><div class='div_order_by' id='taskTitle'>Name<img src="images/down-arrow.png" alt="Down arrow"></div></th>
+        <th><div class='div_order_by' id='taskDescription'>Description<img src="images/down-arrow.png" alt="Down arrow"></div></th>
+        <th><div class='div_order_by' id='taskDateDue'>Deadline<img src="images/down-arrow.png" alt="Down arrow"></div></th>
+        <th><div class='div_order_by' id='percentageCompleted'> % <img src="images/down-arrow.png" alt="Down arrow"></div><input id="show_completed", type="checkbox" checked><label for='show_completed'>Hide completed tasks.</label></th>
+        <th><div class='div_order_by' id='todoListID'>TODO List<img src="images/down-arrow.png" alt="Down arrow"></div></th>
         <th></th>
     </tr>
     

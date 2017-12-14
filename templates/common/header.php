@@ -16,10 +16,8 @@ include_once('utils/utils_general.php');
     <link href="css/style.css" rel="stylesheet">
     <link href="css/forms.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
-    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="scripts/utils.js" defer></script>
+
     
 </head>
 

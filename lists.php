@@ -18,7 +18,7 @@ if(isset($_SESSION['deleteListMessage']))
     $message = $_SESSION['deleteListMessage'];
 
 ?>
-
+<script src="scripts/list.js" defer></script>
 <section class="main_area">
 
 <p class="messages"> 

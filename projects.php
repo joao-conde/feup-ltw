@@ -14,6 +14,7 @@ $userWorkingProjects = getUserProjectIsWorking($username);
 
 
 ?>
+<script src="scripts/project.js" defer></script>
 
 <section class="main_area" id="projects_list">
 

@@ -1,18 +1,19 @@
 
+//===== SET ACTIVE TAB =====
+changeActiveTab(0);
+
 // ===========  HANDLE TASKS TABLE  ===========
 let tbody_my_tasks = document.querySelector('table#my_tasks > tbody');
 
  //===== Ordenation of columns =====
 columnsOrdenation();
 function columnsOrdenation(){
-    let headers_row = tbody_my_tasks.children[0];
-    console.log(headers_row);
-    for (let i = 0; i < headers_row.childElementCount; i++) {
-
-        const orderBy = headers_row.children[i].id;
-
+    let divs_order_by = tbody_my_tasks.querySelectorAll("div.div_order_by");
+    console.log(divs_order_by);
+    for (let i = 0; i < divs_order_by.length; i++) {
+        const orderBy = divs_order_by[i].id;
         if (orderBy) {
-            headers_row.children[i].addEventListener('click', sendRequestOrderingTasksBy.bind(this, orderBy));
+            divs_order_by[i].addEventListener('click', sendRequestOrderingTasksBy.bind(this, orderBy));
         }
     }
 }
@@ -98,24 +99,6 @@ function sendRequestChangePercentageCompleted(input) {
     let semaphore = row.querySelector('div#task_semaphore');
     semaphore.setAttribute('style', "background-color: hsl(" + input.value + ", 100%, 50%)");
 
-    /* console.log(input.value);
-    if(input.value == 100){
-        console.log("100% CRL");
-
-        row.setAttribute('style',
-            // "animation-name: taskCompleted; " +
-            // "animation-duration: 1s; " +
-            // "animation-fill-mode: both"
-
-            // "transition: all 0.4s ease-out; " +
-            // "opacity: 0; " + 
-            // "height: 2em;"
-
-            "visibility: hidden; "+
-            "opacity: 0; "+
-            "transition: visibility 0s 2s, opacity 2s linear; "
-        );
-    } */
 }
 
 
@@ -124,7 +107,6 @@ let api_ordering_tasks_by = "api_ordering_tasks_by.php";
 
 function sendRequestOrderingTasksBy(orderBy){
 
-    console.log('ORDER BY: '+ orderBy);
     let requestData = {
         order_by: orderBy
     }
@@ -141,14 +123,10 @@ function loadRequestOrderingTasksBy(){
 
     let newTasks = JSON.parse(this.responseText);
 
-    console.log("NEW TASKS json");
-    console.log(newTasks);
     let my_tasks = document.querySelector('table#my_tasks > tbody');
     while (my_tasks.children[1]) {
         my_tasks.removeChild(my_tasks.children[1]);
     }
-    console.log("NO TASKS");
-    console.log(my_tasks);
 
     for (let i = 0; i < newTasks.length; i++) {
         const task = newTasks[i];
@@ -158,9 +136,6 @@ function loadRequestOrderingTasksBy(){
         let taskTitle = document.createElement("td");
         taskTitle.innerHTML = task.taskTitle;
         tr.appendChild(taskTitle);
-        console.log(task);
-        console.log(task.taskTitle);
-
 
         let taskDesc = document.createElement("td");
         taskDesc.innerHTML = task.taskDescription;
@@ -208,8 +183,6 @@ function loadRequestOrderingTasksBy(){
         my_tasks.appendChild(tr);
 
     }
-    console.log("NEW TASKS html");
-    console.log(my_tasks);
 
     // Setup tasks ui
     hiddenCompletedTasks();
