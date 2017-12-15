@@ -157,6 +157,7 @@ section.main_area#chat section#send_message textarea::before {
     section.main_area#chat section#send_message textarea {
     
         margin-bottom: 1em;
+        font-size: 16px;
         
     }
 
@@ -173,7 +174,7 @@ section.main_area#chat section#send_message textarea::before {
         border-bottom: 1px solid black;
         margin:0;
         display: grid;
-        grid-template-rows: 0.5fr 70% 0.5fr;
+        grid-template-rows: 0.5fr 60% 0.5fr;
         grid-template-columns: 1fr auto;
         padding-bottom: 0.5em;
     
