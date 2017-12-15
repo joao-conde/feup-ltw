@@ -4,15 +4,13 @@
 
 
 section.main_area#chat {
-    height: 70vh;
+    height: 75vh;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     margin:0;
     display: grid;
-    grid-template-rows: 0.5fr 78% 0.5fr;
+    grid-template-rows: 0.5fr 80% 0.5fr;
     grid-template-columns: 1fr auto;
-    padding-bottom: 0.5em;
-
 }
 
 section.main_area#chat h1 {
