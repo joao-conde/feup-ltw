@@ -34,6 +34,7 @@ submitButton.setAttribute('disabled','disabled');
 for(let i = 0; i < textFields.length; i++) {
     textFields[i].addEventListener('keyup',validateFields);
     textFields[i].addEventListener('onchange',validateFields);
+    textFields[i].addEventListener('input', validateFields);
 }
 
 function enableSubmitButton(enabled) {

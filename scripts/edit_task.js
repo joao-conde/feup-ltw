@@ -23,39 +23,6 @@ let ajaxRequestFindUsers = new XMLHttpRequest();
 const api_find_users = "api_find_users.php";
 
 
-
-
-/**
- * Utils
- */
-
- function convertDateToEpochSecs(dateString) {
-
-    return new Date(dateString).getTime() / 1000;
-
- }
-
- function convertEpochSecsToDateString(seconds) {
-    
-    return new Date(seconds*1000).toLocaleDateString("pt-PT");
-    
-}
-
-
-function getCurrentDayEpochSecs() {
-
-    let time = new Date();
-    let todayString = (time.getMonth() + 1) + "/" + time.getDate() +  + "/" + time.getFullYear();
-    return convertDateToEpochSecs(todayString);
-
-}
-
-function encodeForAjax(data) {
-    return Object.keys(data).map(function(k){
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');  
-}
-
 function sendRequestFindUsers() {
     
     let pattern = responsible.value;

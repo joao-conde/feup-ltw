@@ -7,7 +7,8 @@
     }
 
     body nav#menu{
-        display: none;
+        font-size: 0.7em;
+        justify-content: flex-start;
     }
 
     body section#register form{

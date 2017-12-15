@@ -1,0 +1,183 @@
+/**
+    General Layout
+*/
+
+
+section.main_area#chat {
+    height: 70vh;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin:0;
+    display: grid;
+    grid-template-rows: 0.5fr 78% 0.5fr;
+    grid-template-columns: 1fr auto;
+    padding-bottom: 0.5em;
+
+}
+
+section.main_area#chat h1 {
+    grid-area: 1/1 / span 1 /span 1;
+}
+
+section.main_area#chat section#messages {
+    grid-area: 2/1 / span 1 / span 1;
+    padding: 0 1em;
+    margin: 0 0 1em 0;
+    text-align: left;
+    overflow: scroll; 
+    border-bottom: 1px solid black;
+
+}
+
+section.main_area#chat section#chat_participants {
+    grid-area: 1/2 / span 3 / span 1;
+    border-left: 1px solid black;
+    overflow: scroll;
+}
+
+section.main_area#chat section#send_message {
+    grid-area: 3/1 / span 1 / span 1;
+}
+
+/**
+    Participantes Layout
+**/
+
+section.main_area#chat section#chat_participants ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding-left: 0.5em;
+    margin: 0;
+}
+
+section.main_area#chat section#chat_participants ul li {
+    display: block;
+    display: flex;
+    align-items: center;
+}
+
+section.main_area#chat section#chat_participants ul li span#participant {
+   margin: 0.5em 0.5em;
+}
+
+section.main_area#chat section#chat_participants img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+/**
+    Messages Layout
+**/
+
+section.main_area#chat section#messages div#message {
+   display: flex;
+   align-items: center;
+   margin: 1em 0.5em;
+   border-left: 1px solid black;
+}
+
+section.main_area#chat section#messages div#message:hover {
+    text-decoration: underline;
+    text-decoration-color: #FF383F;
+ }
+
+section.main_area#chat section#messages div#message > * {
+    margin: 0 0.2em;
+}
+
+section.main_area#chat section#messages div#message > span#date {
+    font-size: 0.7em;
+}
+
+section.main_area#chat section#messages div#message > span#sender {
+    font-style: italic;
+    font-size: 0.7em;
+}
+
+section.main_area#chat section#messages div#message > span#date::after {
+    content: " :";
+    color: #FF383F;
+}
+
+section.main_area#chat section#messages div#message > span#message_body {
+    font-size: 0.9em;
+}
+
+section.main_area#chat section#messages img {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+/**
+    Send Layout
+**/
+
+
+section.main_area#chat section#send_message {
+    padding: 1em;
+    display: flex;
+    align-items: flex-end;
+}
+
+section.main_area#chat section#send_message textarea {
+    
+    width: 80vw;
+    outline-width: 0;
+    resize: none;
+    border: 1px solid #FF383F;
+    padding: 0.5em;
+    margin-right: 0.5em;
+    
+}
+
+section.main_area#chat section#send_message textarea::before {
+    content: "Me";
+    
+}
+
+
+@media(max-width: 800px){
+
+
+    section.main_area#chat section#chat_participants {
+        display: none;
+    }
+
+    section.main_area#chat section#send_message {
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    section.main_area#chat section#send_message textarea {
+    
+        margin-bottom: 1em;
+        
+    }
+
+    section.main_area#chat section#send_message input {
+    
+        padding: 3em;
+
+        
+    }
+
+    section.main_area#chat {
+        height: 50vh;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        margin:0;
+        display: grid;
+        grid-template-rows: 0.5fr 70% 0.5fr;
+        grid-template-columns: 1fr auto;
+        padding-bottom: 0.5em;
+    
+    }
+
+
+}

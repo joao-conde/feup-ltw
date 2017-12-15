@@ -21,17 +21,6 @@ for(let i = 0; i < ul.children.length; i++) {
 
 }
 
-/**
- * utils
- */
-
-function encodeForAjax(data) {
-    return Object.keys(data).map(function(k){
-        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');  
-}
-
-
 let ajaxRequestFindUsers = new XMLHttpRequest();
 let ajaxRequestAddUser = new XMLHttpRequest();
 let ajaxRequestDeleteUser = new XMLHttpRequest();
@@ -177,31 +166,10 @@ function selectUser(event) {
         if(fullName == receivedUsers[i].fullName) {
             
             addRemoveMember(receivedUsers[i].username,1,null);
-
-            // currentUsers.push(receivedUsers[i]);
-
-            // let li = document.createElement('li');
-            // li.innerHTML = fullName;
-
-            // let img = document.createElement('img');
-            // img.setAttribute('src', receivedUsers[i].userPicturePath);
-
-            // li.appendChild(img);
-            // ul.appendChild(li);
-
-            // let button = document.createElement('button');
-            // li.appendChild(button);
-
-            // member_field.value="";
-
-            
-
             break;
         }
 
     }
-
-    //console.log(currentUsers);
 
 }
 

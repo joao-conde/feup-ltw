@@ -2,41 +2,6 @@
 //===== SET ACTIVE TAB =====
 changeActiveTab(2);
 
-/**
- * Utils
- */
-
-function convertDateToEpochSecs(dateString) {
-    
-    return new Date(dateString).getTime() / 1000;
-
-}
-
-function convertEpochSecsToDateString(seconds) {
-    
-    return new Date(seconds*1000).toLocaleDateString("pt-PT");
-    
-}
-
-
-function getCurrentDayEpochSecs() {
-
-    let time = new Date();
-    let todayString = (time.getMonth() + 1) + "/" + time.getDate() + "/" + time.getFullYear();
-
-    let seconds = convertDateToEpochSecs(todayString);
-
-    return seconds;
-
-}
-
-function encodeForAjax(data) {
-    return Object.keys(data).map(function(k){
-        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');  
-}
-
-
 
 let title = document.querySelector('form > input[name="title');
 let deadline = document.querySelector('form > input[name="deadline');

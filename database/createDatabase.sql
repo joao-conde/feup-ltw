@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS TodoList;
 DROP TABLE IF EXISTS User_Project;
 DROP TABLE IF EXISTS Project;
 DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS ProjectChatMessage;
+DROP TABLE IF EXISTS PrivateChatMessage;
 
 
 CREATE TABLE User(
@@ -53,6 +55,25 @@ CREATE TABLE Dependency(
     taskDependentID INTEGER REFERENCES Task,
     taskRequiredID INTEGER REFERENCES Task,
     PRIMARY KEY(taskDependentID, taskRequiredID)
+);
+
+CREATE TABLE ProjectChatMessage(
+    messageId INTEGER PRIMARY KEY,
+    messageText TEXT,
+    usernameSrc TEXT REFERENCES User,
+    messageDate INTEGER,
+    projectID INTEGER REFERENCES Project ON DELETE SET NULL,
+    projectName TEXT
+);
+
+CREATE TABLE PrivateChatMessage(
+    messageId INTEGER PRIMARY KEY,
+    messageText TEXT,
+    usernameSrc TEXT REFERENCES User,
+    usernameDest TEXT REFERENCES User,
+    messageDate INTEGER,
+    projectID INTEGER REFERENCES Project ON DELETE SET NULL,
+    projectName TEXT
 );
 
 

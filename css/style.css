@@ -1,15 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Barlow+Condensed");
 
 body{
-    width: 100%;
+    height: 100vh;
     margin:  0 auto;
     background-color: #EFEFEF;
     background-image: url('../images/office-view.jpg');
     background-attachment: fixed;
     font-family: 'Barlow Condensed', sans-serif;
-    display: grid;
-    grid-template-rows: auto auto 1fr auto;
-    grid-template-columns: auto;
+    display: flex;
+    flex-direction: column; 
 }
 
 body nav#menu ul li{
@@ -55,7 +54,6 @@ body > header {
     display: grid;
     grid-template-columns: 1fr 7% 10%;
     grid-template-rows: 1fr;
-    height: 80px;
 }
 
 body > header > div#logo h1 {
@@ -116,7 +114,6 @@ body > header div > h2{
 body > nav#menu {
     border-top: 1px solid rgb(34, 31, 31);
     border-bottom: 1px solid rgb(34, 31, 31);
-    grid-area: 2 / 1 / span 1 / span 1;
 }
 
 body > nav#menu ul {
@@ -158,7 +155,8 @@ body > nav#menu > ul > li > a > img {
 
 body > section.main_area {
     margin:1em 0.5em;
-    background-color: transparent;    
+    background-color: transparent; 
+    flex-grow: 1;  
 }
 
 body > section.main_area > table {
@@ -345,7 +343,6 @@ body > section#view_project > div
 body > footer {
 
     background-color: rgb(199, 43, 51);
-    grid-area: 4 / 1 / span 1 / span 1;
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: auto auto;

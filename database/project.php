@@ -228,6 +228,51 @@
         return $stmt->errorCode();
 
     }
+    
+    function getMessagesFromProjectChat($project_id) {
 
+        global $dbh;
+
+        $query = 'SELECT * FROM ProjectChatMessage WHERE projectID = :project_id ORDER BY messageId ASC';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':project_id', $project_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+
+    }
+
+    function insertMessageInProojectChat($message_text, $username, $message_date, $project_id, $project_name) {
+
+        global $dbh;
+
+        $query = 'INSERT INTO ProjectChatMessage(messageText, usernameSrc, messageDate, projectID, projectName) VALUES(?, ?, ?, ?, ?)';
+        
+        $stmt = $dbh->prepare($query);
+
+        $stmt->execute(array($message_text, $username, $message_date, $project_id, $project_name));
+
+        return $stmt->errorCode();
+
+    }
+
+    function getLastMessagesFromProject($project_id, $last_message_id) {
+
+        global $dbh;
+
+        $query = 'SELECT * FROM ProjectChatMessage WHERE projectID = :project_id AND messageId > :messageId ORDER BY messageId ASC';
+
+        $stmt = $dbh->prepare($query);
+        $stmt->bindParam(':project_id', $project_id, PDO::PARAM_INT);
+        $stmt->bindParam(':messageId', $last_message_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+
+
+    }
 
 ?>

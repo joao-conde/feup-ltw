@@ -72,13 +72,6 @@ function hiddenCompletedTasks(){
 
 // ===========  AJAX REQUESTS  ===========
 
-function encodeForAjax(data) {
-    return Object.keys(data).map(function (k) {
-        return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&');
-}
-
-
 let ajaxRequestChangeTaskCompletion = new XMLHttpRequest();
 let api_change_task_completion = "api_change_task_completion.php";
 

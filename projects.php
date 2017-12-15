@@ -39,6 +39,7 @@ if(isset($_SESSION['deleteProjMessage']))
         <th class="mobileHidden">Owner</th>
         <th><a href="add_project.php"><img id="add_proj_image" src="images/add.svg"></a></th>
         <th></th>
+        <th></th>
     </tr>
 
     <?php foreach($userOwnsProjects as $proj) { 
@@ -56,11 +57,13 @@ if(isset($_SESSION['deleteProjMessage']))
         <td><?=$projPercentageCompleted;?> % </td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
         <td><a href="edit_project.php?project_id=<?=$proj['id'];?>"><img src="images/edit.svg" class="edit"></a></td>
+        <td><a href="chat.php?project_id=<?=$proj['id']?>">Chat</a></td>
         <td><form action="action_delete_project.php" method="post" <?php if($numberOfLists > 0) echo("class = disabled") ?>>
                 <input type="text" name="project_id" class="hidden" value=<?=$proj['id']?>>
                 <input id="delete_proj" type="submit" value="" <?php if($numberOfLists > 0) echo("disabled title=Disabled") ?>>
             </form>
         </td>
+        
         
     </tr>
 
@@ -81,7 +84,9 @@ if(isset($_SESSION['deleteProjMessage']))
         <td><?=$projPercentageCompleted;?> % </td>
         <td class="mobileHidden"><img src="<?=$owner_pic?>"></td>
         <td><a href="view_project.php?project_id=<?=$proj['id'];?>"><img src="images/eye.svg" class="view"></a></td>
+        <td><a href="chat.php?project_id=<?=$proj['id']?>">Chat</a></td>
         <td></td>
+
         
     </tr>
 
